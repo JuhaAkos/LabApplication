@@ -1,0 +1,44 @@
+<div class="container">
+    <h3>Labor szertára:</h3>
+    <p></p>
+
+
+    <div class="row">
+        <p>Kiválasztott laborfelszerelések:</p>
+
+        <div class="col-md-5">
+            <select class="form-select" name="searchSelect" id="searchSelect">
+                <option value="chemical">Vegyszerek</option>
+            </select>
+        </div>
+
+        <div class="col-md-1"><button class="btn btn-primary">OK</button></div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        <div class="col-md-1">ID</div>        
+        <div class="col-md-2">Hivatalos név</div>
+        <div class="col-md-1">Hétköznapi név</div>
+        <div class="col-md-2">Mennyiség</div>
+        <div class="col-md-2">Mérgező hatások</div>
+        <div class="col-md-1">Tárolási hely</div>
+        <div class="col-md-1">Lejárat</div>
+        <div class="col-md-2">Leírás</div>
+
+    </div>   
+    
+    <hr>
+
+    <div class="row" *ngFor="let chemical of chemicals">
+        <div class="col-md-1">{{ chemical.id }}</div>     
+        <div class="col-md-2">{{ chemical.officialname }}</div>
+        <div class="col-md-1">{{ chemical.commonname }}</div>
+        <div class="col-md-2">{{ chemical.amount }} {{ chemical.unit }}</div>
+        <div class="col-md-2">{{ chemical.poisonouseffect }}</div>
+        <div class="col-md-1">{{ chemical.storage }}</div>
+        <div class="col-md-1">{{ chemical.expiration | date:'MM/dd/yyyy'}}</div>
+        <div class="col-md-2">{{ chemical.description }}</div>
+    </div>
+</div>
