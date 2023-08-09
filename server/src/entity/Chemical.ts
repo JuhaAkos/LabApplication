@@ -1,9 +1,9 @@
-import { Entity, Column, PrimaryColumn} from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn} from "typeorm"
 import { ChemicalDTO } from "../../../models";
 
 @Entity()
 export class Chemical implements ChemicalDTO{
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()    
     id: number;
 
     @Column()

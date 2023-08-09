@@ -1,9 +1,9 @@
-import { Entity, Column, PrimaryColumn} from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn} from "typeorm"
 import { MetalToolDTO } from "../../../models";
 
 @Entity()
 export class MetalTool implements MetalToolDTO{
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     id: number;
 
     @Column()

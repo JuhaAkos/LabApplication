@@ -1,0 +1,94 @@
+<div class="container">
+
+    <div *ngIf="!isModify">
+        <h3>Tétel felvétele a szertárba:</h3>
+        <p></p>
+
+        <div class="row">        
+            <p>Kiválasztott laborfelszerelések:</p>           
+            <div class="col-md-5">
+                <select class="form-select" name="searchSelect" id="searchSelect" [(ngModel)]="selectedValue">
+                    <option value="chemical">Vegyszerek</option>
+                    <option value="woodentool">Fa eszközök</option>
+                    <option value="metaltool">Fém eszközök</option>
+                    <option value="glasscontainer">Üvegedények</option>
+                    <option value="device">Műszerek</option>
+                    <option value="otheritem">Egyéb eszközök</option>
+                </select>
+            </div>          
+        </div>
+        <hr> 
+    </div>    
+
+    <div *ngIf="isModify">
+        <h3>Szertárban lévő tétel módosítása:</h3>
+        <p></p>
+        <div class="row">            
+            <p>Kiválasztott laborfelszerelések:</p>            
+
+            <div *ngIf="isSelectedType('chemical')">        
+                <div class="col-md-5"><select class="form-select" name="searchSelect" id="searchSelect" [(ngModel)]="selectedValue" disabled>
+                        <option value="chemical">Vegyszerek</option>
+                </select></div>
+            </div>
+
+            <div *ngIf="isSelectedType('woodentool')">        
+                <div class="col-md-5"><select class="form-select" name="searchSelect" id="searchSelect" [(ngModel)]="selectedValue" disabled>
+                        <option value="chemical">Fa eszközök</option>
+                </select></div>
+            </div>
+
+        </div>
+        <hr>
+
+    </div>
+
+    <div *ngIf="isSelectedType('chemical')"><form ngNativeValidate [formGroup]="chemicalForm" #form>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Hivatalos név</label>
+                <input type="text" class="form-control" id="officialname" name="officialname" formControlName="officialname" required>
+
+            </div>
+            <div class="col-md-6">
+                <label for="name" class="form-label">Hétköznapi név</label>
+                <input type="text" class="form-control" id="commonname" name="commonname" formControlName="commonname" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <label for="name" class="form-label">Mennyiség</label>
+                <input type="text" class="form-control" id="amount" name="amount" formControlName="amount" required>
+            </div>
+            <div class="col-md-4">
+                <label for="name" class="form-label">Mértékegység</label>
+                <input type="text" class="form-control" id="unit" name="unit" formControlName="unit" required>
+            </div>
+        </div>
+
+        <label for="name" class="form-label">Mérgező hatások</label>
+        <input type="text" class="form-control" id="poisonouseffect" name="poisonouseffect" formControlName="poisonouseffect">
+
+        <label for="name" class="form-label">Tárolás módja</label>
+        <input type="text" class="form-control" id="storage" name="storage" formControlName="storage" required>
+
+        <label for="name" class="form-label">Lejárati Dátum (Év Hónap Nap)</label>
+        <div class="row">
+            <div class="col-md-4"><input type="text" class="form-control" id="year" name="year" formControlName="year" required></div>
+            <div class="col-md-4"><input type="text" class="form-control" id="month" name="month" formControlName="month" required></div>
+            <div class="col-md-4"><input type="text" class="form-control" id="day" name="day" formControlName="day" required></div>
+        </div>
+
+        <label for="name" class="form-label">Leírás</label>
+        <input type="text" class="form-control" id="description" name="description" formControlName="description">
+
+        <p></p>
+        <div class="row"><button class="btn btn-primary btn-lg btn-block" (click)="form.checkValidity()? saveChemicalData() : null">OK</button></div>
+        
+    </form></div>
+    
+    
+    
+
+</div>

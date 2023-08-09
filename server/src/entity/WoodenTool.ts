@@ -1,9 +1,9 @@
-import { Entity, Column, PrimaryColumn} from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn} from "typeorm"
 import { WoodenToolDTO } from "../../../models";
 
 @Entity()
 export class WoodenTool implements WoodenToolDTO{
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     id: number;
 
     @Column()

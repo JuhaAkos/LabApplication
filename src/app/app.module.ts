@@ -11,11 +11,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule } from '@angular/forms';
 import { EquipmentListComponent } from './equipment-list/equipment-list.component';
+import { EquipmentFormComponent } from './equipment-form/equipment-form.component';
+import { TransferService } from './services/transfer.service';
+import { ChemicalFormService } from './equipment-form/chemicalForm-service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EquipmentListComponent
+    EquipmentListComponent,
+    EquipmentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -24,11 +28,13 @@ import { EquipmentListComponent } from './equipment-list/equipment-list.componen
     NgbModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ToastrModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    TransferService,
+    ChemicalFormService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

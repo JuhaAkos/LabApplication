@@ -1,9 +1,9 @@
-import { Entity, Column, PrimaryColumn} from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn} from "typeorm"
 import { GlassContainerDTO } from "../../../models";
 
 @Entity()
 export class GlassContainer implements GlassContainerDTO{
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     id: number;
 
     @Column()

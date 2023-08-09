@@ -1,9 +1,9 @@
-import { Entity, Column, PrimaryColumn} from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn} from "typeorm"
 import { DeviceDTO } from "../../../models";
 
 @Entity()
 export class Device implements DeviceDTO{
-    @PrimaryColumn()
+    @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
