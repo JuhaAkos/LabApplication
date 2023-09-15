@@ -1,9 +1,15 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { ChemicalDTO, WoodenToolDTO } from 'models';
-import { ChemicalService } from '../services/chemical.service';
+import { Component} from '@angular/core';
+import { ChemicalDTO, DeviceDTO, GlassContainerDTO, MetalToolDTO, OtherItemDTO, WoodenToolDTO } from 'models';
 import { TransferService } from '../services/transfer.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { GlassContainerService } from '../services/glasscontainer.service';
+import { MetalToolService } from '../services/metaltool.service';
+import { ChemicalService} from '../services/chemical.service';
+import { DeviceService} from '../services/device.service';
+import { OtherItemService} from '../services/otheritem.service';
+import { WoodenToolService} from '../services/woodentool.service';
+
 
 @Component({
   selector: 'app-equipment-list',
@@ -12,12 +18,19 @@ import { Router } from '@angular/router';
 })
 export class EquipmentListComponent {
   chemicals: ChemicalDTO[] = [];
-
-  //a list for all the arrays in one list
-  items: Array<ChemicalDTO | WoodenToolDTO> = [];
+  devices: DeviceDTO[] = [];
+  glasscontainers: GlassContainerDTO[] = [];
+  metaltools: MetalToolDTO[] = [];
+  woodentools: WoodenToolDTO[] = [];
+  otheritems: OtherItemDTO[] = [];
 
   constructor(
     private ChemicalService: ChemicalService,
+    private OtherItemService: OtherItemService,
+    private DeviceService: DeviceService,
+    private GlassContainerService: GlassContainerService,
+    private WoodenToolService: WoodenToolService,
+    private MetalToolService: MetalToolService,
     private TransferService: TransferService,
     private toastrService: ToastrService,
     private router: Router,
@@ -29,7 +42,34 @@ export class EquipmentListComponent {
         this.chemicals = chemicals;
       }
     });
+    this.DeviceService.getAll().subscribe({
+      next: (devices) => {
+        this.devices = devices;
+      }
+    });
+    this.GlassContainerService.getAll().subscribe({
+      next: (glasscontainers) => {
+        this.glasscontainers = glasscontainers;
+      }
+    });
+    this.MetalToolService.getAll().subscribe({
+      next: (metaltools) => {
+        this.metaltools = metaltools;
+      }
+    });
+    this.OtherItemService.getAll().subscribe({
+      next: (otheritems) => {
+        this.otheritems = otheritems;
+        console.log(otheritems.length);
+      }
+    });
+    this.WoodenToolService.getAll().subscribe({
+      next: (woodentools) => {
+        this.woodentools = woodentools;
+      }
+    });
   } 
+
 
   public selectedValue?: String;
 

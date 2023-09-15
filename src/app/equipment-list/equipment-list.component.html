@@ -49,4 +49,128 @@
         </div>
     </div>
 
+    <div *ngIf="isSelectedType('device')">
+        <div class="row">
+            <div class="col-md-1">ID</div> 
+            <div class="col-md-3">Név</div>
+            <div class="col-md-2">Mennyiség</div>
+            <div class="col-md-2">Felhasználási terület</div>
+            <div class="col-md-3">Leírás</div>
+        </div>
+        <hr>
+        <div class="row top-margin20" *ngFor="let device of devices">
+            <div class="row">
+                <div class="col-md-1">{{ device.id }}</div>
+                <div class="col-md-3">{{ device.name }}</div>
+                <div class="col-md-2">{{ device.amount }}</div>
+                <div class="col-md-2">{{ device.fieldofuse }}</div>
+                <div class="col-md-3">{{ device.description }}</div>
+
+                <div class="col-md-1">
+                    <button class="btn btn-primary btn-sm width80" >Törlés</button>
+                    <button class="btn btn-primary btn-sm width80" >Módosít</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="isSelectedType('glasscontainer')">
+        <div class="row">
+            <div class="col-md-1">ID</div> 
+            <div class="col-md-3">Név</div>
+            <div class="col-md-2">Űrtartalom</div>
+            <div class="col-md-2">Mennyiség</div>
+            <div class="col-md-3">Leírás</div>
+        </div>
+        <hr>
+        <div class="row top-margin20" *ngFor="let glasscontainer of glasscontainers">
+            <div class="row">
+                <div class="col-md-1">{{ glasscontainer.id }}</div>
+                <div class="col-md-3">{{ glasscontainer.name }}</div>
+                <div class="col-md-2">{{ glasscontainer.capacity }}</div>
+                <div class="col-md-2">{{ glasscontainer.amount }}</div>
+                <div class="col-md-3">{{ glasscontainer.description }}</div>
+
+                <div class="col-md-1">
+                    <button class="btn btn-primary btn-sm width80" >Törlés</button>
+                    <button class="btn btn-primary btn-sm width80" >Módosít</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="isSelectedType('metaltool')">
+        <div class="row">
+            <div class="col-md-1">ID</div> 
+            <div class="col-md-3">Név</div>
+            <div class="col-md-2">Mennyiség</div>
+            <div class="col-md-3">Leírás</div>
+        </div>
+        <hr>
+        <div class="row top-margin20" *ngFor="let metaltool of metaltools">
+            <div class="row">
+                <div class="col-md-1">{{ metaltool.id }}</div>
+                <div class="col-md-3">{{ metaltool.name }}</div>
+                <div class="col-md-2">{{ metaltool.amount }}</div>
+                <div class="col-md-3">{{ metaltool.description }}</div>
+
+                <div class="col-md-1">
+                    <button class="btn btn-primary btn-sm width80" >Törlés</button>
+                    <button class="btn btn-primary btn-sm width80" >Módosít</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="isSelectedType('otheritem')">
+        <div class="row">
+            <div class="col-md-1">ID</div> 
+            <div class="col-md-3">Név</div>
+            <div class="col-md-2">Mennyiség</div>
+            <div class="col-md-3">Leírás</div>
+        </div>
+        <hr>
+        <div class="row top-margin20" *ngFor="let otheritem of otheritems">
+            <div class="row">
+                <div class="col-md-1">{{ otheritem.id }}</div>
+                <div class="col-md-3">{{ otheritem.name }}</div>
+                <div class="col-md-2">{{ otheritem.amount }}</div>
+                <div class="col-md-3">{{ otheritem.description }}</div>
+
+                <div class="col-md-1">
+                    <button class="btn btn-primary btn-sm width80" >Törlés</button>
+                    <button class="btn btn-primary btn-sm width80" >Módosít</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="isSelectedType('woodentool')">
+        <div class="row">
+            <div class="col-md-1">ID</div> 
+            <div class="col-md-3">Név</div>
+            <div class="col-md-2">Mennyiség</div>
+            <div class="col-md-3">Leírás</div>
+        </div>
+        <hr>
+        <div class="row top-margin20" *ngFor="let woodentool of woodentools">
+            <div class="row">
+                <div class="col-md-1">{{ woodentool.id }}</div>
+                <div class="col-md-3">{{ woodentool.name }}</div>
+                <div class="col-md-2">{{ woodentool.amount }}</div>
+                <div class="col-md-3">{{ woodentool.description }}</div>
+
+                <div class="col-md-1">
+                    <button class="btn btn-primary btn-sm width80" >Törlés</button>
+                    <button class="btn btn-primary btn-sm width80" >Módosít</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>
