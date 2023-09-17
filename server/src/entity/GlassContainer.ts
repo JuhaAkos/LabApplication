@@ -13,6 +13,9 @@ export class GlassContainer implements GlassContainerDTO{
     capacity: number;
 
     @Column()
+    unit: string;
+
+    @Column()
     amount: number;
 
     @Column()

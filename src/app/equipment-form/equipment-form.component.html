@@ -48,7 +48,6 @@
             <div class="col-md-6">
                 <label for="name" class="form-label">Hivatalos név</label>
                 <input type="text" class="form-control" id="officialname" name="officialname" formControlName="officialname" required>
-
             </div>
             <div class="col-md-6">
                 <label for="name" class="form-label">Hétköznapi név</label>
@@ -87,8 +86,158 @@
         <div class="row"><button class="btn btn-primary btn-lg btn-block" (click)="form.checkValidity()? saveChemicalData() : null">OK</button></div>
         
     </form></div>
+
+
+
+
+
+    <div *ngIf="isSelectedType('woodentool')"><form ngNativeValidate [formGroup]="woodenToolForm" #form>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Név</label>
+                <input type="text" class="form-control" id="name" name="name" formControlName="name" required>
+            </div>            
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <label for="name" class="form-label">Mennyiség</label>
+                <input type="text" class="form-control" id="amount" name="amount" formControlName="amount" required>
+            </div>
+        </div>
+
+        <label for="name" class="form-label">Leírás</label>
+        <input type="text" class="form-control" id="description" name="description" formControlName="description">
+
+        <p></p>
+        <div class="row"><button class="btn btn-primary btn-lg btn-block" (click)="form.checkValidity()? saveWoodenToolData() : null">OK</button></div>
+        
+    </form></div>    
+
+
+
+
+
+    <div *ngIf="isSelectedType('metaltool')"><form ngNativeValidate [formGroup]="metalToolForm" #form>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Név</label>
+                <input type="text" class="form-control" id="name" name="name" formControlName="name" required>
+            </div>            
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <label for="name" class="form-label">Mennyiség</label>
+                <input type="text" class="form-control" id="amount" name="amount" formControlName="amount" required>
+            </div>
+        </div>        
+
+        <label for="name" class="form-label">Leírás</label>
+        <input type="text" class="form-control" id="description" name="description" formControlName="description">
+
+        <p></p>
+        <div class="row"><button class="btn btn-primary btn-lg btn-block" (click)="form.checkValidity()? saveMetalToolData() : null">OK</button></div>
+        
+    </form></div>    
+
+
+
+
+
+    <div *ngIf="isSelectedType('device')"><form ngNativeValidate [formGroup]="deviceForm" #form>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Név</label>
+                <input type="text" class="form-control" id="name" name="name" formControlName="name" required>
+            </div>            
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <label for="name" class="form-label">Mennyiség</label>
+                <input type="text" class="form-control" id="amount" name="amount" formControlName="amount" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <label for="name" class="form-label">Használati terület</label>
+                <input type="text" class="form-control" id="fieldofuse" name="fieldofuse" formControlName="fieldofuse" required>
+            </div>
+        </div>
+
+        <label for="name" class="form-label">Leírás</label>
+        <input type="text" class="form-control" id="description" name="description" formControlName="description">
+
+        <p></p>
+        <div class="row"><button class="btn btn-primary btn-lg btn-block" (click)="form.checkValidity()? saveDeviceData() : null">OK</button></div>
+        
+    </form></div>
     
     
-    
+
+
+
+    <div *ngIf="isSelectedType('glasscontainer')"><form ngNativeValidate [formGroup]="glassContainerForm" #form>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Név</label>
+                <input type="text" class="form-control" id="name" name="name" formControlName="name" required>
+            </div>            
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <label for="name" class="form-label">Űrtartalom</label>
+                <input type="text" class="form-control" id="capacity" name="capacity" formControlName="capacity" required>
+            </div>
+            <div class="col-md-4">
+                <label for="name" class="form-label">Mértékegység</label>
+                <input type="text" class="form-control" id="unit" name="unit" formControlName="unit" required>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <label for="name" class="form-label">Mennyiség</label>
+                <input type="text" class="form-control" id="amount" name="amount" formControlName="amount" required>
+            </div>
+        </div>        
+
+        <label for="name" class="form-label">Leírás</label>
+        <input type="text" class="form-control" id="description" name="description" formControlName="description">
+
+        <p></p>
+        <div class="row"><button class="btn btn-primary btn-lg btn-block" (click)="form.checkValidity()? saveGlassContainerData() : null">OK</button></div>
+        
+    </form></div> 
+
+
+
+
+
+    <div *ngIf="isSelectedType('otheritem')"><form ngNativeValidate [formGroup]="otherItemForm" #form>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="name" class="form-label">Név</label>
+                <input type="text" class="form-control" id="name" name="name" formControlName="name" required>
+            </div>            
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <label for="name" class="form-label">Mennyiség</label>
+                <input type="text" class="form-control" id="amount" name="amount" formControlName="amount" required>
+            </div>
+        </div>        
+
+        <label for="name" class="form-label">Leírás</label>
+        <input type="text" class="form-control" id="description" name="description" formControlName="description">
+
+        <p></p>
+        <div class="row"><button class="btn btn-primary btn-lg btn-block" (click)="form.checkValidity()? saveOtherItemData() : null">OK</button></div>
+        
+    </form></div> 
 
 </div>

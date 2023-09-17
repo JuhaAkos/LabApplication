@@ -14,6 +14,12 @@ import { EquipmentListComponent } from './equipment-list/equipment-list.componen
 import { EquipmentFormComponent } from './equipment-form/equipment-form.component';
 import { TransferService } from './services/transfer.service';
 import { ChemicalFormService } from './equipment-form/chemicalForm-service';
+import { WoodenToolFormService } from './equipment-form/woodenToolForm-service';
+import { MetalToolFormService } from './equipment-form/metalToolForm-service';
+import { DeviceFormService } from './equipment-form/deviceForm-service';
+import { GlassContainerFormService } from './equipment-form/glassContainerForm-service';
+import { OtherItemFormService } from './equipment-form/otherItemForm-service';
+
 
 @NgModule({
   declarations: [
@@ -33,7 +39,12 @@ import { ChemicalFormService } from './equipment-form/chemicalForm-service';
   ],
   providers: [
     TransferService,
-    ChemicalFormService
+    ChemicalFormService,
+    WoodenToolFormService,
+    MetalToolFormService,
+    GlassContainerFormService,
+    OtherItemFormService,
+    DeviceFormService
   ],
   bootstrap: [AppComponent]
 })

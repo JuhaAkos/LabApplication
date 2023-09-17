@@ -67,8 +67,8 @@
                 <div class="col-md-3">{{ device.description }}</div>
 
                 <div class="col-md-1">
-                    <button class="btn btn-primary btn-sm width80" >Törlés</button>
-                    <button class="btn btn-primary btn-sm width80" >Módosít</button>
+                    <button class="btn btn-primary btn-sm width80" (click)="deleteDevice(device)">Törlés</button>
+                    <button class="btn btn-primary btn-sm width80" (click)="navigateToEquipmentForm(device.id,'device')">Módosít</button>
                 </div>
             </div>
 
@@ -79,7 +79,7 @@
         <div class="row">
             <div class="col-md-1">ID</div> 
             <div class="col-md-3">Név</div>
-            <div class="col-md-2">Űrtartalom</div>
+            <div class="col-md-2">Űrtartalom</div>            
             <div class="col-md-2">Mennyiség</div>
             <div class="col-md-3">Leírás</div>
         </div>
@@ -88,13 +88,13 @@
             <div class="row">
                 <div class="col-md-1">{{ glasscontainer.id }}</div>
                 <div class="col-md-3">{{ glasscontainer.name }}</div>
-                <div class="col-md-2">{{ glasscontainer.capacity }}</div>
+                <div class="col-md-2">{{ glasscontainer.capacity }} {{ glasscontainer.unit }}</div>
                 <div class="col-md-2">{{ glasscontainer.amount }}</div>
                 <div class="col-md-3">{{ glasscontainer.description }}</div>
 
                 <div class="col-md-1">
-                    <button class="btn btn-primary btn-sm width80" >Törlés</button>
-                    <button class="btn btn-primary btn-sm width80" >Módosít</button>
+                    <button class="btn btn-primary btn-sm width80" (click)="deleteGlassContainer(glasscontainer)">Törlés</button>
+                    <button class="btn btn-primary btn-sm width80" (click)="navigateToEquipmentForm(glasscontainer.id,'glasscontainer')">Módosít</button>
                 </div>
             </div>
 
@@ -117,8 +117,8 @@
                 <div class="col-md-3">{{ metaltool.description }}</div>
 
                 <div class="col-md-1">
-                    <button class="btn btn-primary btn-sm width80" >Törlés</button>
-                    <button class="btn btn-primary btn-sm width80" >Módosít</button>
+                    <button class="btn btn-primary btn-sm width80" (click)="deleteMetalTool(metaltool)">Törlés</button>
+                    <button class="btn btn-primary btn-sm width80" (click)="navigateToEquipmentForm(metaltool.id,'metaltool')">Módosít</button>
                 </div>
             </div>
 
@@ -141,8 +141,8 @@
                 <div class="col-md-3">{{ otheritem.description }}</div>
 
                 <div class="col-md-1">
-                    <button class="btn btn-primary btn-sm width80" >Törlés</button>
-                    <button class="btn btn-primary btn-sm width80" >Módosít</button>
+                    <button class="btn btn-primary btn-sm width80" (click)="deleteOtherItem(otheritem)">Törlés</button>
+                    <button class="btn btn-primary btn-sm width80" (click)="navigateToEquipmentForm(otheritem.id,'otheritem')">Módosít</button>
                 </div>
             </div>
 
@@ -165,8 +165,8 @@
                 <div class="col-md-3">{{ woodentool.description }}</div>
 
                 <div class="col-md-1">
-                    <button class="btn btn-primary btn-sm width80" >Törlés</button>
-                    <button class="btn btn-primary btn-sm width80" >Módosít</button>
+                    <button class="btn btn-primary btn-sm width80" (click)="deleteWoodenTool(woodentool)">Törlés</button>
+                    <button class="btn btn-primary btn-sm width80" (click)="navigateToEquipmentForm(woodentool.id,'woodentool')">Módosít</button>
                 </div>
             </div>
 

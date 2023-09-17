@@ -28,6 +28,7 @@ export interface GlassContainerDTO {
     id: number;
     name: string;
     capacity: number;
+    unit: string;
     amount: number;
     description: string;
 }

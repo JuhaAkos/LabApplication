@@ -60,7 +60,6 @@ export class EquipmentListComponent {
     this.OtherItemService.getAll().subscribe({
       next: (otheritems) => {
         this.otheritems = otheritems;
-        console.log(otheritems.length);
       }
     });
     this.WoodenToolService.getAll().subscribe({
@@ -86,6 +85,81 @@ export class EquipmentListComponent {
         const index = this.chemicals.indexOf(chemical);
         if (index > -1) {
           this.chemicals.splice(index, 1);
+        }
+      },
+      error: (err) => {
+        console.error(err);
+        this.toastrService.error('Hiba a tétel törlésekor.', 'Hiba');
+      }
+    })
+  }
+
+  deleteDevice(device: DeviceDTO) {
+    this.DeviceService.delete(device.id).subscribe({
+      next: () => {
+        const index = this.devices.indexOf(device);
+        if (index > -1) {
+          this.devices.splice(index, 1);
+        }
+      },
+      error: (err) => {
+        console.error(err);
+        this.toastrService.error('Hiba a tétel törlésekor.', 'Hiba');
+      }
+    })
+  }
+
+  deleteWoodenTool(woodentool: WoodenToolDTO) {
+    this.WoodenToolService.delete(woodentool.id).subscribe({
+      next: () => {
+        const index = this.woodentools.indexOf(woodentool);
+        if (index > -1) {
+          this.woodentools.splice(index, 1);
+        }
+      },
+      error: (err) => {
+        console.error(err);
+        this.toastrService.error('Hiba a tétel törlésekor.', 'Hiba');
+      }
+    })
+  }
+
+  deleteMetalTool(metaltool: MetalToolDTO) {
+    this.MetalToolService.delete(metaltool.id).subscribe({
+      next: () => {
+        const index = this.metaltools.indexOf(metaltool);
+        if (index > -1) {
+          this.metaltools.splice(index, 1);
+        }
+      },
+      error: (err) => {
+        console.error(err);
+        this.toastrService.error('Hiba a tétel törlésekor.', 'Hiba');
+      }
+    })
+  }
+
+  deleteGlassContainer(glasscontainer: GlassContainerDTO) {
+    this.GlassContainerService.delete(glasscontainer.id).subscribe({
+      next: () => {
+        const index = this.glasscontainers.indexOf((glasscontainer));
+        if (index > -1) {
+          this.glasscontainers.splice(index, 1);
+        }
+      },
+      error: (err) => {
+        console.error(err);
+        this.toastrService.error('Hiba a tétel törlésekor.', 'Hiba');
+      }
+    })
+  }
+
+  deleteOtherItem(otheritem: OtherItemDTO) {
+    this.OtherItemService.delete(otheritem.id).subscribe({
+      next: () => {
+        const index = this.otheritems.indexOf(otheritem);
+        if (index > -1) {
+          this.otheritems.splice(index, 1);
         }
       },
       error: (err) => {
