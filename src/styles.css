@@ -7,3 +7,73 @@
 .col-md-6,.col-md-5,.col-md-4,.col-md-3, .col-md-2, .col-md-1{
     word-wrap: break-word; 
 }
+
+.centered {
+    text-align: center;
+}
+
+.centered2 {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.spaceabove {
+    margin-top: 70px;
+}
+
+.calendarfilled {
+    background-color: rgb(139, 199, 218) !important;
+}
+
+td {
+    border-collapse: collapse;
+    padding: 0px;
+    outline: 0;
+    border: 1px solid black;
+}
+
+tr {
+    height: 100%;
+}
+
+table {
+    border-spacing: 0;
+    border-collapse: collapse; 
+    width: 100%; 
+}
+
+.calendaractivitystyle {
+    float: left;
+    font-size: 60%;
+}
+
+.calendargroupstyle {
+    text-align: center;
+}
+
+.calendarclassstyle {
+    float: right;
+    font-size: 60%;
+}
+
+.calendardescstyle {
+    text-align: center;
+    font-size: 60%;
+}
+
+.borderleft {
+    border-left: 1px solid black;
+}
+
+.calendarhalf {
+    padding: 3px;
+    display: inline-block;
+    width: 50% !important;
+}
+
+.calendarfull {
+    padding: 3px;
+    display: inline-block;
+    width: 100%;
+}
+

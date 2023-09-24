@@ -19,13 +19,17 @@ import { MetalToolFormService } from './equipment-form/metalToolForm-service';
 import { DeviceFormService } from './equipment-form/deviceForm-service';
 import { GlassContainerFormService } from './equipment-form/glassContainerForm-service';
 import { OtherItemFormService } from './equipment-form/otherItemForm-service';
+import { CalendarComponent } from './calendar/calendar.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     EquipmentListComponent,
-    EquipmentFormComponent
+    EquipmentFormComponent,
+    CalendarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

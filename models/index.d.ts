@@ -47,3 +47,34 @@ export interface OtherItemDTO {
     amount: number;
     description: string;
 }
+
+export interface CalendarDTO {
+    id: number;
+    week: number;
+    day: "monday" | "tuesday" | "wednesday" | "thursday" | "friday";
+    timeofclass: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+    activity: string;
+    //alcsoport kiírás szokott lenni , az mehet ide
+    description: string;
+    //szétválasztható fiz és kémia részre megnevezés alapján
+    //vagy hagyható egybe -> fulllab
+    classroom: "teljes labor" | "kémia labor" | "fizika labor";
+    groups: GroupDTO[];
+}
+
+export interface GroupDTO {
+    id: number;
+    name: string;
+    teacher: UserDTO;
+    studentnames: string[];
+    classes: CalendarDTO[];
+}
+
+export interface UserDTO {
+    id: number;
+    name: string;
+    password: string;
+    schoolid: string;
+    role: "student" | "teacher" | "admin"; 
+    groups: null | GroupDTO[];
+}

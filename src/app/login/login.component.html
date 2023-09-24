@@ -1,0 +1,29 @@
+<div class="container">
+
+    <div class="row spaceabove ">   
+        <div class="col-md-5 centered2"><h4>Felhasználónév:</h4></div>
+    </div>
+
+    <div class="row">   
+        <div class="col-md-5 centered2"><input type="text" class="form-control" id="nameinput" name="nameinput" placeholder="..." [(ngModel)]="nameinputvalue"></div>
+    </div>
+
+    <p></p>
+
+    <div class="row">   
+        <div class="col-md-5 centered2"><h4>Jelszó:</h4></div>
+    </div>
+
+    <div class="row">   
+        <div class="col-md-5 centered2"><input type="text" class="form-control" id="passwordinput" name="passwordinput" placeholder="..." [(ngModel)]="passwordinputvalue"></div>
+    </div>
+
+    <p></p>
+
+    <div class="row centered">   
+        <div class="col-md-5 centered2">           
+            <button class="btn btn-lg btn-primary" (click)="login()">    Bejelentkezés    </button>
+        </div>
+    </div>
+
+</div>

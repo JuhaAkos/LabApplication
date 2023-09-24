@@ -5,6 +5,9 @@ import { MetalToolController } from "./controller/metaltool.controller";
 import { WoodenToolController } from "./controller/woodentool.controller";
 import { GlassContainerController } from "./controller/glasscontainer.controller";
 import { OtherItemController } from "./controller/otheritem.controller";
+import { GroupController } from "./controller/group.controller";
+import { CalendarController } from "./controller/calendar.controller";
+import { UserController } from "./controller/user.controller";
 
 export function getRoutes() {
     const router = express.Router();
@@ -58,5 +61,32 @@ export function getRoutes() {
     router.delete('/otherItem/:id', otherItemController.delete);
 
 
+
+
+
+    const groupController = new GroupController();
+
+    router.get('/group', groupController.getAll);
+    router.get('/group/:id', groupController.getOne);
+    router.post('/group/', groupController.create);
+    router.put('/group', groupController.update);
+    router.delete('/group/:id', groupController.delete);
+
+    const calendarController = new CalendarController();
+
+    router.get('/calendar', calendarController.getAll);
+    router.get('/calendar/:id', calendarController.getOne);
+    router.post('/calendar/', calendarController.create);
+    router.put('/calendar', calendarController.update);
+    router.delete('/calendar/:id', calendarController.delete);
+
+    const userController = new UserController();
+
+    router.get('/user', userController.getAll);
+    router.get('/user/:id', userController.getOne);
+    router.post('/user/', userController.create);
+    router.put('/user', userController.update);
+    router.delete('/user/:id', userController.delete);
+    
     return router;
 }
