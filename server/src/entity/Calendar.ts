@@ -8,10 +8,10 @@ export class Calendar implements CalendarDTO{
     id: number;
 
     @Column()
-    week: number;
+    week: 1 | 2 | 3;
 
     @Column()
-    day: "monday" | "tuesday" | "wednesday" | "thursday" | "friday";
+    day: 1 | 2 | 3 | 4 | 5;
 
     @Column()
     timeofclass: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
@@ -28,4 +28,10 @@ export class Calendar implements CalendarDTO{
     @ManyToMany(() => Group,  (group) => group.classes, { eager: true })
     @JoinTable()
     groups: GroupDTO[]; 
+
+    @Column()
+    secondaryclass: 0 | 1;
+
+    @Column()
+    istimetableclass: boolean;
 }

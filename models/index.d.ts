@@ -50,8 +50,8 @@ export interface OtherItemDTO {
 
 export interface CalendarDTO {
     id: number;
-    week: number;
-    day: "monday" | "tuesday" | "wednesday" | "thursday" | "friday";
+    week: 1 | 2 | 3;
+    day: 1 | 2 | 3 | 4 | 5;
     timeofclass: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
     activity: string;
     //alcsoport kiírás szokott lenni , az mehet ide
@@ -60,6 +60,8 @@ export interface CalendarDTO {
     //vagy hagyható egybe -> fulllab
     classroom: "teljes labor" | "kémia labor" | "fizika labor";
     groups: GroupDTO[];
+    secondaryclass: 0 | 1;
+    istimetableclass: boolean;
 }
 
 export interface GroupDTO {
