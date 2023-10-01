@@ -32,7 +32,7 @@ export class CalendarComponent {
 
   divideClasses() {
     for (var counter in this.calendars) {
-      if (this.calendars[counter].istimetableclass) {
+      if (this.calendars[counter].istimetableclass==1) {
         this.everyweekclasses.push(this.calendars[counter]);
       } else if (this.calendars[counter].week == 1) {
         this.firstweekclasses.push(this.calendars[counter]);
@@ -120,11 +120,17 @@ export class CalendarComponent {
 
   ifFilled(whichClass : number) {
     if (this.currentWeeksclasses[whichClass] !== undefined && this.currentWeeksclasses[whichClass] !== null) {
-      //console.log(whichClass + ". ezitten: " + this.currentWeeksclasses[whichClass]?.activity);
       return true
     } 
-    //console.log(whichClass + ". ezmeghazudik: ");
     return false 
+  }
+
+  ifTimeTable(whichClass : number){    
+    if (this.currentWeeksclasses[whichClass]?.istimetableclass == 1) {
+      console.log(whichClass);
+      return true;
+    }
+    return false;
   }
 
   groupsToString(groups: GroupDTO[] | undefined) : string{

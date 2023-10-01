@@ -21,6 +21,7 @@ import { GlassContainerFormService } from './equipment-form/glassContainerForm-s
 import { OtherItemFormService } from './equipment-form/otherItemForm-service';
 import { CalendarComponent } from './calendar/calendar.component';
 import { LoginComponent } from './login/login.component';
+import { CalendarFormComponent } from './calendar-form/calendar-form.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { LoginComponent } from './login/login.component';
     EquipmentListComponent,
     EquipmentFormComponent,
     CalendarComponent,
-    LoginComponent
+    LoginComponent,
+    CalendarFormComponent
   ],
   imports: [
     BrowserModule,

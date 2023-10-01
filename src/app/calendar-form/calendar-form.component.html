@@ -1,0 +1,131 @@
+<div class="container">    
+    <h3>Új időpont felvétele az időbeosztásba:</h3>
+    <p></p>
+
+    <hr> 
+
+    <div class="row">        
+        <h5>A felvitt foglalkozás órarendi óra vagy egyszeri alkalom?</h5> 
+        <div class="form-check spaceleft">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
+                Órarendi óra
+            </label>
+        </div>
+        <div class="form-check spaceleft">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
+            <label class="form-check-label" for="exampleRadios2">
+              Egyszeri foglalkozás
+            </label>
+        </div> 
+        
+        <p></p>
+
+        <div *ngIf="!isTimeTableClass">
+            <h5>Melyik héten lesz a foglalkozás?</h5> 
+            <select class="form-select" name="searchSelect" id="searchSelect">
+                <option value="chemical">Jelenlegi hét</option>
+                <option value="woodentool">A soron következő hét</option>
+                <option value="metaltool">Két hét múlva</option>
+            </select>
+        </div> 
+        
+        <p></p>
+        
+        <div class="col-md-5">
+            <h5>A héten melyik nap lesz a foglalkozás?</h5> 
+            <select class="form-select" name="searchSelect" id="searchSelect">
+                <option value="chemical">Hétfő</option>
+                <option value="woodentool">Kedd</option>
+                <option value="metaltool">Szerda</option>
+                <option value="metaltool">Csütörtök</option>
+                <option value="metaltool">Péntek</option>
+            </select>
+        </div>  
+
+        <p></p>
+        
+        <div class="col-md-5"> 
+            <h5>Hanyadik órában lesz a foglalkozás?</h5> 
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">0</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                <label class="form-check-label" for="inlineRadio1">1</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">2</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">3</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">4</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">5</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">6</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">7</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                <label class="form-check-label" for="inlineRadio2">8</label>
+            </div>
+        </div>
+
+        <p></p>
+        
+        <div class="row spaceleft10"> 
+            <h5>A tanóra tantárgya vagy foglalkozási témája:</h5>
+            <input type="text" class="form-control" id="officialname" name="officialname" formControlName="officialname" required>
+        </div>
+
+        <p></p>
+
+        <div class="row"> 
+            <h5>Egyéb információ (pl: alcsoport bontások)</h5>
+            <input type="text" class="form-control" required>
+        </div>
+
+        <p></p>
+
+        <div class="row"> 
+            <h5>Az iskolai labor melyik része kerül majd lefoglalásra?</h5> 
+            <select class="form-select" name="searchSelect" id="searchSelect">
+                <option value="chemical">Kémia labor</option>
+                <option value="woodentool">Fizika labor</option>
+                <option value="metaltool">Teljes labor</option>
+            </select>
+        </div>
+
+        <p></p>
+
+        <div class="row"><button class="btn btn-primary btn-lg btn-block">OK</button></div>
+
+        <p></p>
+
+        <div *ngIf="isSecondary" class="centered"> 
+            <h5>Figyelem! Ebben az időpontban már létezik egy tanóra!</h5> 
+            <p></p>
+            <div class="row"> 
+                <div class="col-md-1"></div>
+                <div class="col-md-5 centered"><button class="btn btn-primary btn-lg btn-block" >Tanóra felülírása</button></div>            
+                <div class="col-md-5 centered"><button class="btn btn-primary btn-lg btn-block" >Új tanóra hozzáadása</button></div>
+            </div>
+        </div>
+        <p></p>
+    </div>
+
+</div>   

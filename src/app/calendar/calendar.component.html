@@ -37,12 +37,12 @@
                 <td class="paddingBeforeAfter">0. óra</td>              
                 <td *ngFor="let number of [0,18,36,54,72]" [class.calendarfilled]='ifFilled(number)'>                    
                         <div *ngIf="currentWeeksclasses[number]">
-                        <div class="calendarfull" [class.calendarfilled]='ifFilled(number)' [class.calendarhalf]='ifFilled(number+1)'>
+                        <div class="calendarfull" [class.timetableclass]='ifTimeTable(number)' [class.calendarhalf]='ifFilled(number+1)'>
                             <div class="calendaractivitystyle">{{currentWeeksclasses[number]?.activity}}</div><div class="calendarclassstyle">{{currentWeeksclasses[number]?.classroom}}</div><br>
                             <div class="calendargroupstyle">{{groupsToString(currentWeeksclasses[number]?.groups)}}</div>
                             <div class="calendardescstyle">{{currentWeeksclasses[number]?.description}}</div>
                         </div>
-                        <div *ngIf="ifFilled(number+1)" class="calendarfilled calendarhalf borderleft">
+                        <div *ngIf="ifFilled(number+1)" class="calendarfilled calendarhalf borderleft" [class.timetableclass]='ifTimeTable(number+1)'>
                             <div class="calendaractivitystyle">{{currentWeeksclasses[number+1]?.activity}}</div><div class="calendarclassstyle">{{currentWeeksclasses[number+1]?.classroom}}</div><br>
                             <div class="calendargroupstyle">{{groupsToString(currentWeeksclasses[number+1]?.groups)}}</div>
                             <div class="calendardescstyle">{{currentWeeksclasses[number+1]?.description}}</div>
@@ -54,12 +54,12 @@
                 <td class="paddingBeforeAfter">1. óra</td>              
                 <td *ngFor="let number of [2,20,38,56,74]" [class.calendarfilled]='ifFilled(number)'>                    
                         <div *ngIf="currentWeeksclasses[number]">
-                        <div class="calendarfull" [class.calendarfilled]='ifFilled(number)' [class.calendarhalf]='ifFilled(number+1)'>
+                        <div class="calendarfull" [class.timetableclass]='ifTimeTable(number)' [class.calendarhalf]='ifFilled(number+1)'>
                             <div class="calendaractivitystyle">{{currentWeeksclasses[number]?.activity}}</div><div class="calendarclassstyle">{{currentWeeksclasses[number]?.classroom}}</div><br>
                             <div class="calendargroupstyle">{{groupsToString(currentWeeksclasses[number]?.groups)}}</div>
                             <div class="calendardescstyle">{{currentWeeksclasses[number]?.description}}</div>
                         </div>
-                        <div *ngIf="ifFilled(number+1)" class="calendarfilled calendarhalf borderleft">
+                        <div *ngIf="ifFilled(number+1)" [class.timetableclass]='ifTimeTable(number+1)' class="calendarfilled calendarhalf borderleft">
                             <div class="calendaractivitystyle">{{currentWeeksclasses[number+1]?.activity}}</div><div class="calendarclassstyle">{{currentWeeksclasses[number+1]?.classroom}}</div><br>
                             <div class="calendargroupstyle">{{groupsToString(currentWeeksclasses[number+1]?.groups)}}</div>
                             <div class="calendardescstyle">{{currentWeeksclasses[number+1]?.description}}</div>
@@ -89,12 +89,12 @@
                 <td class="paddingBeforeAfter">3. óra</td> 
                 <td *ngFor="let number of [6,24,42,60,78]" [class.calendarfilled]='ifFilled(number)'>                    
                     <div *ngIf="currentWeeksclasses[number]">
-                    <div class="calendarfull" [class.calendarfilled]='ifFilled(number)' [class.calendarhalf]='ifFilled(number+1)'>
+                    <div class="calendarfull" [class.timetableclass]='ifTimeTable(number)' [class.calendarhalf]='ifFilled(number+1)'>
                         <div class="calendaractivitystyle">{{currentWeeksclasses[number]?.activity}}</div><div class="calendarclassstyle">{{currentWeeksclasses[number]?.classroom}}</div><br>
                         <div class="calendargroupstyle">{{groupsToString(currentWeeksclasses[number]?.groups)}}</div>
                         <div class="calendardescstyle">{{currentWeeksclasses[number]?.description}}</div>
                     </div>
-                    <div *ngIf="ifFilled(number+1)" class="calendarfilled calendarhalf borderleft">
+                    <div *ngIf="ifFilled(number+1)" [class.timetableclass]='ifTimeTable(number+1)' class="calendarfilled calendarhalf borderleft">
                         <div class="calendaractivitystyle">{{currentWeeksclasses[number+1]?.activity}}</div><div class="calendarclassstyle">{{currentWeeksclasses[number+1]?.classroom}}</div><br>
                         <div class="calendargroupstyle">{{groupsToString(currentWeeksclasses[number+1]?.groups)}}</div>
                         <div class="calendardescstyle">{{currentWeeksclasses[number+1]?.description}}</div>
@@ -106,12 +106,12 @@
                 <td class="paddingBeforeAfter">4. óra</td> 
                 <td *ngFor="let number of [8,26,44,62,80]" [class.calendarfilled]='ifFilled(number)'>                    
                     <div *ngIf="currentWeeksclasses[number]">
-                    <div class="calendarfull" [class.calendarfilled]='ifFilled(number)' [class.calendarhalf]='ifFilled(number+1)'>
+                    <div class="calendarfull" [class.timetableclass]='ifTimeTable(number)' [class.calendarhalf]='ifFilled(number+1)'>
                         <div class="calendaractivitystyle">{{currentWeeksclasses[number]?.activity}}</div><div class="calendarclassstyle">{{currentWeeksclasses[number]?.classroom}}</div><br>
                         <div class="calendargroupstyle">{{groupsToString(currentWeeksclasses[number]?.groups)}}</div>
                         <div class="calendardescstyle">{{currentWeeksclasses[number]?.description}}</div>
                     </div>
-                    <div *ngIf="ifFilled(number+1)" class="calendarfilled calendarhalf borderleft">
+                    <div *ngIf="ifFilled(number+1)" [class.timetableclass]='ifTimeTable(number+1)' class="calendarfilled calendarhalf borderleft">
                         <div class="calendaractivitystyle">{{currentWeeksclasses[number+1]?.activity}}</div><div class="calendarclassstyle">{{currentWeeksclasses[number+1]?.classroom}}</div><br>
                         <div class="calendargroupstyle">{{groupsToString(currentWeeksclasses[number+1]?.groups)}}</div>
                         <div class="calendardescstyle">{{currentWeeksclasses[number+1]?.description}}</div>
@@ -123,12 +123,12 @@
                 <td class="paddingBeforeAfter">5. óra</td> 
                 <td *ngFor="let number of [10,28,46,64,82]" [class.calendarfilled]='ifFilled(number)'>                    
                     <div *ngIf="currentWeeksclasses[number]">
-                    <div class="calendarfull" [class.calendarfilled]='ifFilled(number)' [class.calendarhalf]='ifFilled(number+1)'>
+                    <div class="calendarfull" [class.timetableclass]='ifTimeTable(number)' [class.calendarhalf]='ifFilled(number+1)'>
                         <div class="calendaractivitystyle">{{currentWeeksclasses[number]?.activity}}</div><div class="calendarclassstyle">{{currentWeeksclasses[number]?.classroom}}</div><br>
                         <div class="calendargroupstyle">{{groupsToString(currentWeeksclasses[number]?.groups)}}</div>
                         <div class="calendardescstyle">{{currentWeeksclasses[number]?.description}}</div>
                     </div>
-                    <div *ngIf="ifFilled(number+1)" class="calendarfilled calendarhalf borderleft">
+                    <div *ngIf="ifFilled(number+1)" [class.timetableclass]='ifTimeTable(number+1)' class="calendarfilled calendarhalf borderleft">
                         <div class="calendaractivitystyle">{{currentWeeksclasses[number+1]?.activity}}</div><div class="calendarclassstyle">{{currentWeeksclasses[number+1]?.classroom}}</div><br>
                         <div class="calendargroupstyle">{{groupsToString(currentWeeksclasses[number+1]?.groups)}}</div>
                         <div class="calendardescstyle">{{currentWeeksclasses[number+1]?.description}}</div>
@@ -140,12 +140,12 @@
                 <td class="paddingBeforeAfter">6. óra</td> 
                 <td *ngFor="let number of [12,30,48,66,84]" [class.calendarfilled]='ifFilled(number)'>                    
                     <div *ngIf="currentWeeksclasses[number]">
-                    <div class="calendarfull" [class.calendarfilled]='ifFilled(number)' [class.calendarhalf]='ifFilled(number+1)'>
+                    <div class="calendarfull" [class.timetableclass]='ifTimeTable(number)' [class.calendarhalf]='ifFilled(number+1)'>
                         <div class="calendaractivitystyle">{{currentWeeksclasses[number]?.activity}}</div><div class="calendarclassstyle">{{currentWeeksclasses[number]?.classroom}}</div><br>
                         <div class="calendargroupstyle">{{groupsToString(currentWeeksclasses[number]?.groups)}}</div>
                         <div class="calendardescstyle">{{currentWeeksclasses[number]?.description}}</div>
                     </div>
-                    <div *ngIf="ifFilled(number+1)" class="calendarfilled calendarhalf borderleft">
+                    <div *ngIf="ifFilled(number+1)" [class.timetableclass]='ifTimeTable(number+1)' class="calendarfilled calendarhalf borderleft">
                         <div class="calendaractivitystyle">{{currentWeeksclasses[number+1]?.activity}}</div><div class="calendarclassstyle">{{currentWeeksclasses[number+1]?.classroom}}</div><br>
                         <div class="calendargroupstyle">{{groupsToString(currentWeeksclasses[number+1]?.groups)}}</div>
                         <div class="calendardescstyle">{{currentWeeksclasses[number+1]?.description}}</div>
@@ -157,12 +157,12 @@
                 <td class="paddingBeforeAfter">7. óra</td>
                 <td *ngFor="let number of [14,32,50,68,86]" [class.calendarfilled]='ifFilled(number)'>                    
                     <div *ngIf="currentWeeksclasses[number]">
-                    <div class="calendarfull" [class.calendarfilled]='ifFilled(number)' [class.calendarhalf]='ifFilled(number+1)'>
+                    <div class="calendarfull" [class.timetableclass]='ifTimeTable(number)' [class.calendarhalf]='ifFilled(number+1)'>
                         <div class="calendaractivitystyle">{{currentWeeksclasses[number]?.activity}}</div><div class="calendarclassstyle">{{currentWeeksclasses[number]?.classroom}}</div><br>
                         <div class="calendargroupstyle">{{groupsToString(currentWeeksclasses[number]?.groups)}}</div>
                         <div class="calendardescstyle">{{currentWeeksclasses[number]?.description}}</div>
                     </div>
-                    <div *ngIf="ifFilled(number+1)" class="calendarfilled calendarhalf borderleft">
+                    <div *ngIf="ifFilled(number+1)" [class.timetableclass]='ifTimeTable(number+1)' class="calendarfilled calendarhalf borderleft">
                         <div class="calendaractivitystyle">{{currentWeeksclasses[number+1]?.activity}}</div><div class="calendarclassstyle">{{currentWeeksclasses[number+1]?.classroom}}</div><br>
                         <div class="calendargroupstyle">{{groupsToString(currentWeeksclasses[number+1]?.groups)}}</div>
                         <div class="calendardescstyle">{{currentWeeksclasses[number+1]?.description}}</div>
@@ -174,12 +174,12 @@
                 <td class="paddingBeforeAfter">8. óra</td> 
                 <td *ngFor="let number of [16,34,52,70,88]" [class.calendarfilled]='ifFilled(number)'>                    
                     <div *ngIf="currentWeeksclasses[number]">
-                    <div class="calendarfull" [class.calendarfilled]='ifFilled(number)' [class.calendarhalf]='ifFilled(number+1)'>
+                    <div class="calendarfull" [class.timetableclass]='ifTimeTable(number)' [class.calendarhalf]='ifFilled(number+1)'>
                         <div class="calendaractivitystyle">{{currentWeeksclasses[number]?.activity}}</div><div class="calendarclassstyle">{{currentWeeksclasses[number]?.classroom}}</div><br>
                         <div class="calendargroupstyle">{{groupsToString(currentWeeksclasses[number]?.groups)}}</div>
                         <div class="calendardescstyle">{{currentWeeksclasses[number]?.description}}</div>
                     </div>
-                    <div *ngIf="ifFilled(number+1)" class="calendarfilled calendarhalf borderleft">
+                    <div *ngIf="ifFilled(number+1)" [class.timetableclass]='ifTimeTable(number+1)' class="calendarfilled calendarhalf borderleft">
                         <div class="calendaractivitystyle">{{currentWeeksclasses[number+1]?.activity}}</div><div class="calendarclassstyle">{{currentWeeksclasses[number+1]?.classroom}}</div><br>
                         <div class="calendargroupstyle">{{groupsToString(currentWeeksclasses[number+1]?.groups)}}</div>
                         <div class="calendardescstyle">{{currentWeeksclasses[number+1]?.description}}</div>

@@ -33,5 +33,5 @@ export class Calendar implements CalendarDTO{
     secondaryclass: 0 | 1;
 
     @Column()
-    istimetableclass: boolean;
+    istimetableclass: 0 | 1;
 }

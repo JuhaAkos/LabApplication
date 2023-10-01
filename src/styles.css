@@ -21,8 +21,20 @@
     margin-top: 70px;
 }
 
+.spaceleft {
+    margin-left: 30px;
+}
+
+.spaceleft10 {
+    margin-left: -11px;
+}
+
 .calendarfilled {
     background-color: rgb(139, 199, 218) !important;
+}
+
+.timetableclass {
+    background-color: rgb(223, 202, 132) !important;
 }
 
 td {

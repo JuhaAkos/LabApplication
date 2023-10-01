@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EquipmentListComponent } from './equipment-list/equipment-list.component';
 import { EquipmentFormComponent } from './equipment-form/equipment-form.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { CalendarFormComponent } from './calendar-form/calendar-form.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'calendar/form',
+    component: CalendarFormComponent
   },
 ];
 

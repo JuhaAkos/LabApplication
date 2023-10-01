@@ -61,7 +61,7 @@ export interface CalendarDTO {
     classroom: "teljes labor" | "kémia labor" | "fizika labor";
     groups: GroupDTO[];
     secondaryclass: 0 | 1;
-    istimetableclass: boolean;
+    istimetableclass: 0 | 1;
 }
 
 export interface GroupDTO {
