@@ -5,15 +5,55 @@
         <h2>Labornyilvántartó rendszer</h2>
         <hr>
       </div>
-    </div>  
+    </div>
+    
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown link
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="navbar">
+      <a href="#home">Home</a>
+      <a href="#news">News</a>
+      <div class="dropdown">
+        <button class="dropbtn">Dropdown 
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div> 
+    </div>
 
     <div class="row">
-        <div class="col-md-2" style="text-align: center"><a routerLink="/login">Főoldal</a></div>        
+        <div class="col-md-2" style="text-align: center"><a routerLink="/login">Főoldal</a></div> 
         <div class="col-md-2" style="text-align: center"><a routerLink="/equipment">Szertár</a></div>
-        <div class="col-md-2" style="text-align: center"><a routerLink="/equipment/form" >Új tétel</a></div>
-        <div class="col-md-2" style="text-align: center"><a routerLink="/calendar">Beosztás</a></div>
-        <div class="col-md-2" style="text-align: center"><a routerLink="/calendar/form">Új időpont</a></div>
+        <div class="col-md-2" style="text-align: center"><a routerLink="/calendar">Beosztás</a></div>  
+        <div class="col-md-2" style="text-align: center"><a routerLink="">Kísérletek</a></div>  
+    </div>
+    <div class="row">
+             
+        <div class="col-md-1"></div>
         <div class="col-md-2" style="text-align: center"><a routerLink="/" >Statisztika</a></div>
+        <div class="col-md-2" style="text-align: center"><a routerLink="/equipment/form" >Új tétel</a></div>        
+        <div class="col-md-2" style="text-align: center"><a routerLink="/calendar/form">Új időpont</a></div>
+        <div class="col-md-2" style="text-align: center"><a routerLink="">Új csoport</a></div>        
     </div>
     
     <hr>

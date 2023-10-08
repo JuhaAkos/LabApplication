@@ -46,15 +46,11 @@ export class CalendarComponent {
 
   public currentweeknumber?: number = 1;
 
-  //80 because 5 day and 8 possible classes each day and max 2 per labroom
-  //0. item -> first day first class first part of room
-  //17. item -> second day second class first part of room
   currentWeeksclasses = Array<CalendarDTO | null>(90).fill(null);
 
   calculateClassOrder(calendar : CalendarDTO) : number{
     var classOrderNumber: number = 0;
     classOrderNumber =+ ((calendar.day -1) * 18) + (calendar.timeofclass * 2) + calendar.secondaryclass;
-    //console.log(classOrderNumber);
     return classOrderNumber;
   }
 
@@ -79,7 +75,6 @@ export class CalendarComponent {
     this.loadCurrentWeekClasses(this.everyweekclasses);
     switch(this.currentweeknumber) { 
       case 1: { 
-        console.log("hi");
         this.loadCurrentWeekClasses(this.firstweekclasses);
         break;
       }
@@ -127,7 +122,6 @@ export class CalendarComponent {
 
   ifTimeTable(whichClass : number){    
     if (this.currentWeeksclasses[whichClass]?.istimetableclass == 1) {
-      console.log(whichClass);
       return true;
     }
     return false;

@@ -1,131 +1,142 @@
-<div class="container">    
+<div class="container">
     <h3>Új időpont felvétele az időbeosztásba:</h3>
     <p></p>
 
-    <hr> 
+    <hr>
 
-    <div class="row">        
-        <h5>A felvitt foglalkozás órarendi óra vagy egyszeri alkalom?</h5> 
-        <div class="form-check spaceleft">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-            <label class="form-check-label" for="exampleRadios1">
-                Órarendi óra
-            </label>
+    <form ngNativeValidate [formGroup]="calendarForm" #form>
+
+        <div class="row">
+            <h5>A felvitt foglalkozás órarendi óra vagy egyszeri alkalom?</h5>
+            <div class="form-check spaceleft">
+                <input class="form-check-input" type="radio" name="istimetableclass" id="istimetableclass" value="1" formControlName="istimetableclass">                
+                    Órarendi óra                
+            </div>
+            <div class="form-check spaceleft">
+                <input class="form-check-input" type="radio" name="istimetableclass" id="istimetableclass" value="0" formControlName="istimetableclass">
+                <label class="form-check-label" for="istimetableclass">
+                    Egyszeri foglalkozás
+                </label>
+            </div>
         </div>
-        <div class="form-check spaceleft">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-            <label class="form-check-label" for="exampleRadios2">
-              Egyszeri foglalkozás
-            </label>
-        </div> 
+
+        <p></p>
         
+        <h5>Melyik héten lesz a foglalkozás?</h5>
+        <select class="form-select" name="week" id="week" formControlName="week" >
+            <option value="1">Jelenlegi hét</option>
+            <option value="2">A soron következő hét</option>
+            <option value="3">Két hét múlva</option>
+        </select>        
+
         <p></p>
 
-        <div *ngIf="!isTimeTableClass">
-            <h5>Melyik héten lesz a foglalkozás?</h5> 
-            <select class="form-select" name="searchSelect" id="searchSelect">
-                <option value="chemical">Jelenlegi hét</option>
-                <option value="woodentool">A soron következő hét</option>
-                <option value="metaltool">Két hét múlva</option>
-            </select>
-        </div> 
-        
-        <p></p>
-        
         <div class="col-md-5">
-            <h5>A héten melyik nap lesz a foglalkozás?</h5> 
-            <select class="form-select" name="searchSelect" id="searchSelect">
-                <option value="chemical">Hétfő</option>
-                <option value="woodentool">Kedd</option>
-                <option value="metaltool">Szerda</option>
-                <option value="metaltool">Csütörtök</option>
-                <option value="metaltool">Péntek</option>
+            <h5>A héten melyik nap lesz a foglalkozás?</h5>
+            <select class="form-select" name="day" id="day" formControlName="day">
+                <option value="1">Hétfő</option>
+                <option value="2">Kedd</option>
+                <option value="3">Szerda</option>
+                <option value="4">Csütörtök</option>
+                <option value="5">Péntek</option>
             </select>
-        </div>  
+        </div>
 
         <p></p>
-        
-        <div class="col-md-5"> 
-            <h5>Hanyadik órában lesz a foglalkozás?</h5> 
+
+        <div class="col-md-5">
+            <h5>Hanyadik órában lesz a foglalkozás?</h5>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">0</label>
+                <input class="form-check-input" type="radio" name="timeofclass" id="timeofclass0" value="0" checked formControlName="timeofclass">
+                <label class="form-check-label" for="timeofclass0">0</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                <label class="form-check-label" for="inlineRadio1">1</label>
+                <input class="form-check-input" type="radio" name="timeofclass" id="timeofclass1" value="1" formControlName="timeofclass">
+                <label class="form-check-label" for="timeofclass1">1</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">2</label>
+                <input class="form-check-input" type="radio" name="timeofclass" id="timeofclass2" value="2" formControlName="timeofclass">
+                <label class="form-check-label" for="timeofclass2">2</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">3</label>
+                <input class="form-check-input" type="radio" name="timeofclass" id="timeofclass3" value="3" formControlName="timeofclass">
+                <label class="form-check-label" for="timeofclass3">3</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">4</label>
+                <input class="form-check-input" type="radio" name="timeofclass" id="timeofclass4" value="4" formControlName="timeofclass">
+                <label class="form-check-label" for="timeofclass4">4</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">5</label>
+                <input class="form-check-input" type="radio" name="timeofclass" id="timeofclass5" value="5" formControlName="timeofclass">
+                <label class="form-check-label" for="timeofclass5">5</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">6</label>
+                <input class="form-check-input" type="radio" name="timeofclass" id="timeofclass6" value="6" formControlName="timeofclass">
+                <label class="form-check-label" for="timeofclass6">6</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">7</label>
+                <input class="form-check-input" type="radio" name="timeofclass" id="timeofclass7" value="7" formControlName="timeofclass">
+                <label class="form-check-label" for="timeofclass7">7</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">8</label>
+                <input class="form-check-input" type="radio" name="timeofclass" id="timeofclass8" value="8" formControlName="timeofclass">
+                <label class="form-check-label" for="timeofclass8">8</label>
             </div>
         </div>
 
         <p></p>
-        
-        <div class="row spaceleft10"> 
+
+        <div class="row spaceleft10">
             <h5>A tanóra tantárgya vagy foglalkozási témája:</h5>
-            <input type="text" class="form-control" id="officialname" name="officialname" formControlName="officialname" required>
+            <input type="text" class="form-control" id="activity" name="activity" formControlName="activity" required>
         </div>
 
         <p></p>
 
-        <div class="row"> 
+        <div class="row">
             <h5>Egyéb információ (pl: alcsoport bontások)</h5>
-            <input type="text" class="form-control" required>
+            <input type="text" class="form-control" name="description" formControlName="description">
         </div>
 
         <p></p>
 
-        <div class="row"> 
-            <h5>Az iskolai labor melyik része kerül majd lefoglalásra?</h5> 
-            <select class="form-select" name="searchSelect" id="searchSelect">
-                <option value="chemical">Kémia labor</option>
-                <option value="woodentool">Fizika labor</option>
-                <option value="metaltool">Teljes labor</option>
+        <div class="row">
+            <h5>Az iskolai labor melyik része kerül majd lefoglalásra?</h5>
+            <select class="form-select" name="classroom" id="classroom" formControlName="classroom">
+                <option value="kémia labor">Kémia labor</option>
+                <option value="fizika labor">Fizika labor</option>
+                <option value="teljes labor">Teljes labor</option>
             </select>
         </div>
 
         <p></p>
 
-        <div class="row"><button class="btn btn-primary btn-lg btn-block">OK</button></div>
-
-        <p></p>
-
-        <div *ngIf="isSecondary" class="centered"> 
-            <h5>Figyelem! Ebben az időpontban már létezik egy tanóra!</h5> 
-            <p></p>
-            <div class="row"> 
-                <div class="col-md-1"></div>
-                <div class="col-md-5 centered"><button class="btn btn-primary btn-lg btn-block" >Tanóra felülírása</button></div>            
-                <div class="col-md-5 centered"><button class="btn btn-primary btn-lg btn-block" >Új tanóra hozzáadása</button></div>
-            </div>
+        <h5>A foglalkozáson résztvevő csoportok:</h5>
+        <div class="a" *ngFor="let group of groups">
+            <input class="form-check-input " type="checkbox" formControlName="groups" [checked]='groups.indexOf(group) > -1' (change)="getGroupFromCheckBox(group)"> 
+            {{group.name}}
         </div>
-        <p></p>
-    </div>
 
-</div>   
+    </form>
+
+    <p></p>
+
+    <div class="row"><button class="btn btn-primary btn-lg btn-block" (click)="saveCalendar()">OK</button></div>
+
+    <p></p>
+
+    <div *ngIf="isSecondary" class="centered">
+        <h5>Figyelem! Ebben az időpontban már létezik egy tanóra!</h5>
+        <p></p>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 centered"><button class="btn btn-primary btn-lg btn-block">Tanóra felülírása</button>
+            </div>
+            <div class="col-md-5 centered"><button class="btn btn-primary btn-lg btn-block">Új tanóra
+                    hozzáadása</button></div>
+        </div>
+    </div>
+    <p></p>
+
+
+</div>
