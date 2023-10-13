@@ -25,8 +25,14 @@ export class CalendarFormComponent {
     this.groupService.getAll().subscribe({
       next: (groups) => {
         this.groups = groups;
-      }
-    });    
+      }        
+    });  
+    
+    this.calendarService.getAll().subscribe({
+      next: (calendars) => {
+        this.calendars = calendars;
+      }        
+    });  
   } 
 
   calendarForm = this.formBuilder.group({
@@ -62,23 +68,21 @@ export class CalendarFormComponent {
   
   setCalendar(calendar : CalendarDTO) {
     calendar.week = this.getWeekNumber(Number(this.calendarForm.controls['week'].value!));    
-    console.log("hét: " + calendar.week);
+    //console.log("hét: " + calendar.week);
     calendar.day = this.getDayNumber(Number(this.calendarForm.controls['day'].value!));
-    console.log("nap: " + calendar.day);
+    //console.log("nap: " + calendar.day);
     calendar.timeofclass = this.getTimeofclassNumber(Number(this.calendarForm.controls['timeofclass'].value!));
-    console.log("óra: " + calendar.timeofclass);
+    //console.log("óra: " + calendar.timeofclass);
     calendar.activity = this.calendarForm.controls['activity'].value!;
-    console.log("activity: " + calendar.activity);
+    //console.log("activity: " + calendar.activity);
     calendar.description = this.calendarForm.controls['description'].value!;
-    console.log("leír: " + calendar.description);
+    //console.log("leír: " + calendar.description);
     calendar.classroom = this.getClassRoomData(this.calendarForm.controls['classroom'].value!);
-    console.log("terem: " + calendar.classroom);
+    //console.log("terem: " + calendar.classroom);
     calendar.groups = this.groups2;
-    console.log("csop: " + calendar.groups);
-    calendar.secondaryclass = this.getOneOrTwo(Number(this.calendarForm.controls['secondaryclass'].value!));
-    console.log("másodlagos: " + calendar.secondaryclass);
+    //console.log("csop: " + calendar.groups);
     calendar.istimetableclass = this.getOneOrTwo(Number(this.calendarForm.controls['istimetableclass'].value!));
-    console.log("órarendi: " + calendar.istimetableclass);
+    //console.log("órarendi: " + calendar.istimetableclass);
     return calendar;
   }
 
@@ -164,26 +168,65 @@ export class CalendarFormComponent {
     return "kémia labor";
   }
 
-  checkForClassOverlap(week: number, day: number, hour: number) : boolean{
-    for (var counter in this.calendars) {
-      if (this.calendars[counter].week==week && this.calendars[counter].day==day && this.calendars[counter].timeofclass==hour) {
-        return false;
+  isOverlap:boolean = false;
+
+  checkClassOverlap(currentCalendar: CalendarDTO){    
+    console.log(currentCalendar.classroom);
+
+    this.isOverlap = false;
+
+    if (currentCalendar.istimetableclass == 1){
+      for (var counter in this.calendars) {
+        if (this.calendars[counter].day==currentCalendar.day && this.calendars[counter].timeofclass==currentCalendar.timeofclass) {
+
+          if (currentCalendar.classroom == "teljes labor" 
+            || this.calendars[counter].classroom == "teljes labor" 
+              || currentCalendar.classroom == this.calendars[counter].classroom) {
+                this.isOverlap = true;
+
+                console.log("jajj");
+                break;
+          }
+
+        }
       }
-    }
-    return true;
+    } else if (currentCalendar.istimetableclass == 0){
+      for (var counter in this.calendars) {
+        if (this.calendars[counter].week==currentCalendar.week && this.calendars[counter].day==currentCalendar.day && this.calendars[counter].timeofclass==currentCalendar.timeofclass
+          || this.calendars[counter].day==currentCalendar.day && this.calendars[counter].timeofclass==currentCalendar.timeofclass && this.calendars[counter].istimetableclass==1) {
+          
+          if (currentCalendar.classroom == "teljes labor" 
+            || this.calendars[counter].classroom == "teljes labor" 
+              || currentCalendar.classroom == this.calendars[counter].classroom) {
+                this.isOverlap = true;
+
+                console.log("jajj");
+                break;
+          }
+
+        }
+      }
+    }    
+  }
+
+  checkForEmptySecondaryClassSpace(serial: number){
+
   }
 
   saveCalendar(){
     let calendar1 = {} as CalendarDTO;
     
-    this.setCalendar(calendar1);
-
+    this.setCalendar(calendar1);    
     
-    this.calendarService.create(calendar1).subscribe({
-      next: (calendar) => {       
-        console.log(calendar.activity);
-      }
-    });
+    this.checkClassOverlap(calendar1);
+    
+    if (this.isOverlap == false) {
+      console.log("update");
+      this.calendarService.create(calendar1).subscribe({
+        next: (calendar) => {       
+        }
+      });
+    }
     
   }
 

@@ -2,7 +2,7 @@
     <h3>Új időpont felvétele az időbeosztásba:</h3>
     <p></p>
 
-    <hr>
+    <hr>    
 
     <form ngNativeValidate [formGroup]="calendarForm" #form>
 
@@ -23,7 +23,7 @@
         <p></p>
         
         <h5>Melyik héten lesz a foglalkozás?</h5>
-        <select class="form-select" name="week" id="week" formControlName="week" >
+        <select class="form-select" name="week" id="week" formControlName="week">
             <option value="1">Jelenlegi hét</option>
             <option value="2">A soron következő hét</option>
             <option value="3">Két hét múlva</option>
@@ -47,11 +47,11 @@
         <div class="col-md-5">
             <h5>Hanyadik órában lesz a foglalkozás?</h5>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="timeofclass" id="timeofclass0" value="0" checked formControlName="timeofclass">
+                <input class="form-check-input" type="radio" name="timeofclass" id="timeofclass0" value="0" formControlName="timeofclass">
                 <label class="form-check-label" for="timeofclass0">0</label>
             </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="timeofclass" id="timeofclass1" value="1" formControlName="timeofclass">
+            <div class="form-check form-check-inline" >
+                <input class="form-check-input active" type="radio" name="timeofclass" id="timeofclass1" formControlName="timeofclass" checked="checked">
                 <label class="form-check-label" for="timeofclass1">1</label>
             </div>
             <div class="form-check form-check-inline">
@@ -120,23 +120,18 @@
     </form>
 
     <p></p>
+    <hr> 
 
-    <div class="row"><button class="btn btn-primary btn-lg btn-block" (click)="saveCalendar()">OK</button></div>
-
-    <p></p>
-
-    <div *ngIf="isSecondary" class="centered">
-        <h5>Figyelem! Ebben az időpontban már létezik egy tanóra!</h5>
-        <p></p>
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-5 centered"><button class="btn btn-primary btn-lg btn-block">Tanóra felülírása</button>
-            </div>
-            <div class="col-md-5 centered"><button class="btn btn-primary btn-lg btn-block">Új tanóra
-                    hozzáadása</button></div>
-        </div>
+    <div *ngIf="!isOverlap" class="centered spaceabove">
+        <div class="row"><button class="btn btn-primary btn-lg btn-block" (click)="saveCalendar()">OK</button></div>
     </div>
-    <p></p>
+
+    <div *ngIf="isOverlap" class="centered spaceabove">   
+        <div class="row"><button class="btn btn-danger btn-lg btn-block " (click)="saveCalendar()">Újra</button></div>     
+        <h4>Figyelem! Időpont elvétele nem lehetséges, mert átfedés van az alkalmak között!</h4>
+    </div>
+
+    <p></p>   
 
 
 </div>

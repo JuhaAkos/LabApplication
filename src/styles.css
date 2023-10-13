@@ -37,6 +37,10 @@
     background-color: rgb(223, 202, 132) !important;
 }
 
+.error {
+    background-color: red;
+}
+
 td {
     border-collapse: collapse;
     padding: 0px;
@@ -80,6 +84,10 @@ table {
     border-left: 1px solid black;
 }
 
+.borderright {
+    border-right: 1px solid black;
+}
+
 .calendarhalf {
     padding: 3px;
     display: inline-block;
@@ -95,6 +103,10 @@ table {
 .paddingBeforeAfter {
     padding-top: 22px;
     padding-bottom: 22px;
+}
+
+.emptycell {
+    color: white;
 }
 
 /* Dropdown content (hidden by default) */

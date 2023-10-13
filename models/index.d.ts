@@ -60,7 +60,6 @@ export interface CalendarDTO {
     //vagy hagyható egybe -> fulllab
     classroom: "teljes labor" | "kémia labor" | "fizika labor";
     groups: GroupDTO[];
-    secondaryclass: 0 | 1;
     istimetableclass: 0 | 1;
 }
 

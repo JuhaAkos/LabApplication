@@ -30,8 +30,5 @@ export class Calendar implements CalendarDTO{
     groups: GroupDTO[]; 
 
     @Column()
-    secondaryclass: 0 | 1;
-
-    @Column()
     istimetableclass: 0 | 1;
 }

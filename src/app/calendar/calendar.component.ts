@@ -50,7 +50,12 @@ export class CalendarComponent {
 
   calculateClassOrder(calendar : CalendarDTO) : number{
     var classOrderNumber: number = 0;
-    classOrderNumber =+ ((calendar.day -1) * 18) + (calendar.timeofclass * 2) + calendar.secondaryclass;
+    var secondaryClass: number =0;
+    if (calendar.classroom == "fizika labor") {
+      secondaryClass = 1;
+    }
+    //classOrderNumber =+ ((calendar.day -1) * 18) + (calendar.timeofclass * 2) + calendar.secondaryclass;
+    classOrderNumber =+ ((calendar.day -1) * 18) + (calendar.timeofclass * 2) + secondaryClass;
     return classOrderNumber;
   }
 
