@@ -8,6 +8,7 @@ import { OtherItemController } from "./controller/otheritem.controller";
 import { GroupController } from "./controller/group.controller";
 import { CalendarController } from "./controller/calendar.controller";
 import { UserController } from "./controller/user.controller";
+import { ExperimentController } from "./controller/experiment.controller";
 
 export function getRoutes() {
     const router = express.Router();
@@ -87,6 +88,14 @@ export function getRoutes() {
     router.post('/user/', userController.create);
     router.put('/user', userController.update);
     router.delete('/user/:id', userController.delete);
+
+    const experimentController = new ExperimentController();
+
+    router.get('/experiment', experimentController.getAll);
+    router.get('/experiment/:id', experimentController.getOne);
+    router.post('/experiment/', experimentController.create);
+    router.put('/experiment', experimentController.update);
+    router.delete('/experiment/:id', experimentController.delete);
     
     return router;
 }

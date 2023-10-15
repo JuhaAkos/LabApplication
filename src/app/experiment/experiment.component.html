@@ -1,0 +1,27 @@
+<div class="container">
+    <h3>A laborban végrehajtható kísérletek:</h3>
+    <p></p>
+    <hr>
+
+    <div class="widthMax">
+        <div class="experimentList padding1">
+            <h4>Elérhető kísérletek</h4>
+            <div *ngFor="let experiment of experiments">
+                <button class="btn btn-light btn-sm experimentListButton" (click)="getSelectedExperiment(experiment)">
+                    <h5>{{experiment.name}}</h5>
+                </button>               
+            </div>
+        </div>        
+        <div *ngIf="selectedExperiment"  class="experimentInfo experimentDescription">
+            <h4>{{selectedExperiment.name}}</h4>
+            {{selectedExperiment.description}}
+            <p></p>
+            <div *ngFor="let item of currentNeededItems" [class.experimentItems]="true" [class.missingItem]='ifItemEmpty(item)'>
+                {{item.name}}
+
+                <div *ngIf="item.amount==0" class="experimentAmount">Nem elérhető</div>
+                <div *ngIf="!(item.amount==0)" class="experimentAmount">Elérhető</div>
+            </div>
+        </div>
+    </div>
+</div>

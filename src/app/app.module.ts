@@ -22,7 +22,8 @@ import { OtherItemFormService } from './equipment-form/otherItemForm-service';
 import { CalendarComponent } from './calendar/calendar.component';
 import { LoginComponent } from './login/login.component';
 import { CalendarFormComponent } from './calendar-form/calendar-form.component';
-
+import { CalendarListComponent } from './calendar-list/calendar-list.component';
+import { ExperimentComponent } from './experiment/experiment.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { CalendarFormComponent } from './calendar-form/calendar-form.component';
     EquipmentFormComponent,
     CalendarComponent,
     LoginComponent,
-    CalendarFormComponent
+    CalendarFormComponent,
+    CalendarListComponent,
+    ExperimentComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,7 @@ import { CalendarFormComponent } from './calendar-form/calendar-form.component';
     MetalToolFormService,
     GlassContainerFormService,
     OtherItemFormService,
-    DeviceFormService
+    DeviceFormService,
   ],
   bootstrap: [AppComponent]
 })

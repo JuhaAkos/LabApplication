@@ -14,11 +14,8 @@ export class User implements UserDTO{
     password: string;
 
     @Column()
-    schoolid: string;
-
-    @Column()
     role: "student" | "teacher" | "admin";
 
-    @ManyToOne(type => Group, (group) => group.teacher, { eager: true })
-    groups: null | GroupDTO[];
+    @ManyToOne(type => Group, (group) => group.teacher)
+    groups: GroupDTO | null;
 }

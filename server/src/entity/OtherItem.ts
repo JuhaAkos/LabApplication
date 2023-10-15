@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn} from "typeorm"
-import { OtherItemDTO } from "../../../models";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany} from "typeorm"
+import { ExperimentDTO, OtherItemDTO } from "../../../models";
+import { Experiment } from "./Experiment";
 
 @Entity()
 export class OtherItem implements OtherItemDTO{
@@ -14,4 +15,7 @@ export class OtherItem implements OtherItemDTO{
 
     @Column()
     description: string;
+
+    @ManyToMany(() => Experiment,  (experiment) => experiment.neededotheritems)
+    experiments: ExperimentDTO[];
 }

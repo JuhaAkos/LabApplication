@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn} from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany} from "typeorm"
 import { WoodenToolDTO } from "../../../models";
+import { Experiment } from "./Experiment";
 
 @Entity()
 export class WoodenTool implements WoodenToolDTO{
@@ -13,5 +14,8 @@ export class WoodenTool implements WoodenToolDTO{
     amount: number;
 
     @Column()
-    description: string;
+    description: string
+
+    @ManyToMany(() => Experiment,  (experiment) => experiment.neededdevices)
+    experiments: Experiment[];
 }

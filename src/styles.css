@@ -29,6 +29,11 @@
     margin-left: -11px;
 }
 
+
+
+
+
+
 .calendarfilled {
     background-color: rgb(139, 199, 218) !important;
 }
@@ -108,6 +113,60 @@ table {
 .emptycell {
     color: white;
 }
+
+
+
+
+
+
+.widthMax {
+    width: 100%
+}
+
+.padding1 {
+    padding: 1%;
+}
+
+.experimentList {
+    float: left;
+    width: 20%
+}
+
+.experimentInfo {
+    float: right;
+    width: 80%
+}
+
+.experimentListButton {
+    width: 100%;
+    height: 200%;
+    text-align: left;
+}
+
+.experimentDescription {
+    padding: 1%;
+    background-color: #bae2e7;
+    /*height: 100%;*/
+    min-height: 100%;
+    word-wrap: break-word; 
+}
+
+.experimentItems {
+    padding: 0.5%;
+    background-color: #ffffff;
+}
+
+.missingItem {
+    background-color: #e77d82;
+    color: #971010;
+}
+
+.experimentAmount {
+    display:inline;
+    float:right;
+}
+
+
 
 /* Dropdown content (hidden by default) */
 .dropdown-content {

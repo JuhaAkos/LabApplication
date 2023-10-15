@@ -9,6 +9,7 @@ import { GlassContainer } from "./entity/GlassContainer"
 import { Group } from "./entity/Group"
 import { User } from "./entity/User"
 import { Calendar } from "./entity/Calendar"
+import { Experiment } from "./entity/Experiment"
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -18,7 +19,7 @@ export const AppDataSource = new DataSource({
     database: "labapp",
     synchronize: true,
     logging: true,
-    entities: [Chemical, Device, WoodenTool, MetalTool, OtherItem, GlassContainer, Group, User, Calendar],
+    entities: [Chemical, Device, WoodenTool, MetalTool, OtherItem, GlassContainer, Group, User, Calendar, Experiment],
     migrations: [],
     subscribers: [],
     timezone: "+02:00",

@@ -16,7 +16,7 @@ export class ChemicalFormService {
     let chemicalForm = this.formBuilder.group({
       id: 0,
       officialname: this.formBuilder.control(''),
-      commonname: this.formBuilder.control(''),
+      name: this.formBuilder.control(''),
       amount: this.formBuilder.control(''),
       unit: this.formBuilder.control(''),
       poisonouseffect: this.formBuilder.control(''),
@@ -31,7 +31,7 @@ export class ChemicalFormService {
 
   setChemical(chemicalInput: ChemicalDTO, chemicalForm: FormGroup) {
     chemicalInput.officialname = chemicalForm.controls['officialname'].value!;
-    chemicalInput.commonname = chemicalForm.controls['commonname'].value!;
+    chemicalInput.name = chemicalForm.controls['commonname'].value!;
     chemicalInput.amount = Number(chemicalForm.controls['amount'].value!);
     chemicalInput.unit = chemicalForm.controls['unit'].value!;
     chemicalInput.poisonouseffect = chemicalForm.controls['poisonouseffect'].value!;
@@ -47,7 +47,7 @@ export class ChemicalFormService {
 
   setChemicalForm(chemicalInput: ChemicalDTO, chemicalForm: FormGroup) {
     chemicalForm.controls['officialname'].setValue(chemicalInput.officialname);
-    chemicalForm.controls['commonname'].setValue(chemicalInput.commonname);
+    chemicalForm.controls['name'].setValue(chemicalInput.name);
     chemicalForm.controls['amount'].setValue(chemicalInput.amount.toString());
     chemicalForm.controls['unit'].setValue(chemicalInput.unit);
     chemicalForm.controls['poisonouseffect'].setValue(chemicalInput.poisonouseffect);
@@ -59,7 +59,7 @@ export class ChemicalFormService {
   }
 
   checkIfChemicalIsNotNull(chemicalInput: ChemicalDTO) {
-    if (!chemicalInput.officialname || !chemicalInput.commonname || !chemicalInput.amount || !chemicalInput.unit || !chemicalInput.storage || !chemicalInput.expiration) {
+    if (!chemicalInput.officialname || !chemicalInput.name || !chemicalInput.amount || !chemicalInput.unit || !chemicalInput.storage || !chemicalInput.expiration) {
       //poisionous effect and description can be null
       return false;
     } else return true;

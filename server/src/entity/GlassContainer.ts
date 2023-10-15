@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn} from "typeorm"
-import { GlassContainerDTO } from "../../../models";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany} from "typeorm"
+import { ExperimentDTO, GlassContainerDTO } from "../../../models";
+import { Experiment } from "./Experiment";
 
 @Entity()
 export class GlassContainer implements GlassContainerDTO{
@@ -20,4 +21,7 @@ export class GlassContainer implements GlassContainerDTO{
 
     @Column()
     description: string;
+
+    @ManyToMany(() => Experiment,  (experiment) => experiment.neededglasscontainers)
+    experiments: ExperimentDTO[];
 }

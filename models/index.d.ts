@@ -1,7 +1,7 @@
 export interface ChemicalDTO {
     id: number;
     officialname: string;
-    commonname: string;
+    name: string;
     amount: number;
     unit: string;
     poisonouseffect: null | string;
@@ -75,7 +75,18 @@ export interface UserDTO {
     id: number;
     name: string;
     password: string;
-    schoolid: string;
-    role: "student" | "teacher" | "admin"; 
-    groups: null | GroupDTO[];
+    role: "student" | "teacher" | "admin";     
+    groups: GroupDTO | null;
+}
+
+export interface ExperimentDTO {
+    id: number;
+    name: string;
+    description: string;
+    neededchemicals: ChemicalDTO[];
+    neededwoodentools: WoodenToolDTO[];
+    neededmetaltools: MetalToolDTO[];
+    neededglasscontainers: GlassContainerDTO[];
+    neededdevices: DeviceDTO[];
+    neededotheritems: OtherItemDTO[];
 }

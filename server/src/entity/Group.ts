@@ -10,13 +10,14 @@ export class Group implements GroupDTO{
 
     @Column()
     name: string;
-
-    @OneToMany(type => User, (user) => user.groups)
-    teacher: UserDTO;
-
+   
     @Column("simple-array")
     studentnames: string[];
 
     @ManyToMany(() => Calendar,  (calendar) => calendar.groups)
     classes: CalendarDTO[];
+
+    @OneToMany(type => User, (user) => user.groups)
+    teacher: UserDTO;
+
 }

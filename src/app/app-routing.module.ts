@@ -5,6 +5,8 @@ import { EquipmentFormComponent } from './equipment-form/equipment-form.componen
 import { CalendarComponent } from './calendar/calendar.component';
 import { CalendarFormComponent } from './calendar-form/calendar-form.component';
 import { LoginComponent } from './login/login.component';
+import { CalendarListComponent } from './calendar-list/calendar-list.component';
+import { ExperimentComponent } from './experiment/experiment.component';
 
 const routes: Routes = [
   {
@@ -30,6 +32,14 @@ const routes: Routes = [
   {
     path: 'calendar/form',
     component: CalendarFormComponent
+  },
+  {
+    path: 'calendar/list',
+    component: CalendarListComponent
+  },
+  {
+    path: 'experiment',
+    component: ExperimentComponent
   },
 ];
 

@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn} from "typeorm"
-import { ChemicalDTO } from "../../../models";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany} from "typeorm"
+import { ChemicalDTO, ExperimentDTO } from "../../../models";
+import { Experiment } from "./Experiment";
 
 @Entity()
 export class Chemical implements ChemicalDTO{
@@ -10,7 +11,7 @@ export class Chemical implements ChemicalDTO{
     officialname: string;
 
     @Column()
-    commonname: string;
+    name: string;
 
     @Column()
     amount: number;
@@ -29,4 +30,7 @@ export class Chemical implements ChemicalDTO{
 
     @Column()
     description: string;
+
+    @ManyToMany(() => Experiment,  (experiment) => experiment.neededchemicals)
+    experiments: ExperimentDTO[];
 }

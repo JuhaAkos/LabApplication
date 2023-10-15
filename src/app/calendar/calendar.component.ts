@@ -24,8 +24,7 @@ export class CalendarComponent {
         this.calendars = calendars;
        
         this.divideClasses();
-        this.reloadAllWeekData();
-        //console.log(this.currentWeeksclasses[72]);
+        this.reloadAllWeekData();       
       }
     });    
   }  

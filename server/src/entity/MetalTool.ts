@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn} from "typeorm"
-import { MetalToolDTO } from "../../../models";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany} from "typeorm"
+import { ExperimentDTO, MetalToolDTO } from "../../../models";
+import { Experiment } from "./Experiment";
 
 @Entity()
 export class MetalTool implements MetalToolDTO{
@@ -14,4 +15,7 @@ export class MetalTool implements MetalToolDTO{
 
     @Column()
     description: string;
+
+    @ManyToMany(() => Experiment,  (experiment) => experiment.neededdevices)
+    experiments: ExperimentDTO[];
 }
