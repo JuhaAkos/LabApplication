@@ -15,7 +15,6 @@ export class ExperimentComponent {
     ) { }
 
   ngOnInit(): void {
-    console.log("a")
     this.ExperimentService.getAll().subscribe({
       next: (experiments) => {
         this.experiments = experiments;

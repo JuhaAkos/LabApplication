@@ -9,6 +9,7 @@ import { GroupController } from "./controller/group.controller";
 import { CalendarController } from "./controller/calendar.controller";
 import { UserController } from "./controller/user.controller";
 import { ExperimentController } from "./controller/experiment.controller";
+import { checkUser } from "./protect-routes";
 
 export function getRoutes() {
     const router = express.Router();
@@ -85,9 +86,13 @@ export function getRoutes() {
 
     router.get('/user', userController.getAll);
     router.get('/user/:id', userController.getOne);
-    router.post('/user/', userController.create);
-    router.put('/user', userController.update);
-    router.delete('/user/:id', userController.delete);
+    router.post('/user', userController.create);
+    //check use 1
+    router.put('/user', checkUser, userController.update);
+    //check use 2
+    router.delete('/user/:id', checkUser, userController.delete);
+    
+    router.post('/user/login', userController.login);
 
     const experimentController = new ExperimentController();
 
@@ -96,6 +101,8 @@ export function getRoutes() {
     router.post('/experiment/', experimentController.create);
     router.put('/experiment', experimentController.update);
     router.delete('/experiment/:id', experimentController.delete);
+
+    
     
     return router;
 }

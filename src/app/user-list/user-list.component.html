@@ -1,6 +1,6 @@
 <div class="row justify-content-md-center">
     <div class="col-md-6">
-        <form [formGroup]="loginForm">
+        <form [formGroup]="userForm">
             <div class="mb-3">
                 <label for="username" class="form-label">Felhasználó név</label>
                 <input type="username" class="form-control" id="username" formControlName="username">
@@ -11,7 +11,7 @@
             </div>
             
             <div class="text-center">
-                <button class="btn btn-outline-primary" (click)="login()">Belépés</button>
+                <button class="btn btn-outline-primary" (click)="registerUser()">Fiók létrehozása</button>
             </div>
         </form>
     </div>

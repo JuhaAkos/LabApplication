@@ -45,7 +45,8 @@
         <div class="col-md-2" style="text-align: center"><a routerLink="/login">Főoldal</a></div> 
         <div class="col-md-2" style="text-align: center"><a routerLink="/equipment">Szertár</a></div>
         <div class="col-md-2" style="text-align: center"><a routerLink="/calendar">Beosztás</a></div>  
-        <div class="col-md-2" style="text-align: center"><a routerLink="/experiment">Kísérletek</a></div>  
+        <div class="col-md-2" style="text-align: center"><a routerLink="/experiment">Kísérletek</a></div>          
+        <div class="col-md-2" style="text-align: center"><a routerLink="/user/list">Felhasználó kezelés</a></div>       
     </div>
     <div class="row">
              
@@ -56,6 +57,9 @@
         <div class="col-md-2" style="text-align: center"><a routerLink="/calendar/list/:id">Időpontjaim</a></div>
         <div class="col-md-2" style="text-align: center"><a routerLink="">Új csoport</a></div>        
     </div>
+    <li class="nav-item">
+      <a class="nav-link" href="#" (click)="logout()">Kilépés</a>
+    </li>
     
     <hr>
   

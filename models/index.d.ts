@@ -71,14 +71,6 @@ export interface GroupDTO {
     classes: CalendarDTO[];
 }
 
-export interface UserDTO {
-    id: number;
-    name: string;
-    password: string;
-    role: "student" | "teacher" | "admin";     
-    groups: GroupDTO | null;
-}
-
 export interface ExperimentDTO {
     id: number;
     name: string;
@@ -89,4 +81,21 @@ export interface ExperimentDTO {
     neededglasscontainers: GlassContainerDTO[];
     neededdevices: DeviceDTO[];
     neededotheritems: OtherItemDTO[];
+}
+
+export interface UserDTO {
+    id: number;
+    username: string;
+    password: string;
+    role: "student" | "teacher" | "admin";     
+    groups: GroupDTO | null;
+}
+
+export interface LoginDTO {
+    username: string;
+    password: string;
+}
+
+export interface AccessTokenDTO {
+    accessToken: string;
 }

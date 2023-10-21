@@ -7,10 +7,10 @@ export class User implements UserDTO{
     @PrimaryGeneratedColumn()    
     id: number;
 
-    @Column()
-    name: string;
+    @Column({ unique: true })
+    username: string;
 
-    @Column()
+    @Column({ select: false })
     password: string;
 
     @Column()

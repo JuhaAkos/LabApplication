@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http'
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http'
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -24,6 +24,9 @@ import { LoginComponent } from './login/login.component';
 import { CalendarFormComponent } from './calendar-form/calendar-form.component';
 import { CalendarListComponent } from './calendar-list/calendar-list.component';
 import { ExperimentComponent } from './experiment/experiment.component';
+import { AccessTokenInterceptor } from './services/access-token.interceptor';
+import { UnauthorizedInterceptor } from './services/unauthorized.interceptor';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +37,8 @@ import { ExperimentComponent } from './experiment/experiment.component';
     LoginComponent,
     CalendarFormComponent,
     CalendarListComponent,
-    ExperimentComponent
+    ExperimentComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +58,16 @@ import { ExperimentComponent } from './experiment/experiment.component';
     GlassContainerFormService,
     OtherItemFormService,
     DeviceFormService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AccessTokenInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UnauthorizedInterceptor,
+      multi: true
+  }
   ],
   bootstrap: [AppComponent]
 })
