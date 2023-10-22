@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, OneToMany, JoinTable} from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, ManyToOne} from "typeorm"
 import { CalendarDTO, GroupDTO, UserDTO } from "../../../models";
 import { Calendar } from "./Calendar";
 import { User } from "./User";
@@ -17,7 +17,7 @@ export class Group implements GroupDTO{
     @ManyToMany(() => Calendar,  (calendar) => calendar.groups)
     classes: CalendarDTO[];
 
-    @OneToMany(type => User, (user) => user.groups)
+    @ManyToOne(type => User, (user) => user.groups)
     teacher: UserDTO;
 
 }

@@ -88,7 +88,7 @@ export interface UserDTO {
     username: string;
     password: string;
     role: "student" | "teacher" | "admin";     
-    groups: GroupDTO | null;
+    groups: GroupDTO[] | null;
 }
 
 export interface LoginDTO {

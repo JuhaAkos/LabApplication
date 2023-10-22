@@ -5,62 +5,80 @@
         <h2>Labornyilvántartó rendszer</h2>
         <hr>
       </div>
-    </div>
-    
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Dropdown link
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-      </ul>
-    </nav>
+    </div>    
 
     <div class="navbar">
-      <a href="#home">Home</a>
-      <a href="#news">News</a>
+      
       <div class="dropdown">
-        <button class="dropbtn">Dropdown 
-          <i class="fa fa-caret-down"></i>
+        <button class="dropbtn">
+          <a routerLink="/">Főoldal</a>
+        </button>
+      </div> 
+      
+      <div class="dropdown">
+        <button class="dropbtn">
+          <a routerLink="/equipment">Szertár</a>
         </button>
         <div class="dropdown-content">
-          <a href="#">Link 1</a>
-          <a href="#">Link 2</a>
-          <a href="#">Link 3</a>
+          <a href="/equipment">  Megtekintés  </a>
+          <a href="/equipment/form">  Új tétel  </a>
         </div>
       </div> 
-    </div>
 
-    <div class="row">
-        <div class="col-md-2" style="text-align: center"><a routerLink="/login">Főoldal</a></div> 
-        <div class="col-md-2" style="text-align: center"><a routerLink="/equipment">Szertár</a></div>
-        <div class="col-md-2" style="text-align: center"><a routerLink="/calendar">Beosztás</a></div>  
-        <div class="col-md-2" style="text-align: center"><a routerLink="/experiment">Kísérletek</a></div>          
-        <div class="col-md-2" style="text-align: center"><a routerLink="/user/list">Felhasználó kezelés</a></div>       
+      <div class="dropdown">
+        <button class="dropbtn">
+          <a routerLink="/calendar">Beosztás</a> 
+        </button>
+        <div class="dropdown-content">
+          <a routerLink="/calendar">  Megtekintés  </a>
+          <a routerLink="/calendar/form">  Új időpont  </a>
+          <a routerLink="/calendar/list/:id">  Időpontjaim  </a>
+        </div>
+      </div> 
+
+      <div class="dropdown">
+        <button class="dropbtn">
+          <a routerLink="/experiment">Kísérletek</a>          
+        </button>
+        <div class="dropdown-content">
+          <a routerLink="/experiment">  Lista  </a>
+          <a routerLink="">  Új kísérlet  </a>
+        </div>
+      </div> 
+
+      <div class="dropdown">
+        <button class="dropbtn">
+          <a routerLink="/user/list">Felhasználókezelés</a>          
+        </button>
+        <div class="dropdown-content">
+          <a routerLink="/user/list">  Lista  </a>
+          <a routerLink="/user/form">  Új fiók  </a>
+        </div>
+      </div> 
+
+      <div class="dropdown">
+        <button class="dropbtn">
+          <a routerLink="/group">Csoportok</a>
+        </button>
+        <div class="dropdown-content">
+          <a routerLink="/group">  Megtekintés  </a>
+          <a routerLink="/group/form">  Új csoport  </a>
+        </div>
+      </div> 
+
+      <div class="dropdown">
+        <button class="dropbtn">
+          <a routerLink="/statistic">Statisztika</a>
+        </button>
+      </div> 
+
+      <div class="dropdown">
+        <button class="dropbtn" (click)="logout()"> Kilépés         
+        </button>
+      </div> 
+
     </div>
-    <div class="row">
-             
-        <div class="col-md-1"></div>
-        <div class="col-md-2" style="text-align: center"><a routerLink="/" >Statisztika</a></div>
-        <div class="col-md-2" style="text-align: center"><a routerLink="/equipment/form" >Új tétel</a></div>        
-        <div class="col-md-2" style="text-align: center"><a routerLink="/calendar/form">Új időpont</a></div>
-        <div class="col-md-2" style="text-align: center"><a routerLink="/calendar/list/:id">Időpontjaim</a></div>
-        <div class="col-md-2" style="text-align: center"><a routerLink="">Új csoport</a></div>        
-    </div>
-    <li class="nav-item">
-      <a class="nav-link" href="#" (click)="logout()">Kilépés</a>
-    </li>
-    
+  
     <hr>
   
   <router-outlet></router-outlet>

@@ -16,7 +16,8 @@ const routes: Routes = [
     path: 'equipment',
     component: EquipmentListComponent,
     canActivate: [ () => inject(AuthenticationService).preventGuestAccess(),
-      () => inject(AuthorizationService).preventNonTeacherAccess() ]    
+      //() => inject(AuthorizationService).preventNonTeacherAccess() 
+    ]    
   },
   {
     path: 'equipment/form/:id',

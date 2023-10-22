@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne} from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany} from "typeorm"
 import { GroupDTO, UserDTO } from "../../../models";
 import { Group } from "./Group";
 
@@ -16,6 +16,6 @@ export class User implements UserDTO{
     @Column()
     role: "student" | "teacher" | "admin";
 
-    @ManyToOne(type => Group, (group) => group.teacher)
-    groups: GroupDTO | null;
+    @OneToMany(type => Group, (group) => group.teacher, { eager: true })
+    groups: GroupDTO[] | null;
 }

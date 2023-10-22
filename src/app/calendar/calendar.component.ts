@@ -131,9 +131,9 @@ export class CalendarComponent {
     return false;
   }
 
-  groupsToString(groups: GroupDTO[] | undefined) : string{
+  groupsToString(groups: GroupDTO[] | undefined | null) : string{
     var groupString: string = "";
-    if (groups != undefined) {      
+    if (groups != undefined || groups != null) { 
       for (var counter in groups) {
         groupString = groupString + "/" + groups[counter].name;
       }

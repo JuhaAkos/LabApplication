@@ -1,18 +1,29 @@
-<div class="row justify-content-md-center">
-    <div class="col-md-6">
-        <form [formGroup]="userForm">
-            <div class="mb-3">
-                <label for="username" class="form-label">Felhasználó név</label>
-                <input type="username" class="form-control" id="username" formControlName="username">
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Jelszó</label>
-                <input type="password" class="form-control" id="password" formControlName="password">
-            </div>
-            
-            <div class="text-center">
-                <button class="btn btn-outline-primary" (click)="registerUser()">Fiók létrehozása</button>
-            </div>
-        </form>
+<div class="container">
+    <h3>Labor szertára:</h3>
+    <p></p>
+
+
+    <div class="row">
+        <div class="col-md-1">ID</div>        
+        <div class="col-md-3">Felhasználó név</div>
+        <div class="col-md-2">Jogkör</div>
+        <div class="col-md-4">Csoportok</div>        
+    </div>  
+
+    <hr>
+
+    <div *ngFor="let user of users">
+        <div class="row">
+            <div class="col-md-1">{{user.id}}</div>        
+            <div class="col-md-3">{{user.username}}</div>
+            <div class="col-md-2">{{user.role}}</div>
+            <div class="col-md-4">{{groupToString(user.groups)}}</div> 
+            <div class="col-md-1">
+                <button class="btn btn-primary btn-sm" (click)="deleteUser(user)">Törlés</button>
+            </div>  
+            <div class="col-md-1">
+                <button class="btn btn-primary btn-sm" (click)="modifyUser(user)">Módosítás</button>
+            </div>   
+        </div>
     </div>
 </div>

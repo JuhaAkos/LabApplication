@@ -17,8 +17,7 @@ export class ExperimentComponent {
   ngOnInit(): void {
     this.ExperimentService.getAll().subscribe({
       next: (experiments) => {
-        this.experiments = experiments;
-        //console.log(experiments.length)
+        this.experiments = experiments;        
       }
     });
     

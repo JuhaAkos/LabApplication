@@ -209,10 +209,6 @@ export class CalendarFormComponent {
     }    
   }
 
-  checkForEmptySecondaryClassSpace(serial: number){
-
-  }
-
   saveCalendar(){
     let calendar1 = {} as CalendarDTO;
     
