@@ -10,6 +10,8 @@ import { ExperimentComponent } from './experiment/experiment.component';
 import { AuthenticationService } from './services/authentication.service';
 import { UserListComponent } from './user-list/user-list.component';
 import { AuthorizationService } from './services/authorization.service';
+import { UserFormComponent } from './user-form/user-form.component';
+import { ExperimentFormComponent } from './experiment-form/experiment-form.component';
 
 const routes: Routes = [
   {
@@ -44,12 +46,28 @@ const routes: Routes = [
     component: ExperimentComponent
   },
   {
+    path: 'experiment/form',
+    component: ExperimentFormComponent
+  },
+  {
+    path: 'experiment/form/:id',
+    component: ExperimentFormComponent
+  },
+  {
     path: 'login',
     component: LoginComponent
   },
   {
     path: 'user/list',
     component: UserListComponent
+  },
+  {
+    path: 'user/form/:id',
+    component: UserFormComponent
+  },
+  {
+    path: 'user/form',
+    component: UserFormComponent
   },
 
 ];

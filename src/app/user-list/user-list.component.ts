@@ -50,11 +50,17 @@ export class UserListComponent {
   }
 
   deleteUser(user: UserDTO){
-
+    this.userService.delete(user.id).subscribe({
+      next: () => {        
+      },
+      error: (err) => {        
+        this.toastrService.error('Hiba a tétel törlésekor.', 'Hiba');
+      }
+    })
   }
 
-  modifyUser(user: UserDTO){
-
+  navigateToModifyUser(user: UserDTO){
+    this.router.navigate(['/user/form', user.id]);
   }  
 
   registerUser() {

@@ -1,0 +1,51 @@
+<div class="row justify-content-md-center">
+    <div *ngIf="!isModify">
+        <h3>Új fiók regisztrációja:</h3>
+    </div>
+
+    <div *ngIf="isModify">
+        <h3>Meglévő fiók módosítása:</h3>
+    </div>
+
+    <div class="col-md-6 spaceabove">
+        <form [formGroup]="userForm">
+            <div class="mb-3">
+                Felhasználónév
+                <input type="text" class="form-control" id="username" formControlName="username">
+            </div>
+
+            <div class="mb-3">
+                Jelszó
+                <input type="password" class="form-control" id="password" formControlName="password" placeholder="***">
+            </div> 
+            
+            <div class="mb-3">
+                Jogkör 
+                <div *ngIf="!isModify">
+                    <select class="form-select" name="role" id="role" formControlName="role">
+                        <option value="student">Diák</option>
+                        <option value="teacher">Tanár</option>
+                        <option value="admin">Admin</option>
+                    </select>  
+                </div> 
+                    
+                <div *ngIf="isModify">
+                    <select class="form-select" name="role" id="role" formControlName="role" inactive>
+                        <option value="{{showRole}}">{{showRole}}</option>
+                    </select>  
+                </div>             
+                 
+            </div>
+
+            <div class="text-center">
+                <div *ngIf="!isModify">
+                    <button class="btn btn-outline-primary" (click)="registerUser()">Regisztráció</button>
+                </div>
+                <div *ngIf="isModify">
+                    <button class="btn btn-outline-primary" (click)="modifyUser()">Módosítások mentése</button>
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="container">
+    <div *ngIf="!isModify">
+        <h3>Új kísérlet felvitele:</h3>
+    </div>
+
+    <div *ngIf="isModify">
+        <h3>Meglévő kísérlet módosítása:</h3>
+    </div>
+
+    <form [formGroup]="experimentForm">
+        <div class="mb-12">
+            Kísérlet neve
+            <input type="text" class="form-control" id="name" formControlName="name">
+        </div>
+
+        Kísérlet leírása
+        <textarea type="text" class="form-control" id="name" formControlName="name" rows="5"></textarea>
+
+    </form>
+    <br>
+    <h3>Szükséges felszerelések</h3>
+    <hr>
+    <div class="row">
+        <div class="col-md-2">Felszerelések típusa:</div>
+
+        <div class="col-md-4">
+            <select class="form-select" name="searchSelect" id="searchSelect" [(ngModel)]="selectedType">
+                <option value="chemical">Vegyszerek</option>
+                <option value="woodentool">Fa eszközök</option>
+                <option value="metaltool">Fém eszközök</option>
+                <option value="glasscontainer">Üvegedények</option>
+                <option value="device">Műszerek</option>
+                <option value="otheritem">Egyéb eszközök</option>
+            </select>
+        </div>
+    </div>
+
+    <div *ngIf="isSelectedType('chemical')">
+        <div *ngFor="let chemical of neededchemicals">
+            a
+        </div>
+    </div>
+
+</div>

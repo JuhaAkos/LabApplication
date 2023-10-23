@@ -27,6 +27,8 @@ import { ExperimentComponent } from './experiment/experiment.component';
 import { AccessTokenInterceptor } from './services/access-token.interceptor';
 import { UnauthorizedInterceptor } from './services/unauthorized.interceptor';
 import { UserListComponent } from './user-list/user-list.component';
+import { UserFormComponent } from './user-form/user-form.component';
+import { ExperimentFormComponent } from './experiment-form/experiment-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { UserListComponent } from './user-list/user-list.component';
     CalendarFormComponent,
     CalendarListComponent,
     ExperimentComponent,
-    UserListComponent
+    UserListComponent,
+    UserFormComponent,
+    ExperimentFormComponent
   ],
   imports: [
     BrowserModule,
