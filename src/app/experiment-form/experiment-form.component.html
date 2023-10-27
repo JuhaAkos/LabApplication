@@ -19,7 +19,7 @@
     </form>
     <br>
     <h3>Szükséges felszerelések</h3>
-    <hr>
+    
     <div class="row">
         <div class="col-md-2">Felszerelések típusa:</div>
 
@@ -35,10 +35,29 @@
         </div>
     </div>
 
-    <div *ngIf="isSelectedType('chemical')">
+    <hr>
+
+    <div *ngIf="isSelectedType('chemical')">     
+
         <div *ngFor="let chemical of neededchemicals">
-            a
+            <div class="row">
+                <div class="col-md-5 spaceleft"><li>{{ chemical.officialname }} ({{ chemical.name }})</li></div>
+                
+                <div class="col-md-5" *ngIf="checkForChemical(chemical)!=-1">
+                    <button class="btn btn-danger btn-sm width80" (click)="removeChemical(chemical)">Törlés</button>                    
+                </div>  
+                
+                <div class="col-md-5" *ngIf="!(checkForChemical(chemical)!=-1)">
+                    <button class="btn btn-primary btn-sm width80" (click)="addChemical(chemical)">Felvétel</button>                    
+                </div>
+            </div>
         </div>
+
+        <hr>
     </div>
+
+    
+
+    <div class="row"><button class="btn btn-primary btn-lg btn-block" (click)="saveExperiment()">OK</button></div>
 
 </div>

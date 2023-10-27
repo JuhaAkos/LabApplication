@@ -34,7 +34,7 @@ export class ExperimentFormComponent {
   ) { }
 
   public isModify = true;
-  showRole = "teacher"; 
+  showRole = "teacher";  
 
   neededchemicals: ChemicalDTO[] = [];
   neededwoodentools: WoodenToolDTO[] = [];
@@ -52,8 +52,22 @@ export class ExperimentFormComponent {
       this.fillUpForm();
     } else {
       this.isModify = false;
+      this.setDefaultExperiment();
+      //this.currentExperiment!.neededchemicals[0]=this.neededchemicals[0];
     }
   }
+
+  currentExperiment?: ExperimentDTO;
+  setDefaultExperiment(){
+    this.currentExperiment = this.experimentForm.value as ExperimentDTO;
+    this.currentExperiment.neededchemicals = <ChemicalDTO[]>[];
+    this.currentExperiment.neededdevices = <DeviceDTO[]>[];
+    this.currentExperiment.neededglasscontainers = <GlassContainerDTO[]>[];
+    this.currentExperiment.neededmetaltools = <MetalToolDTO[]>[];
+    this.currentExperiment.neededwoodentools = <WoodenToolDTO[]>[];
+    this.currentExperiment.neededotheritems = <OtherItemDTO[]>[];
+  }
+  
 
   getStorageItems() {    
     this.ChemicalService.getAll().subscribe({
@@ -102,9 +116,7 @@ export class ExperimentFormComponent {
     id: 0,
     name: this.formBuilder.control(''),
     description: this.formBuilder.control(''),
-  });
-
-  currentExperiment?: ExperimentDTO;
+  });  
 
   fillUpForm() {
     const id = this.activatedRoute.snapshot.params['id'];
@@ -116,44 +128,36 @@ export class ExperimentFormComponent {
         this.experimentForm.controls['description'].setValue(this.currentExperiment!.description);
       }
     })
-  } 
+  }  
 
-  createExperiment() {
-    var experimentData = this.experimentForm.value as ExperimentDTO;    
-    
-    this.experimentService.create(experimentData).subscribe({
-      next: (response) => {
-      },
-      error: (err) => {
-        this.toastrService.error(err.error.error, 'Error');
-      }
-    });
-  } 
+  saveExperiment(){
+    var saveData = this.currentExperiment as ExperimentDTO;
 
-  modifyExperiment() {
-    /*
-    var userData = this.userForm.value as UserDTO;
-    userData.role=this.currentUser!.role;
-    userData.id=this.activatedRoute.snapshot.params['id'];
-
-    if (userData.password!='aaaaaa') {
-      this.userService.update(userData).subscribe({
-      
-        next: (userData1) => {
-          this.toastrService.success('Fiók módosítva, id:' + userData1.id, 'Siker');
+    if (this.isModify){
+      saveData.id = this.activatedRoute.snapshot.params['id'];
+      this.experimentService.update(saveData).subscribe({
+        next: (saveData) => {
+          this.toastrService.success('Kísérlet módosítva, id:' + saveData.id , 'Siker');
         },
-        error: (err) => {
-          this.toastrService.error('Fiók módosítása sikertelen');
+        error: (err) => { 
+          this.toastrService.error('Kísérlet módosítása sikertelen');
         }
       });
     } else {
-      this.toastrService.error('Jelszó nem maradhat üresen!');
+      this.experimentService.create(saveData).subscribe({
+        next: (saveData) => {
+          this.toastrService.success('Kísérlet hozzáadva, id:' + saveData.id , 'Siker');
+        },
+        error: (err) => { 
+          this.toastrService.error('Kísérlet hozzáadása sikertelen');
+        }
+      });
     }
-    */    
   }
 
+  //chemical
   addChemical(chemical: ChemicalDTO){
-    this.neededchemicals?.push(chemical);
+    this.currentExperiment!.neededchemicals.push(chemical);
   }
   
   removeChemical(chemical: ChemicalDTO) {
@@ -164,9 +168,80 @@ export class ExperimentFormComponent {
   }
 
   checkForChemical(chemical: ChemicalDTO){
-    for ( var counter in this.currentExperiment!.neededchemicals){
-      if (chemical.id == this.currentExperiment!.neededchemicals[counter].id){
-        return Number(counter);
+    if (this.currentExperiment!.neededchemicals.length >0) {      
+      for ( var counter in this.currentExperiment!.neededchemicals){
+        if (chemical.id == this.currentExperiment!.neededchemicals[counter].id){
+          return Number(counter);        
+        }
+      }
+    }
+    return -1;
+  }
+
+  //device
+  addDevice(device: DeviceDTO){
+    this.currentExperiment!.neededdevices.push(device);
+  }
+  
+  removeDevice(device: DeviceDTO) {
+    var counter = this.checkForDevice(device);
+    if (counter>-1){
+      this.currentExperiment!.neededdevices.splice(counter, 1);
+    }
+  }
+
+  checkForDevice(device: DeviceDTO){
+    if (this.currentExperiment!.neededdevices.length >0) {      
+      for ( var counter in this.currentExperiment!.neededdevices){
+        if (device.id == this.currentExperiment!.neededdevices[counter].id){
+          return Number(counter);        
+        }
+      }
+    }
+    return -1;
+  }
+
+  //woodentool
+  addWoodentool(woodentool: WoodenToolDTO){
+    this.currentExperiment!.neededwoodentools.push(woodentool);
+  }
+  
+  removeWoodentool(woodentool: WoodenToolDTO) {
+    var counter = this.checkForWoodentool(woodentool);
+    if (counter>-1){
+      this.currentExperiment!.neededwoodentools.splice(counter, 1);
+    }
+  }
+
+  checkForWoodentool(woodentool: WoodenToolDTO){
+    if (this.currentExperiment!.neededwoodentools.length >0) {      
+      for ( var counter in this.currentExperiment!.neededwoodentools){
+        if (woodentool.id == this.currentExperiment!.neededwoodentools[counter].id){
+          return Number(counter);        
+        }
+      }
+    }
+    return -1;
+  }
+
+  //metaltool
+  addmetaltool(metaltool: MetalToolDTO){
+    this.currentExperiment!.neededmetaltools.push(metaltool);
+  }
+  
+  removemetaltool(metaltool: MetalToolDTO) {
+    var counter = this.checkFormetaltool(metaltool);
+    if (counter>-1){
+      this.currentExperiment!.neededmetaltools.splice(counter, 1);
+    }
+  }
+
+  checkFormetaltool(metaltool: MetalToolDTO){
+    if (this.currentExperiment!.neededmetaltools.length >0) {      
+      for ( var counter in this.currentExperiment!.neededmetaltools){
+        if (metaltool.id == this.currentExperiment!.neededmetaltools[counter].id){
+          return Number(counter);        
+        }
       }
     }
     return -1;

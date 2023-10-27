@@ -222,8 +222,7 @@ export class CalendarFormComponent {
         next: (calendar) => {       
         }
       });
-    }
-    
+    }    
   }
 
 
