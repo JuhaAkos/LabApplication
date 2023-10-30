@@ -59,8 +59,10 @@ export interface CalendarDTO {
     //szétválasztható fiz és kémia részre megnevezés alapján
     //vagy hagyható egybe -> fulllab
     classroom: "teljes labor" | "kémia labor" | "fizika labor";
-    groups: GroupDTO[];
+    groups: GroupDTO[];    
     istimetableclass: 0 | 1;
+
+    teacher: UserDTO;
 }
 
 export interface GroupDTO {
@@ -89,6 +91,7 @@ export interface UserDTO {
     password: string;
     role: "student" | "teacher" | "admin";     
     groups: GroupDTO[] | null;
+    lessons: CalendarDTO[] | null;
 }
 
 export interface LoginDTO {
@@ -98,4 +101,6 @@ export interface LoginDTO {
 
 export interface AccessTokenDTO {
     accessToken: string;
+    role: string;
+    id: string;
 }

@@ -40,28 +40,11 @@ export class UserController extends Controller {
                 return this.handleError(res, null, 401, 'Incorrect username or password.');
             }
     
-            const token = jwt.sign({ id: user.id }, 'mySecretKey', { expiresIn: '1d' });
-            res.json({ accessToken: token });
+            const token = jwt.sign({ id: user.id, role: user.role }, 'mySecretKey', { expiresIn: '1d' });
+            res.json({ accessToken: token, role: user.role, id: user.id });
         } catch (err) {
             this.handleError(res, err);
         }
     };
-
-    getCurrentUsername = async (req, res) => {
-        try {
-            return req.body.username;
-        } catch (err) {
-            this.handleError(res, err);
-        }
-    }
-
-    getCurrentRole = async (req, res) => {
-        try {
-            return req.body.role;
-        } catch (err) {
-            this.handleError(res, err);
-        }
-    }
-
     
 }

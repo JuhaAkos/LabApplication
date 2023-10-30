@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable} from "typeorm"
-import { CalendarDTO, GroupDTO } from "../../../models";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable, ManyToOne, JoinColumn} from "typeorm"
+import { CalendarDTO, GroupDTO, UserDTO } from "../../../models";
 import {Group } from "./Group";
+import { User } from "./User";
 
 @Entity()
 export class Calendar implements CalendarDTO{
@@ -31,4 +32,11 @@ export class Calendar implements CalendarDTO{
 
     @Column()
     istimetableclass: 0 | 1;
+
+    @ManyToOne(type => User, (user) => user.lessons)
+    @JoinColumn({ name: "teacherId" })
+    teacher: UserDTO;
+
+    @Column()
+    teacherId: number;
 }

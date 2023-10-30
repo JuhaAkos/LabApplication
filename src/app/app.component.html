@@ -1,87 +1,112 @@
 <html>
-  <div class="container">
-    <div class="row pt-2">
-      <div class="col-md-12" style="text-align: center">
-        <h2>Labornyilvántartó rendszer</h2>
-        <hr>
-      </div>
-    </div>    
+<div class="container">
+  <div class="row pt-2">
+    <div class="col-md-12" style="text-align: center">
+      <h2>Labornyilvántartó rendszer</h2>
+      <hr>
+    </div>
+  </div>
 
-    <div class="navbar">
-      
-      <div class="dropdown">
-        <button class="dropbtn">
-          <a routerLink="/">Főoldal</a>
-        </button>
-      </div> 
-      
+  <div class="navbar">
+
+    <div class="dropdown">
+      <button class="dropbtn">
+        <a routerLink="/">Főoldal</a>
+      </button>
+    </div>
+
+    <div *ngIf="checkRoles(['teacher','admin'])">
       <div class="dropdown">
         <button class="dropbtn">
           <a routerLink="/equipment">Szertár</a>
         </button>
         <div class="dropdown-content">
-          <a href="/equipment">  Megtekintés  </a>
-          <a href="/equipment/form">  Új tétel  </a>
+          <a href="/equipment"> Megtekintés </a>
+          <a href="/equipment/form"> Új tétel </a>
         </div>
-      </div> 
+      </div>
+    </div>
 
+    <div *ngIf="checkRoles(['student','teacher','admin'])">
       <div class="dropdown">
         <button class="dropbtn">
-          <a routerLink="/calendar">Beosztás</a> 
+          <a routerLink="/calendar">Beosztás</a>
         </button>
         <div class="dropdown-content">
-          <a routerLink="/calendar">  Megtekintés  </a>
-          <a routerLink="/calendar/form">  Új időpont  </a>
-          <a routerLink="/calendar/list/:id">  Időpontjaim  </a>
+          <a routerLink="/calendar"> Megtekintés </a>
+          <div *ngIf="checkRoles(['teacher','admin'])">
+            <a routerLink="/calendar/form"> Új időpont </a>
+            <a routerLink="/calendar/list"> Időpontjaim </a>
+          </div>
         </div>
-      </div> 
+      </div>
+    </div>
 
+    <div *ngIf="checkRoles(['student','teacher','admin'])">
       <div class="dropdown">
         <button class="dropbtn">
-          <a routerLink="/experiment">Kísérletek</a>          
+          <a routerLink="/experiment">Kísérletek</a>
         </button>
         <div class="dropdown-content">
-          <a routerLink="/experiment">  Lista  </a>
-          <a routerLink="/experiment/form">  Új kísérlet  </a>
+          <a routerLink="/experiment"> Lista </a>
+          <div *ngIf="checkRoles(['teacher','admin'])">
+            <a routerLink="/experiment/form"> Új kísérlet </a>
+          </div>
         </div>
-      </div> 
+      </div>
+    </div>
 
+    <div *ngIf="checkRoles(['admin'])">
       <div class="dropdown">
         <button class="dropbtn">
-          <a routerLink="/user/list">Felhasználókezelés</a>          
+          <a routerLink="/user/list">Felhasználókezelés</a>
         </button>
         <div class="dropdown-content">
-          <a routerLink="/user/list">  Lista  </a>
-          <a routerLink="/user/form">  Új fiók  </a>
+          <a routerLink="/user/list"> Lista </a>
+          <a routerLink="/user/form"> Új fiók </a>
         </div>
-      </div> 
+      </div>
+    </div>
 
+    <div *ngIf="checkRoles(['teacher','admin'])">
       <div class="dropdown">
         <button class="dropbtn">
           <a routerLink="/group">Csoportok</a>
         </button>
         <div class="dropdown-content">
-          <a routerLink="/group">  Megtekintés  </a>
-          <a routerLink="/group/form">  Új csoport  </a>
+          <a routerLink="/group"> Megtekintés </a>
+          <a routerLink="/group/form"> Új csoport </a>
         </div>
-      </div> 
+      </div>
+    </div>
 
+    <div *ngIf="checkRoles(['teacher','admin'])">
       <div class="dropdown">
         <button class="dropbtn">
           <a routerLink="/statistic">Statisztika</a>
         </button>
-      </div> 
-
-      <div class="dropdown">
-        <button class="dropbtn" (click)="logout()"> Kilépés         
-        </button>
-      </div> 
-
+      </div>
     </div>
-  
-    <hr>
-  
-  <router-outlet></router-outlet>
+
+    <div class="dropdown">
+      <div class="logoutc">
+        <button *ngIf="this.authenticationService.isLoggedIn()" class="dropbtn" (click)="logout()"> Kijelentkezés
+        </button>
+      </div>
+
+      <div *ngIf="!this.authenticationService.isLoggedIn()" class="loginc">
+        <button class="dropbtn">
+          <a routerLink="/login">Bejelentkezés</a>
+        </button>
+      </div>
+    </div>
 
   </div>
-</html> 
+
+  <hr>
+
+  <router-outlet></router-outlet>
+
+</div>
+
+</html>

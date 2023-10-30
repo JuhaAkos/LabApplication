@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from './services/authentication.service';
@@ -9,35 +9,33 @@ import { AuthenticationService } from './services/authentication.service';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent {  
+export class AppComponent {
   title = 'Labor-app';
+
+  private currentUserRole!: string | null;
 
   constructor(
     private router: Router,
     public authenticationService: AuthenticationService,
-    private toastrService: ToastrService) { }
+    private toastrService: ToastrService,
+  ) { }
 
   logout() {
+    this.authenticationService.setRole('');
     this.authenticationService.removeToken();
     this.router.navigateByUrl('/');
     this.toastrService.success('Sikeresen kijelentkezett.', 'Kilépés');
+    this.ngOnInit();
   }
 
-  ngOnInit(){
-    console.log("c");
+  ngOnInit() {
+    this.currentUserRole = this.authenticationService.getRole();
+    console.log(this.currentUserRole);
   }
 
-  /*
-  ngOnDestroy(){
-    console.log("byebye");
-    this.logout();
+  checkRoles(roles: string[]) {
+    //console.log(roles[0] + " + " + roles[1] + " + " + this.currentUserRole);
+    return roles.includes(this.currentUserRole!);
   }
-  */
 
-  /*
-  @HostListener('window:unload', [ '$event' ])
-  unloadHandler(event: any) {
-    this.logout();
-  }
-  */
 }

@@ -24,13 +24,23 @@ export class LoginComponent {
     private router: Router,
     private toastrService: ToastrService) { }
 
+  ngOnInit(){ 
+    if (this.authenticationService.isLoggedIn())  {
+      this.router.navigateByUrl('/');
+    }
+  }  
+
   login() {
     const loginData = this.loginForm.value as LoginDTO;
 
     this.userService.login(loginData).subscribe({
       next: (response) => {
         this.authenticationService.setToken(response.accessToken);
-        this.router.navigateByUrl('/');
+        this.authenticationService.setRole(response.role); 
+        console.log(response.id);
+        this.authenticationService.setID(response.id);    
+       
+        location.reload();   
       },
       error: (err) => {
         this.toastrService.error(err.error.error, 'Error');

@@ -9,7 +9,6 @@ import { CalendarListComponent } from './calendar-list/calendar-list.component';
 import { ExperimentComponent } from './experiment/experiment.component';
 import { AuthenticationService } from './services/authentication.service';
 import { UserListComponent } from './user-list/user-list.component';
-import { AuthorizationService } from './services/authorization.service';
 import { UserFormComponent } from './user-form/user-form.component';
 import { ExperimentFormComponent } from './experiment-form/experiment-form.component';
 
@@ -17,8 +16,7 @@ const routes: Routes = [
   {
     path: 'equipment',
     component: EquipmentListComponent,
-    canActivate: [ () => inject(AuthenticationService).preventGuestAccess(),
-      //() => inject(AuthorizationService).preventNonTeacherAccess() 
+    canActivate: [ () => inject(AuthenticationService).preventGuestAccess(),      
     ]    
   },
   {
@@ -27,7 +25,8 @@ const routes: Routes = [
   },
   {
     path: 'equipment/form',
-    component: EquipmentFormComponent
+    component: EquipmentFormComponent,
+    canActivate: [ () => inject(AuthenticationService).restrictToRolesOf([ 'teacher', 'admin' ]) ]
   },
   {
     path: 'calendar',
@@ -68,7 +67,8 @@ const routes: Routes = [
   {
     path: 'user/form',
     component: UserFormComponent
-  },
+  }
+ 
 
 ];
 

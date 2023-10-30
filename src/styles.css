@@ -217,3 +217,19 @@ table {
     display:flex;
     align-items: stretch;
 }
+
+.loginc {
+    background-color: #76a5b6;
+}
+
+.logoutc {
+    background-color: #c46a6a;
+}
+
+.loginc:hover .dropbtn, .loginc a:hover {
+    background-color: #527581;
+}
+
+.logoutc:hover .dropbtn, .logoutc a:hover{
+    background-color: #ca2c2c;
+}

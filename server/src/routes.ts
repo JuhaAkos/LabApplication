@@ -9,7 +9,7 @@ import { GroupController } from "./controller/group.controller";
 import { CalendarController } from "./controller/calendar.controller";
 import { UserController } from "./controller/user.controller";
 import { ExperimentController } from "./controller/experiment.controller";
-import { checkUser } from "./protect-routes";
+import { checkUser, isUserOneOf } from "./protect-routes";
 
 export function getRoutes() {
     const router = express.Router();
@@ -26,7 +26,7 @@ export function getRoutes() {
 
     router.get('/device', deviceController.getAll);
     router.get('/device/:id', deviceController.getOne);
-    router.post('/device/', deviceController.create);
+    router.post('/device/', checkUser, isUserOneOf([ 'teacher', 'admin' ]), deviceController.create);
     router.put('/device/', deviceController.update);
     router.delete('/device/:id', deviceController.delete);
 

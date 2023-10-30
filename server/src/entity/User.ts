@@ -1,6 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany} from "typeorm"
-import { GroupDTO, UserDTO } from "../../../models";
+import { CalendarDTO, GroupDTO, UserDTO } from "../../../models";
 import { Group } from "./Group";
+import { Calendar } from "./Calendar";
 
 @Entity()
 export class User implements UserDTO{
@@ -18,4 +19,7 @@ export class User implements UserDTO{
 
     @OneToMany(type => Group, (group) => group.teacher, { eager: true })
     groups: GroupDTO[] | null;
+
+    @OneToMany(type => Calendar, (calendar) => calendar.teacher, { eager: true })
+    lessons: CalendarDTO[] | null;
 }
