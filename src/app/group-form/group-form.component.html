@@ -1,0 +1,35 @@
+<div class="row justify-content-md-center">
+    <div *ngIf="!isModify">
+        <h3>Új csoport létrehozása:</h3>
+    </div>
+
+    <div *ngIf="isModify">
+        <h3>Meglévő csoport módosítása:</h3>
+    </div>
+
+    <div class="col-md-6 spaceabove">
+        <form [formGroup]="groupForm">
+            <div class="mb-3">
+                Csoportnév
+                <input type="text" class="form-control" id="name" formControlName="name">
+            </div>
+            <div class="mb-3">
+                Csoportba tartozó diákok felsorolva
+                <textarea class="form-control" id="studentnames" formControlName="studentnames" rows="3"></textarea>
+            </div>
+        </form>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-7">
+            <div *ngIf="!isModify">
+                <button class="btn btn-outline-primary" (click)="addGroup()">Új csoport mentése</button>
+            </div>
+            <div *ngIf="isModify">
+                <button class="btn btn-outline-primary" (click)="modifyGroup()">Módosítások mentése</button>
+            </div>
+        </div>
+    </div>
+
+</div>

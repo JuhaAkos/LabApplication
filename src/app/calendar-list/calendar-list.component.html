@@ -1,2 +1,38 @@
-<p>calendar-list works!</p>
+<div class="container">
+    <h3>Időpontjaim kezelése:</h3>
+    <p></p>
+    <br>
 
+    <div class="row">
+        <div class="col-md-1">ID</div>        
+        <div class="col-md-3">Időpont</div>
+        <div class="col-md-2">Foglalkozás</div>
+        <div class="col-md-2">Órarendi alkalom?</div>      
+        <div class="col-md-1">Törlés</div>   
+    </div>  
+
+    <hr>
+
+    <div *ngFor="let calendar of calendars">
+        <div class="row">
+            <div class="col-md-1">{{calendar.id}}</div>        
+            <div class="col-md-3">{{calendar.week}}. hét - {{dayToString(calendar.day)}} - {{calendar.timeofclass}}. óra</div>
+            <div class="col-md-2">{{calendar.activity}}</div> 
+            <div class="col-md-2">{{timetableToString(calendar.istimetableclass)}} foglalkozás</div> 
+            <div class="col-md-1">
+                <button class="btn btn-primary btn-sm" (click)="deleteCalendar(calendar)">Törlés</button>
+            </div>           
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+        Törölt időpontok újrafelvétele, vagy teljesen új időpont rögzítése: 
+        <div class="col-md-3">
+            <button class="btn btn-primary btn-md btn-block" (click)="navigateToCalendarForm()">Új időpont felvétele</button>
+        </div>
+    </div>
+   
+
+</div>

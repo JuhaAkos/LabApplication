@@ -29,8 +29,7 @@ export class CalendarService {
     return this.http.delete('api/calendar/' + id);
   }
 
-  getUserCalendar(teacherId: number) {
-    return this.http.get<CalendarDTO[]>('api/calendar/' + teacherId);
-    
+  getUserCalendar() {
+    return this.http.get<CalendarDTO[]>('api/calendar/own');    
   }
 }

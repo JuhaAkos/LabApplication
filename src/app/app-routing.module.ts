@@ -11,6 +11,8 @@ import { AuthenticationService } from './services/authentication.service';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { ExperimentFormComponent } from './experiment-form/experiment-form.component';
+import { GroupFormComponent } from './group-form/group-form.component';
+import { GroupListComponent } from './group-list/group-list.component';
 
 const routes: Routes = [
   {
@@ -67,6 +69,18 @@ const routes: Routes = [
   {
     path: 'user/form',
     component: UserFormComponent
+  }, 
+  {
+    path: 'group/form',
+    component: GroupFormComponent
+  }, 
+  {
+    path: 'group/form/:id',
+    component: GroupFormComponent
+  },
+  {
+    path: 'group/list',
+    component: GroupListComponent
   }
  
 

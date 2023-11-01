@@ -31,7 +31,7 @@ export class ChemicalFormService {
 
   setChemical(chemicalInput: ChemicalDTO, chemicalForm: FormGroup) {
     chemicalInput.officialname = chemicalForm.controls['officialname'].value!;
-    chemicalInput.name = chemicalForm.controls['commonname'].value!;
+    chemicalInput.name = chemicalForm.controls['name'].value!;
     chemicalInput.amount = Number(chemicalForm.controls['amount'].value!);
     chemicalInput.unit = chemicalForm.controls['unit'].value!;
     chemicalInput.poisonouseffect = chemicalForm.controls['poisonouseffect'].value!;

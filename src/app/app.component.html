@@ -10,8 +10,8 @@
   <div class="navbar">
 
     <div class="dropdown">
-      <button class="dropbtn">
-        <a routerLink="/">Főoldal</a>
+      <button class="dropbtn" (click)="navigateToMainmenu()">
+        Főoldal
       </button>
     </div>
 
@@ -74,17 +74,9 @@
           <a routerLink="/group">Csoportok</a>
         </button>
         <div class="dropdown-content">
-          <a routerLink="/group"> Megtekintés </a>
+          <a routerLink="/group/list"> Megtekintés </a>
           <a routerLink="/group/form"> Új csoport </a>
         </div>
-      </div>
-    </div>
-
-    <div *ngIf="checkRoles(['teacher','admin'])">
-      <div class="dropdown">
-        <button class="dropbtn">
-          <a routerLink="/statistic">Statisztika</a>
-        </button>
       </div>
     </div>
 
@@ -95,8 +87,8 @@
       </div>
 
       <div *ngIf="!this.authenticationService.isLoggedIn()" class="loginc">
-        <button class="dropbtn">
-          <a routerLink="/login">Bejelentkezés</a>
+        <button class="dropbtn" (click)="navigateToLogin()">
+          Bejelentkezés
         </button>
       </div>
     </div>

@@ -4,4 +4,5 @@ import { Controller } from "./base.controller";
 
 export class GroupController extends Controller{
     repository = AppDataSource.getRepository(Group)
+
 }

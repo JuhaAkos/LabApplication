@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { GroupDTO, LoginDTO, UserDTO } from 'models';
+import { GroupDTO, UserDTO } from 'models';
 import { ToastrService } from 'ngx-toastr';
-import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -23,7 +22,6 @@ export class UserListComponent {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private authenticationService: AuthenticationService,
     private router: Router,
     private toastrService: ToastrService,
     ) { }
@@ -33,7 +31,8 @@ export class UserListComponent {
   ngOnInit(): void {
     this.userService.getAll().subscribe({
       next: (users) => {
-        this.users = users;        
+        this.users = users;  
+        console.log(this.users[0]);      
       }
     });
   }

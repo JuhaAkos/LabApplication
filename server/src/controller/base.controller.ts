@@ -29,11 +29,7 @@ export abstract class Controller {
     create = async (req, res) => {
         try {
             const entity = this.repository.create(req.body as object);
-            //change is for id generation
-            if (entity.id == undefined){
-                entity.id = null;
-            }   
-            
+            entity.id = null;            
 
             const result = await this.repository.save(entity);
             
@@ -45,13 +41,14 @@ export abstract class Controller {
 
     update = async (req, res) => {
         try {
-            const entity = this.repository.create(req.body as object);
-            const entityToUpdate = await this.repository.findOneBy({ id: entity.id });
-            if (!entityToUpdate) {
-                return this.handleError(res, null, 404, 'Not found.');
+            let entity = await this.repository.findOneBy({ id: req.body.id });
+            if (!entity || !req.body.id) {
+                return this.handleError(res, null, 404, 'No entity found with this id.');
             }
 
+            entity = this.repository.create(req.body as object);
             const result = await this.repository.save(entity);
+ 
             res.json(result);
         } catch (err) {
             this.handleError(res, err);

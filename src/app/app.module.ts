@@ -29,6 +29,8 @@ import { UnauthorizedInterceptor } from './services/unauthorized.interceptor';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserFormComponent } from './user-form/user-form.component';
 import { ExperimentFormComponent } from './experiment-form/experiment-form.component';
+import { GroupListComponent } from './group-list/group-list.component';
+import { GroupFormComponent } from './group-form/group-form.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { ExperimentFormComponent } from './experiment-form/experiment-form.compo
     ExperimentComponent,
     UserListComponent,
     UserFormComponent,
-    ExperimentFormComponent
+    ExperimentFormComponent,
+    GroupListComponent,
+    GroupFormComponent
   ],
   imports: [
     BrowserModule,

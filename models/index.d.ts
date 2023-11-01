@@ -69,7 +69,8 @@ export interface GroupDTO {
     id: number;
     name: string;
     teacher: UserDTO;
-    studentnames: string[];
+    teacherId: number;
+    studentnames: string;
     classes: CalendarDTO[];
 }
 

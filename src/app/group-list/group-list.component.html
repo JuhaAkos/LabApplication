@@ -1,0 +1,31 @@
+<div class="container">
+    <h3>Tanulói csoportok:</h3>
+    <p></p>
+    <br>
+
+    <div class="row">
+        <div class="col-md-1">ID</div>        
+        <div class="col-md-1">Név</div>
+        <div class="col-md-2">Oktató</div>
+        <div class="col-md-3">Diákok</div>        
+    </div>  
+
+    <hr>
+
+    <div *ngFor="let group of groups">
+        <div class="row">
+            <div class="col-md-1">{{group.id}}</div>
+            <div class="col-md-1">{{group.name}}</div>
+            <div class="col-md-2">{{getGroupTeacher(group)}}</div>
+            <div class="col-md-3">{{group.studentnames}}</div>            
+            <div *ngIf="isCurrentUserGroup(group)" class="col-md-1">                
+                <button class="btn btn-primary btn-sm" (click)="navigateToGroupModify(group)">Módosítás</button>
+            </div>
+            <div *ngIf="isCurrentUserGroup(group)" class="col-md-1">                
+                <button class="btn btn-primary btn-sm" (click)="deleteGroup(group)">Törlés</button>
+            </div>            
+        </div>
+    </div>
+
+
+</div>

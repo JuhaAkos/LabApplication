@@ -7,21 +7,19 @@ import { Controller } from "./base.controller";
 export class CalendarController extends Controller {
   repository = AppDataSource.getRepository(Calendar);
 
+  getUserCalendar = async (req, res) => {
+    try {
+      const teacherId = req.auth.id;
 
-  async getUserCalendar(req, res) {
-    
-    const teacherId = req.params.id;
-
-    const userCalendars = await this.repository      
-      .createQueryBuilder("calendar")      
-      .select("calendar")
-      .from(Calendar, "calendar")      
-      .where("calendar.id = :tId", { tId: 5})
-      .getMany();
-    
-    
-    console.log("a:" + userCalendars)
-    res.json(userCalendars);    
+      const userCalendars = await this.repository.findBy({
+        teacher: { id: teacherId }
+      });
+      
+      res.json(userCalendars);
+    }
+    catch (err) {
+      this.handleError(res, err, 500);
+    }
   }
 
 }

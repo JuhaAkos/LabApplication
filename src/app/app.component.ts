@@ -38,4 +38,12 @@ export class AppComponent {
     return roles.includes(this.currentUserRole!);
   }
 
+  navigateToLogin(){
+    this.router.navigateByUrl('/login');
+  }
+
+  navigateToMainmenu(){
+    this.router.navigateByUrl('/');
+  }
+
 }

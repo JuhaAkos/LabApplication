@@ -46,5 +46,24 @@ export class UserController extends Controller {
             this.handleError(res, err);
         }
     };
-    
+
+
+    //override object password here...
+    /*
+    update = async (req, res) => {
+        try {
+            let entity = await this.repository.findOneBy({ id: req.body.id });
+            if (!entity || !req.body.id) {
+                return this.handleError(res, null, 404, 'No entity found with this id.');
+            }
+
+            entity = this.repository.create(req.body as object);
+            const result = await this.repository.save(entity);
+ 
+            res.json(result);
+        } catch (err) {
+            this.handleError(res, err);
+        }
+    };
+    */    
 }

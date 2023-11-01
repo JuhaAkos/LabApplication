@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { UserDTO } from 'models';
 import { ToastrService } from 'ngx-toastr';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-user-form',
@@ -18,6 +19,7 @@ export class UserFormComponent {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private toastrService: ToastrService,
+    private authenticationService: AuthenticationService,
   ) { }
 
   public isModify = true;
@@ -49,7 +51,6 @@ export class UserFormComponent {
       next: (currentUser) => {
         this.currentUser=currentUser;
         this.showRole=this.currentUser.role;
-        console.log(this.currentUser.password);
         
         this.userForm.controls['username'].setValue(this.currentUser!.username);
         this.userForm.controls['password'].setValue(null);
@@ -73,9 +74,11 @@ export class UserFormComponent {
   //HIBA!!!!
   //ask for password from req like other data!!!
   modifyUser() {
+    console.log(this.authenticationService.getToken);
     var userData = this.userForm.value as UserDTO;
     userData.role=this.currentUser!.role;
     userData.id=this.activatedRoute.snapshot.params['id'];
+    //userData.password=this.authenticationService.getToken
 
     if (userData.password!='aaaaaa') {
       this.userService.update(userData).subscribe({
