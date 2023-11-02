@@ -21,8 +21,8 @@ export class CalendarListComponent {
 
   calendars: CalendarDTO[] = [];
 
-  ngOnInit() {
-    this.getUserCalendarData();    
+  ngOnInit() {    
+      this.getUserCalendarData();     
   }
 
   getUserCalendarData(){
@@ -31,6 +31,39 @@ export class CalendarListComponent {
         this.calendars = calendars;        
       }
     });   
+  }
+
+  getUserDataAndPressButton(){
+    this.isButtonPressed();
+    this.getUserCalendarData(); 
+  }
+
+  isAllCalendar = false;
+
+  getAdminAllCalendar(){
+    this.isButtonPressed();
+    this.calendarService.getAll().subscribe({
+      next: (calendars) => {  
+        this.calendars = calendars;        
+      }
+    }); 
+  }
+
+  isButtonPressed(){
+    if (this.isAllCalendar == false) {
+      this.isAllCalendar = true;
+    } else {
+      this.isAllCalendar = false;
+    }
+  }
+
+  isUserAdmin(){
+    const role = this.authenticationService.getRole();
+    const roles = ['admin'];
+    if (roles.includes(role!)) {
+      return true;
+    }
+    return false;
   }
   
   deleteCalendar(calendar: CalendarDTO){

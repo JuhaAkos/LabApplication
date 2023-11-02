@@ -43,7 +43,7 @@ export class GroupFormComponent {
   }
 
   groupForm = this.formBuilder.group({
-    id: 0,
+    id: this.formBuilder.control(0),
     name: this.formBuilder.control(''),
     teacherId: Number(this.formBuilder.control('')),
     studentnames: this.formBuilder.control(''),    
@@ -57,16 +57,12 @@ export class GroupFormComponent {
     this.groupService.getOne(id).subscribe({
       next: (currentGroup) => {
         this.currentGroup=currentGroup;
-        
-        this.groupForm.controls['name'].setValue(this.currentGroup!.name);
-        this.groupForm.controls['teacherId'].setValue(this.currentGroup!.teacherId);
-        this.groupForm.controls['studentnames'].setValue(this.currentGroup!.studentnames);        
+        this.groupForm.setValue(currentGroup);      
       }
     })
-  } 
+  }
 
   addGroup(){
-    console.log("groupadd");
     const groupData = this.groupForm.value as GroupDTO;    
     
     this.groupService.create(groupData).subscribe({
@@ -76,15 +72,10 @@ export class GroupFormComponent {
         this.toastrService.error(err.error.error, 'Error');
       }
     });
-  }
+  }  
 
   modifyGroup() {
-    console.log("groupmod");
-    const groupData = this.groupForm.value as GroupDTO;    
-
-    groupData.id = this.activatedRoute.snapshot.params['id']; 
-    
-    console.log(groupData);
+    const groupData = this.groupForm.value as GroupDTO;
 
     this.groupService.update(groupData).subscribe({
       next: (groupData) => {

@@ -3,6 +3,23 @@
     <p></p>
     <br>
 
+    <div *ngIf="isUserAdmin()">
+        <div *ngIf="!isAllCalendar" class="row">
+            Admin felhasználóként az összes időpont lekérése:
+            <div class="col-md-3">
+                <button class="btn btn-primary btn-md btn-block" (click)="getAdminAllCalendar()">Összes időpont lekérése</button>
+            </div>
+        </div>
+        <div *ngIf="isAllCalendar" class="row">
+            Visszatérés saját időpontokra:
+            <div class="col-md-3">
+                <button class="btn btn-primary btn-md btn-block" (click)="getUserDataAndPressButton()">Saját időpontok lekérése</button>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
     <div class="row">
         <div class="col-md-1">ID</div>        
         <div class="col-md-3">Időpont</div>

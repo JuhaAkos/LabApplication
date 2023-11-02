@@ -48,22 +48,26 @@ export class UserController extends Controller {
     };
 
 
-    //override object password here...
-    /*
+    //override object password here...    
     update = async (req, res) => {
         try {
             let entity = await this.repository.findOneBy({ id: req.body.id });
             if (!entity || !req.body.id) {
                 return this.handleError(res, null, 404, 'No entity found with this id.');
             }
-
+            if (!req.body.password || req.body.password==null) {
+                req.body.password=entity.password
+            }          
+            
             entity = this.repository.create(req.body as object);
+
+            entity.password = await bcrypt.hash(entity.password, 12);
+            
             const result = await this.repository.save(entity);
  
             res.json(result);
         } catch (err) {
             this.handleError(res, err);
         }
-    };
-    */    
+    }; 
 }

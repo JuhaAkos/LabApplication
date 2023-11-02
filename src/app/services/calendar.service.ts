@@ -28,8 +28,15 @@ export class CalendarService {
   delete(id: number) {
     return this.http.delete('api/calendar/' + id);
   }
-
+  
   getUserCalendar() {
     return this.http.get<CalendarDTO[]>('api/calendar/own');    
   }
+
+  getAdminCalendar() {
+    return this.http.get<CalendarDTO[]>('api/calendar/admin');    
+  }
+
+
+  
 }

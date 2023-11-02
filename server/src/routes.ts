@@ -78,6 +78,7 @@ export function getRoutes() {
 
     router.get('/calendar', calendarController.getAll);
     router.get('/calendar/own', checkUser, isUserOneOf([ 'teacher', 'admin' ]), calendarController.getUserCalendar);
+    router.get('/calendar/admin', checkUser, isUserOneOf([ 'admin' ]), calendarController.getUserCalendar);
     router.get('/calendar/:id', calendarController.getOne);
     router.post('/calendar/', calendarController.create);
     router.put('/calendar', calendarController.update);

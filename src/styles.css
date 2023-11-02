@@ -233,3 +233,17 @@ table {
 .logoutc:hover .dropbtn, .logoutc a:hover{
     background-color: #ca2c2c;
 }
+
+
+
+
+.justify {
+    text-align: justify;
+}
+
+.bigbuttonsize {
+    font-size: 240%;
+    width: 60vh;
+    height: 16vh;
+    width: fit-content;
+}

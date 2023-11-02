@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../services/user.service';
-import { UserDTO } from 'models';
+import { CalendarDTO, GroupDTO, UserDTO } from 'models';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '../services/authentication.service';
 
@@ -19,7 +19,6 @@ export class UserFormComponent {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private toastrService: ToastrService,
-    private authenticationService: AuthenticationService,
   ) { }
 
   public isModify = true;
@@ -35,12 +34,16 @@ export class UserFormComponent {
     }
   }
 
+  empty : GroupDTO[] = []
+  empty2 : CalendarDTO[] = []
+
   userForm = this.formBuilder.group({
-    id: 0,
+    id: this.formBuilder.control(0),
     username: this.formBuilder.control(''),
     password: this.formBuilder.control(''),
     role: "student",
-    groups: null,
+    groups: this.formBuilder.control(this.empty),
+    lessons: this.formBuilder.control(this.empty2),
   });
 
   currentUser?: UserDTO;
@@ -50,11 +53,17 @@ export class UserFormComponent {
     this.userService.getOne(id).subscribe({
       next: (currentUser) => {
         this.currentUser=currentUser;
-        this.showRole=this.currentUser.role;
+        this.showRole=this.currentUser.role;    
+        this.currentUser.password="";
+        this.userForm.setValue(currentUser); 
         
+        console.log(this.userForm);
+        /*
+        this.userForm.controls['username'].setValue(this.currentUser!.username);
         this.userForm.controls['username'].setValue(this.currentUser!.username);
         this.userForm.controls['password'].setValue(null);
         this.userForm.controls['role'].setValue(this.currentUser!.role);
+        */
       }
     })
   } 
@@ -69,15 +78,13 @@ export class UserFormComponent {
         this.toastrService.error(err.error.error, 'Error');
       }
     });
-  } 
+  }   
 
   //HIBA!!!!
   //ask for password from req like other data!!!
   modifyUser() {
-    console.log(this.authenticationService.getToken);
     var userData = this.userForm.value as UserDTO;
     userData.role=this.currentUser!.role;
-    userData.id=this.activatedRoute.snapshot.params['id'];
     //userData.password=this.authenticationService.getToken
 
     if (userData.password!='aaaaaa') {

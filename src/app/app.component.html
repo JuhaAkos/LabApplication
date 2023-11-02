@@ -38,6 +38,9 @@
             <a routerLink="/calendar/form"> Új időpont </a>
             <a routerLink="/calendar/list"> Időpontjaim </a>
           </div>
+          <div *ngIf="checkRoles(['admin'])">
+            <a routerLink="/calendar/newweek"> Hét eltolása </a>
+          </div>
         </div>
       </div>
     </div>
