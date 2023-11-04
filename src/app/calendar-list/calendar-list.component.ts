@@ -93,8 +93,8 @@ export class CalendarListComponent {
 
   timetableToString(timetable: number){
     switch (timetable) {
-      case 0: {return "órarendi";}
-      case 1: {return "egyszeri";}
+      case 0: {return "egyszeri";}
+      case 1: {return "órarendi";}
       default: {return "egyszeri";}
     } 
   }

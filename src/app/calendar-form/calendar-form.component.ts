@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { CalendarDTO, GroupDTO } from 'models';
+import { CalendarDTO, GroupDTO, UserDTO } from 'models';
 
 import { GroupService} from '../services/group.service';
 import { CalendarService} from '../services/calendar.service';
 import { FormBuilder } from '@angular/forms';
+import { AuthenticationService } from '../services/authentication.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-calendar-form',
@@ -18,10 +20,19 @@ export class CalendarFormComponent {
   constructor(
     private formBuilder: FormBuilder,
     private groupService: GroupService,    
-    private calendarService: CalendarService,  
+    private calendarService: CalendarService,
+    private userService: UserService,
+    private authenticationService: AuthenticationService,  
   ) { }
 
   ngOnInit(): void {
+    const currentUserID=this.authenticationService.getID();
+
+    this.userService.getOne(Number(currentUserID)).subscribe({
+      next: (currentUser) => {
+        this.currentUser=currentUser;
+    }})
+
     this.groupService.getAll().subscribe({
       next: (groups) => {
         this.groups = groups;
@@ -35,13 +46,15 @@ export class CalendarFormComponent {
     });  
   } 
 
+  private currentUser?: UserDTO;
+
   calendarForm = this.formBuilder.group({
     id: 0,
     week: this.formBuilder.control(''),
     day: this.formBuilder.control(''),
     timeofclass: this.formBuilder.control(''),
     activity: this.formBuilder.control(''),
-    description: this.formBuilder.control(''),
+    teachername: this.formBuilder.control(''),
     classroom: this.formBuilder.control(''),
     groups: null,
     secondaryclass: this.formBuilder.control(''),
@@ -68,21 +81,13 @@ export class CalendarFormComponent {
   
   setCalendar(calendar : CalendarDTO) {
     calendar.week = this.getWeekNumber(Number(this.calendarForm.controls['week'].value!));    
-    //console.log("hét: " + calendar.week);
     calendar.day = this.getDayNumber(Number(this.calendarForm.controls['day'].value!));
-    //console.log("nap: " + calendar.day);
     calendar.timeofclass = this.getTimeofclassNumber(Number(this.calendarForm.controls['timeofclass'].value!));
-    //console.log("óra: " + calendar.timeofclass);
     calendar.activity = this.calendarForm.controls['activity'].value!;
-    //console.log("activity: " + calendar.activity);
-    calendar.description = this.calendarForm.controls['description'].value!;
-    //console.log("leír: " + calendar.description);
+    calendar.teachername = this.calendarForm.controls['teachername'].value!;
     calendar.classroom = this.getClassRoomData(this.calendarForm.controls['classroom'].value!);
-    //console.log("terem: " + calendar.classroom);
     calendar.groups = this.groups2;
-    //console.log("csop: " + calendar.groups);
     calendar.istimetableclass = this.getOneOrTwo(Number(this.calendarForm.controls['istimetableclass'].value!));
-    //console.log("órarendi: " + calendar.istimetableclass);
     return calendar;
   }
 
@@ -171,7 +176,6 @@ export class CalendarFormComponent {
   isOverlap:boolean = false;
 
   checkClassOverlap(currentCalendar: CalendarDTO){    
-    console.log(currentCalendar.classroom);
 
     this.isOverlap = false;
 
@@ -184,7 +188,6 @@ export class CalendarFormComponent {
               || currentCalendar.classroom == this.calendars[counter].classroom) {
                 this.isOverlap = true;
 
-                console.log("jajj");
                 break;
           }
 
@@ -200,7 +203,6 @@ export class CalendarFormComponent {
               || currentCalendar.classroom == this.calendars[counter].classroom) {
                 this.isOverlap = true;
 
-                console.log("jajj");
                 break;
           }
 
@@ -209,15 +211,34 @@ export class CalendarFormComponent {
     }    
   }
 
+  ifDataEmpty(calendar : CalendarDTO){
+    if (calendar.activity.length<1){
+      calendar.activity="";
+    }
+  }
+
+  setDesc(calendar : CalendarDTO){
+    if (this.currentUser?.username!= undefined) {
+      calendar.teachername=this.currentUser.username;
+    }
+  }
+
   saveCalendar(){
     let calendar1 = {} as CalendarDTO;
     
     this.setCalendar(calendar1);    
     
     this.checkClassOverlap(calendar1);
+
+    this.ifDataEmpty(calendar1);
+    this.setDesc(calendar1);
+
+    if (this.currentUser!=undefined){
+      calendar1.teacher=this.currentUser;
+    }
+    
     
     if (this.isOverlap == false) {
-      console.log("update");
       this.calendarService.create(calendar1).subscribe({
         next: (calendar) => {       
         }

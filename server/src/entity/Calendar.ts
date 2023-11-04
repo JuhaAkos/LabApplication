@@ -21,7 +21,7 @@ export class Calendar implements CalendarDTO{
     activity: string;
 
     @Column()
-    description: string;
+    teachername: string;
 
     @Column()
     classroom: "teljes labor" | "kémia labor" | "fizika labor";

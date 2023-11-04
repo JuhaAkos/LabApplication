@@ -56,6 +56,101 @@
         <hr>
     </div>
 
+    <div *ngIf="isSelectedType('device')">     
+
+        <div *ngFor="let device of neededdevices">
+            <div class="row">
+                <div class="col-md-5 spaceleft"><li>{{ device.name }}</li></div>
+                
+                <div class="col-md-5" *ngIf="checkForDevice(device)!=-1">
+                    <button class="btn btn-danger btn-sm width80" (click)="removeDevice(device)">Törlés</button>                    
+                </div>  
+                
+                <div class="col-md-5" *ngIf="!(checkForDevice(device)!=-1)">
+                    <button class="btn btn-primary btn-sm width80" (click)="addDevice(device)">Felvétel</button>                    
+                </div>
+            </div>
+        </div>
+
+        <hr>
+    </div>
+
+    <div *ngIf="isSelectedType('woodentool')">     
+
+        <div *ngFor="let woodentool of neededwoodentools">
+            <div class="row">
+                <div class="col-md-5 spaceleft"><li>{{ woodentool.name }}</li></div>
+                
+                <div class="col-md-5" *ngIf="checkForWoodentool(woodentool)!=-1">
+                    <button class="btn btn-danger btn-sm width80" (click)="removeWoodentool(woodentool)">Törlés</button>                    
+                </div>  
+                
+                <div class="col-md-5" *ngIf="!(checkForWoodentool(woodentool)!=-1)">
+                    <button class="btn btn-primary btn-sm width80" (click)="addWoodentool(woodentool)">Felvétel</button>                    
+                </div>
+            </div>
+        </div>
+
+        <hr>
+    </div>
+
+    <div *ngIf="isSelectedType('metaltool')">     
+
+        <div *ngFor="let metaltool of neededmetaltools">
+            <div class="row">
+                <div class="col-md-5 spaceleft"><li>{{ metaltool.name }}</li></div>
+                
+                <div class="col-md-5" *ngIf="checkForMetaltool(metaltool)!=-1">
+                    <button class="btn btn-danger btn-sm width80" (click)="removeMetaltool(metaltool)">Törlés</button>                    
+                </div>  
+                
+                <div class="col-md-5" *ngIf="!(checkForMetaltool(metaltool)!=-1)">
+                    <button class="btn btn-primary btn-sm width80" (click)="addMetaltool(metaltool)">Felvétel</button>                    
+                </div>
+            </div>
+        </div>
+
+        <hr>
+    </div>
+
+    <div *ngIf="isSelectedType('otheritem')">     
+
+        <div *ngFor="let otheritem of neededotheritems">
+            <div class="row">
+                <div class="col-md-5 spaceleft"><li>{{ otheritem.name }}</li></div>
+                
+                <div class="col-md-5" *ngIf="checkForOtheritem(otheritem)!=-1">
+                    <button class="btn btn-danger btn-sm width80" (click)="removeOtheritem(otheritem)">Törlés</button>                    
+                </div>  
+                
+                <div class="col-md-5" *ngIf="!(checkForOtheritem(otheritem)!=-1)">
+                    <button class="btn btn-primary btn-sm width80" (click)="addOtheritem(otheritem)">Felvétel</button>                    
+                </div>
+            </div>
+        </div>
+
+        <hr>
+    </div>
+
+    <div *ngIf="isSelectedType('glasscontainer')">     
+
+        <div *ngFor="let glasscontainer of neededglasscontainers">
+            <div class="row">
+                <div class="col-md-5 spaceleft"><li>{{ glasscontainer.name }}</li></div>
+                
+                <div class="col-md-5" *ngIf="checkForGlasscontainer(glasscontainer)!=-1">
+                    <button class="btn btn-danger btn-sm width80" (click)="removeGlasscontainer(glasscontainer)">Törlés</button>                    
+                </div>  
+                
+                <div class="col-md-5" *ngIf="!(checkForGlasscontainer(glasscontainer)!=-1)">
+                    <button class="btn btn-primary btn-sm width80" (click)="addGlasscontainer(glasscontainer)">Felvétel</button>                    
+                </div>
+            </div>
+        </div>
+
+        <hr>
+    </div>
+
     
 
     <div class="row"><button class="btn btn-primary btn-lg btn-block" (click)="saveExperiment()">OK</button></div>

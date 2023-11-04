@@ -31,8 +31,7 @@ export class UserListComponent {
   ngOnInit(): void {
     this.userService.getAll().subscribe({
       next: (users) => {
-        this.users = users;  
-        console.log(this.users[0]);      
+        this.users = users;     
       }
     });
   }

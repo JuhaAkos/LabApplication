@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from './services/authentication.service';
+import { UserService } from './services/user.service';
+import { UserDTO } from 'models';
 
 @Component({
   selector: 'app-root',
@@ -18,23 +20,40 @@ export class AppComponent {
     private router: Router,
     public authenticationService: AuthenticationService,
     private toastrService: ToastrService,
+    private userService: UserService
   ) { }
 
   logout() {
     this.authenticationService.setRole('');
     this.authenticationService.removeToken();
     this.router.navigateByUrl('/');
-    this.toastrService.success('Sikeresen kijelentkezett.', 'Kilépés');
+    this.toastrService.success('Sikeresen kijelentkezett.', 'Kilépés');    
     this.ngOnInit();
   }
 
   ngOnInit() {
     this.currentUserRole = this.authenticationService.getRole();
-    console.log(this.currentUserRole);
+
+    const currentUserID=this.authenticationService.getID();
+
+
+    this.userService.getOne(Number(currentUserID)).subscribe({
+      next: (currentUser) => {
+        this.currentUser=currentUser;
+    }})
+  }
+
+  private currentUser?: UserDTO | null;
+
+  getCurrentUsername(){
+      return this.currentUser?.username;
+  }
+
+  getCurrentRole(){
+    return this.currentUser?.role;
   }
 
   checkRoles(roles: string[]) {
-    //console.log(roles[0] + " + " + roles[1] + " + " + this.currentUserRole);
     return roles.includes(this.currentUserRole!);
   }
 
@@ -45,5 +64,6 @@ export class AppComponent {
   navigateToMainmenu(){
     this.router.navigateByUrl('/');
   }
+
 
 }

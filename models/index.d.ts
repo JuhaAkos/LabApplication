@@ -6,7 +6,7 @@ export interface ChemicalDTO {
     unit: string;
     poisonouseffect: null | string;
     storage: string;
-    expiration: Date;
+    expiration: string;
     description: string;
 }
 
@@ -55,7 +55,7 @@ export interface CalendarDTO {
     timeofclass: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
     activity: string;
     //alcsoport kiírás szokott lenni , az mehet ide
-    description: string;
+    teachername: string;
     //szétválasztható fiz és kémia részre megnevezés alapján
     //vagy hagyható egybe -> fulllab
     classroom: "teljes labor" | "kémia labor" | "fizika labor";

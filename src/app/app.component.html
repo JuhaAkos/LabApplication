@@ -1,11 +1,16 @@
 <html>
 <div class="container">
-  <div class="row pt-2">
+  <div class="row pt-2">    
     <div class="col-md-12" style="text-align: center">
-      <h2>Labornyilvántartó rendszer</h2>
-      <hr>
+      <h2>Labornyilvántartó rendszer</h2>            
     </div>
   </div>
+
+  <div class="col-md-2 textsize80">
+    <div *ngIf="checkRoles(['student','teacher','admin'])">Felh.: {{getCurrentUsername()}} ({{getCurrentRole()}})</div>
+  </div>
+
+  <hr>
 
   <div class="navbar">
 

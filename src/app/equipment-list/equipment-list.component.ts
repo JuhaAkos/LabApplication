@@ -174,8 +174,4 @@ export class EquipmentListComponent {
     this.router.navigate(['/equipment/form', id]);
   }
 
-  
-  
-
-
 }

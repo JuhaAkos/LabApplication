@@ -23,23 +23,21 @@
     <div *ngIf="isSelectedType('chemical')">
         <div class="row">
             <div class="col-md-1">ID</div>        
-            <div class="col-md-2">Hivatalos név</div>
-            <div class="col-md-1">Hétköznapi név</div>
+            <div class="col-md-3">Hivatalos név (Hétköznapi név)</div>
             <div class="col-md-1">Mennyiség</div>
             <div class="col-md-2">Mérgező hatások</div>
             <div class="col-md-1">Tárolási hely</div>
-            <div class="col-md-1">Lejárat (nap/hó/év)</div>
+            <div class="col-md-1">Lejárat (év/hónap/nap)</div>
             <div class="col-md-2">Leírás</div>
         </div>        
         <hr>
         <div class="row top-margin20" *ngFor="let chemical of chemicals">
             <div class="col-md-1">{{ chemical.id }}</div>     
-            <div class="col-md-2">{{ chemical.officialname }}</div>
-            <div class="col-md-1">{{ chemical.name }}</div>
+            <div class="col-md-3">{{ chemical.officialname}}  ({{chemical.name}}) </div>
             <div class="col-md-1">{{ chemical.amount }} {{ chemical.unit }}</div>
             <div class="col-md-2">{{ chemical.poisonouseffect }}</div>
             <div class="col-md-1">{{ chemical.storage }}</div>
-            <div class="col-md-1">{{ chemical.expiration | date:'MM/dd/yyyy'}}</div>
+            <div class="col-md-1">{{ chemical.expiration}}</div>
             <div class="col-md-2">{{ chemical.description }}</div>
 
             <div class="col-md-1">
@@ -172,5 +170,7 @@
 
         </div>
     </div>
+
+    
 
 </div>

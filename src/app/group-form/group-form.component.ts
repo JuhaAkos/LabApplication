@@ -63,7 +63,13 @@ export class GroupFormComponent {
   }
 
   addGroup(){
-    const groupData = this.groupForm.value as GroupDTO;    
+    const groupData = this.groupForm.value as GroupDTO; 
+
+    if (this.currentUser != undefined)   {
+      groupData.teacher=this.currentUser;
+      groupData.teacherId=this.currentUser.id;
+    }
+    
     
     this.groupService.create(groupData).subscribe({
       next: (response) => {
@@ -86,5 +92,7 @@ export class GroupFormComponent {
       }
     });
   }
+
+  
   
 }

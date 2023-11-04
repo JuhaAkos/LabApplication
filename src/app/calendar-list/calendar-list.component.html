@@ -21,7 +21,8 @@
     <br>
 
     <div class="row">
-        <div class="col-md-1">ID</div>        
+        <div class="col-md-1">ID</div>
+        <div class="col-md-2">Oktató</div>         
         <div class="col-md-3">Időpont</div>
         <div class="col-md-2">Foglalkozás</div>
         <div class="col-md-2">Órarendi alkalom?</div>      
@@ -32,7 +33,8 @@
 
     <div *ngFor="let calendar of calendars">
         <div class="row">
-            <div class="col-md-1">{{calendar.id}}</div>        
+            <div class="col-md-1">{{calendar.id}}</div>
+            <div class="col-md-2">{{calendar.teachername}}</div>         
             <div class="col-md-3">{{calendar.week}}. hét - {{dayToString(calendar.day)}} - {{calendar.timeofclass}}. óra</div>
             <div class="col-md-2">{{calendar.activity}}</div> 
             <div class="col-md-2">{{timetableToString(calendar.istimetableclass)}} foglalkozás</div> 

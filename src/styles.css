@@ -247,3 +247,8 @@ table {
     height: 16vh;
     width: fit-content;
 }
+
+.textsize80{
+    font-size: 80%;
+    font-style: italic;
+}

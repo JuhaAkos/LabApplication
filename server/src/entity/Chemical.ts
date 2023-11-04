@@ -26,7 +26,7 @@ export class Chemical implements ChemicalDTO{
     storage: string;
 
     @Column()
-    expiration: Date;
+    expiration: string;
 
     @Column()
     description: string;

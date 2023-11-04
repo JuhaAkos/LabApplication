@@ -53,7 +53,6 @@ export class ExperimentFormComponent {
     } else {
       this.isModify = false;
       this.setDefaultExperiment();
-      //this.currentExperiment!.neededchemicals[0]=this.neededchemicals[0];
     }
   }
 
@@ -73,7 +72,6 @@ export class ExperimentFormComponent {
     this.ChemicalService.getAll().subscribe({
       next: (chemicals: ChemicalDTO[]) => {
         this.neededchemicals = chemicals;
-        console.log(this.neededchemicals.length);
       }
     });
     this.DeviceService.getAll().subscribe({
@@ -113,7 +111,7 @@ export class ExperimentFormComponent {
   }
 
   experimentForm = this.formBuilder.group({
-    id: 0,
+    id: this.formBuilder.control(0),
     name: this.formBuilder.control(''),
     description: this.formBuilder.control(''),
   });  
@@ -124,17 +122,19 @@ export class ExperimentFormComponent {
       next: (currentExperiment) => {
         this.currentExperiment=currentExperiment;       
         
-        this.experimentForm.controls['name'].setValue(this.currentExperiment!.name);
-        this.experimentForm.controls['description'].setValue(this.currentExperiment!.description);
+        this.experimentForm.setValue(this.currentExperiment);
       }
     })
   }  
 
   saveExperiment(){
     var saveData = this.currentExperiment as ExperimentDTO;
+    var saveData2 = this.experimentForm.value as ExperimentDTO; 
+    saveData.name = saveData2.name;
+    saveData.description = saveData2.description;
+    saveData.id = saveData2.id;
 
     if (this.isModify){
-      saveData.id = this.activatedRoute.snapshot.params['id'];
       this.experimentService.update(saveData).subscribe({
         next: (saveData) => {
           this.toastrService.success('Kísérlet módosítva, id:' + saveData.id , 'Siker');
@@ -225,21 +225,70 @@ export class ExperimentFormComponent {
   }
 
   //metaltool
-  addmetaltool(metaltool: MetalToolDTO){
+  addMetaltool(metaltool: MetalToolDTO){
     this.currentExperiment!.neededmetaltools.push(metaltool);
   }
   
-  removemetaltool(metaltool: MetalToolDTO) {
-    var counter = this.checkFormetaltool(metaltool);
+  removeMetaltool(metaltool: MetalToolDTO) {
+    var counter = this.checkForMetaltool(metaltool);
     if (counter>-1){
       this.currentExperiment!.neededmetaltools.splice(counter, 1);
     }
   }
 
-  checkFormetaltool(metaltool: MetalToolDTO){
+  checkForMetaltool(metaltool: MetalToolDTO){
     if (this.currentExperiment!.neededmetaltools.length >0) {      
       for ( var counter in this.currentExperiment!.neededmetaltools){
         if (metaltool.id == this.currentExperiment!.neededmetaltools[counter].id){
+          return Number(counter);        
+        }
+      }
+    }
+    return -1;
+  }
+
+
+
+  //otheritem
+  addOtheritem(otheritem: OtherItemDTO){
+    this.currentExperiment!.neededotheritems.push(otheritem);
+  }
+  
+  removeOtheritem(otheritem: OtherItemDTO) {
+    var counter = this.checkForOtheritem(otheritem);
+    if (counter>-1){
+      this.currentExperiment!.neededotheritems.splice(counter, 1);
+    }
+  }
+
+  checkForOtheritem(otheritem: OtherItemDTO){
+    if (this.currentExperiment!.neededotheritems.length >0) {      
+      for ( var counter in this.currentExperiment!.neededotheritems){
+        if (otheritem.id == this.currentExperiment!.neededotheritems[counter].id){
+          return Number(counter);        
+        }
+      }
+    }
+    return -1;
+  }
+  
+
+  //glasscontainer
+  addGlasscontainer(glasscontainer: GlassContainerDTO){
+    this.currentExperiment!.neededglasscontainers.push(glasscontainer);
+  }
+  
+  removeGlasscontainer(glasscontainer: GlassContainerDTO) {
+    var counter = this.checkForGlasscontainer(glasscontainer);
+    if (counter>-1){
+      this.currentExperiment!.neededglasscontainers.splice(counter, 1);
+    }
+  }
+
+  checkForGlasscontainer(glasscontainer: GlassContainerDTO){
+    if (this.currentExperiment!.neededglasscontainers.length >0) {      
+      for ( var counter in this.currentExperiment!.neededglasscontainers){
+        if (glasscontainer.id == this.currentExperiment!.neededglasscontainers[counter].id){
           return Number(counter);        
         }
       }

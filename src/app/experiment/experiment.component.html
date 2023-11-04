@@ -21,7 +21,22 @@
 
                 <div *ngIf="item.amount==0" class="experimentAmount">Nem elérhető</div>
                 <div *ngIf="!(item.amount==0)" class="experimentAmount">Elérhető</div>
+            </div>            
+
+            <div *ngIf="isAdmin()">
+                <br>
+                <div class="row">
+                    <div class="col-md-1"><button class="btn btn-primary btn-sm" (click)="navigateToModify(selectedExperiment)">
+                            Módosítás
+                        </button></div>
+                    <div class="col-md-1"><button class="btn btn-primary btn-sm" (click)="deleteExperiment(selectedExperiment)">
+                            Törlés
+                        </button></div>
+                </div>
             </div>
-        </div>
+            </div>
+
     </div>
+
+    
 </div>

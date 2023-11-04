@@ -36,14 +36,13 @@ export class ChemicalFormService {
     chemicalInput.unit = chemicalForm.controls['unit'].value!;
     chemicalInput.poisonouseffect = chemicalForm.controls['poisonouseffect'].value!;
     chemicalInput.storage = chemicalForm.controls['storage'].value!;
-    chemicalInput.expiration = new Date(
-      Number(chemicalForm.controls['year'].value!),
-      Number(chemicalForm.controls['month'].value!),
-      Number(chemicalForm.controls['day'].value!));
+    chemicalInput.expiration = chemicalForm.controls['year'].value! + "/" + (chemicalForm.controls['month'].value!) + "/" + (chemicalForm.controls['day'].value!),
     chemicalInput.description = chemicalForm.controls['description'].value!;
 
     return chemicalInput;
   }
+
+
 
   setChemicalForm(chemicalInput: ChemicalDTO, chemicalForm: FormGroup) {
     chemicalForm.controls['officialname'].setValue(chemicalInput.officialname);

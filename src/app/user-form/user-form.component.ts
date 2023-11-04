@@ -56,14 +56,6 @@ export class UserFormComponent {
         this.showRole=this.currentUser.role;    
         this.currentUser.password="";
         this.userForm.setValue(currentUser); 
-        
-        console.log(this.userForm);
-        /*
-        this.userForm.controls['username'].setValue(this.currentUser!.username);
-        this.userForm.controls['username'].setValue(this.currentUser!.username);
-        this.userForm.controls['password'].setValue(null);
-        this.userForm.controls['role'].setValue(this.currentUser!.role);
-        */
       }
     })
   } 
@@ -83,11 +75,10 @@ export class UserFormComponent {
   //HIBA!!!!
   //ask for password from req like other data!!!
   modifyUser() {
-    var userData = this.userForm.value as UserDTO;
-    userData.role=this.currentUser!.role;
+    var userData = this.userForm.value as UserDTO;    
+    //userData.role=this.currentUser!.role;
     //userData.password=this.authenticationService.getToken
 
-    if (userData.password!='aaaaaa') {
       this.userService.update(userData).subscribe({
       
         next: (userData1) => {
@@ -97,9 +88,7 @@ export class UserFormComponent {
           this.toastrService.error('Fiók módosítása sikertelen');
         }
       });
-    } else {
-      this.toastrService.error('Jelszó nem maradhat üresen!');
-    }
+   
     
   }
 }

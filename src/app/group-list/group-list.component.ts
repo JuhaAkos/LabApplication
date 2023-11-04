@@ -23,6 +23,8 @@ export class GroupListComponent {
   groups: GroupDTO[] = [];
   users: UserDTO[] = [];
 
+  private currentRole = this.authenticationService.getRole();
+
   ngOnInit() {
     this.groupService.getAll().subscribe({
       next: (groups) => {  
@@ -39,7 +41,7 @@ export class GroupListComponent {
   isCurrentUserGroup(group: GroupDTO){
     const currentUserID=this.authenticationService.getID();
 
-    if (group.teacherId == Number(currentUserID)) {
+    if (group.teacherId == Number(currentUserID) || this.currentRole=="admin") {
       return true;
     }
   
@@ -62,10 +64,15 @@ export class GroupListComponent {
 
   deleteGroup(group: GroupDTO){
     this.groupService.delete(group.id).subscribe({
-      next: () => {        
+      next: () => {    
+        this.toastrService.success('Csoport törölve');
+          const index = this.groups.indexOf(group);
+          if (index > -1) {
+            this.groups.splice(index, 1);
+          }       
       },
       error: (err) => {        
-        this.toastrService.error('Hiba a tétel törlésekor.', 'Hiba');
+        this.toastrService.error('Hiba a csoport törlésekor.', 'Hiba');
       }
     })
   }

@@ -55,14 +55,14 @@ export class UserController extends Controller {
             if (!entity || !req.body.id) {
                 return this.handleError(res, null, 404, 'No entity found with this id.');
             }
-            if (!req.body.password || req.body.password==null) {
-                req.body.password=entity.password
-            }          
-            
-            entity = this.repository.create(req.body as object);
-
-            entity.password = await bcrypt.hash(entity.password, 12);
-            
+            if (!req.body.password || req.body.password==null || req.body.password=="") {
+                req.body.password=entity.password;
+                entity = this.repository.create(req.body as object);
+            }  else {
+                entity = this.repository.create(req.body as object);
+                entity.password = await bcrypt.hash(entity.password, 12);
+            }
+                       
             const result = await this.repository.save(entity);
  
             res.json(result);

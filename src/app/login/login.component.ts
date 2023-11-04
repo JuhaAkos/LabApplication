@@ -37,7 +37,6 @@ export class LoginComponent {
       next: (response) => {
         this.authenticationService.setToken(response.accessToken);
         this.authenticationService.setRole(response.role); 
-        console.log(response.id);
         this.authenticationService.setID(response.id);    
        
         location.reload();   
