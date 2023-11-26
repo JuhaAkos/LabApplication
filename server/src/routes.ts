@@ -87,6 +87,7 @@ export function getRoutes() {
     const userController = new UserController();
 
     router.get('/user', userController.getAll);
+    router.get('/username/:username', userController.findByName);
     router.get('/user/:id', userController.getOne);
     router.post('/user', userController.create);
     //check use 1

@@ -17,7 +17,7 @@ export class Group implements GroupDTO{
     @ManyToMany(() => Calendar,  (calendar) => calendar.groups)
     classes: CalendarDTO[];
 
-    @ManyToOne(type => User, (user) => user.groups)
+    @ManyToOne(type => User, (user) => user.groups,)
     @JoinColumn({ name: "teacherId" })
     teacher: UserDTO;
 

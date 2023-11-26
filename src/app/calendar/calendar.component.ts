@@ -53,8 +53,8 @@ export class CalendarComponent {
     if (calendar.classroom == "fizika labor") {
       secondaryClass = 1;
     }
-    //classOrderNumber =+ ((calendar.day -1) * 18) + (calendar.timeofclass * 2) + calendar.secondaryclass;
-    classOrderNumber =+ ((calendar.day -1) * 18) + (calendar.timeofclass * 2) + secondaryClass;
+    
+    classOrderNumber += ((calendar.day -1) * 18) + (calendar.timeofclass * 2) + secondaryClass;
     return classOrderNumber;
   }
 

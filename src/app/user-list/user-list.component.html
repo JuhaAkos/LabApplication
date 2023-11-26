@@ -19,7 +19,7 @@
             <div class="col-md-2">{{user.role}}</div>
             <div class="col-md-4">{{groupToString(user.groups)}}</div> 
             <div class="col-md-1">
-                <button class="btn btn-primary btn-sm" (click)="deleteUser(user)">Törlés</button>
+                <button class="btn btn-primary btn-sm" (click)="startUserDeletion(user)">Törlés</button>
             </div>  
             <div class="col-md-1">
                 <button class="btn btn-primary btn-sm" (click)="navigateToModifyUser(user)">Módosítás</button>

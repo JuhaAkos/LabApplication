@@ -65,14 +65,17 @@ export class GroupFormComponent {
   addGroup(){
     const groupData = this.groupForm.value as GroupDTO; 
 
+    console.log(this.currentUser);
     if (this.currentUser != undefined)   {
       groupData.teacher=this.currentUser;
-      groupData.teacherId=this.currentUser.id;
+      groupData.teacherId=this.currentUser.id;      
     }
     
     
     this.groupService.create(groupData).subscribe({
       next: (response) => {
+        this.toastrService.success('Csoport siekresen létrehozva!');
+        this.ngOnInit
       },
       error: (err) => {
         this.toastrService.error(err.error.error, 'Error');

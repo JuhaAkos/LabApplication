@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from './services/authentication.service';
 import { UserService } from './services/user.service';
 import { UserDTO } from 'models';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -15,11 +16,13 @@ export class AppComponent {
   title = 'Labor-app';
 
   private currentUserRole!: string | null;
+  user!: UserDTO;
 
   constructor(
     private router: Router,
     public authenticationService: AuthenticationService,
     private toastrService: ToastrService,
+    private formBuilder: FormBuilder,
     private userService: UserService
   ) { }
 
@@ -31,22 +34,23 @@ export class AppComponent {
     this.ngOnInit();
   }
 
-  ngOnInit() {
+  ngOnInit() {    
     this.currentUserRole = this.authenticationService.getRole();
 
     const currentUserID=this.authenticationService.getID();
-
-
+    
     this.userService.getOne(Number(currentUserID)).subscribe({
       next: (currentUser) => {
         this.currentUser=currentUser;
     }})
+    
+    this.checkForDefaultUser();
   }
 
   private currentUser?: UserDTO | null;
 
   getCurrentUsername(){
-      return this.currentUser?.username;
+    return this.currentUser?.username;
   }
 
   getCurrentRole(){
@@ -66,4 +70,34 @@ export class AppComponent {
   }
 
 
+
+  checkForDefaultUser(){
+    this.userService.findByName("admin").subscribe({
+      next: (isUserByname) => {
+        if (!isUserByname) {
+          this.createDefaultUser();
+        }
+    }})    
+  }
+
+  userForm = this.formBuilder.group({
+    id: 0,
+    username: "admin",
+    password: "admin",
+    role: "admin",
+  });
+
+  createDefaultUser(){    
+    const loginData = this.userForm.value as UserDTO;
+    
+    this.userService.create(loginData).subscribe({
+      next: (response) => {
+      },
+      error: (err) => {
+        this.toastrService.error(err.error.error, 'Error');
+      }
+    });
+  }  
+
+  
 }

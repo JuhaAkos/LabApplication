@@ -53,15 +53,11 @@ export interface CalendarDTO {
     week: 1 | 2 | 3;
     day: 1 | 2 | 3 | 4 | 5;
     timeofclass: 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-    activity: string;
-    //alcsoport kiírás szokott lenni , az mehet ide
-    teachername: string;
-    //szétválasztható fiz és kémia részre megnevezés alapján
-    //vagy hagyható egybe -> fulllab
-    classroom: "teljes labor" | "kémia labor" | "fizika labor";
-    groups: GroupDTO[];    
+    activity: string;    
+    teachername: string;    
+    classroom: "teljes labor" | "kémia labor" | "fizika labor";      
     istimetableclass: 0 | 1;
-
+    groups: GroupDTO[];  
     teacher: UserDTO;
 }
 

@@ -120,9 +120,11 @@ export class ExperimentFormComponent {
     const id = this.activatedRoute.snapshot.params['id'];
     this.experimentService.getOne(id).subscribe({
       next: (currentExperiment) => {
-        this.currentExperiment=currentExperiment;       
+        this.currentExperiment=currentExperiment;    
         
-        this.experimentForm.setValue(this.currentExperiment);
+        this.experimentForm.controls['id'].setValue(this.currentExperiment.id);
+        this.experimentForm.controls['name'].setValue(this.currentExperiment.name);
+        this.experimentForm.controls['description'].setValue(this.currentExperiment.description);
       }
     })
   }  

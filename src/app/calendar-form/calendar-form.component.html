@@ -51,7 +51,7 @@
                 <label class="form-check-label" for="timeofclass0">0</label>
             </div>
             <div class="form-check form-check-inline" >
-                <input class="form-check-input active" type="radio" name="timeofclass" id="timeofclass1" formControlName="timeofclass" checked="checked">
+                <input class="form-check-input active" type="radio" name="timeofclass" id="timeofclass1" value="1" formControlName="timeofclass">
                 <label class="form-check-label" for="timeofclass1">1</label>
             </div>
             <div class="form-check form-check-inline">
@@ -121,7 +121,7 @@
 
     <div *ngIf="isOverlap" class="centered spaceabove">   
         <div class="row"><button class="btn btn-danger btn-lg btn-block " (click)="saveCalendar()">Újra</button></div>     
-        <h4>Figyelem! Időpont elvétele nem lehetséges, mert átfedés van az alkalmak között!</h4>
+        <h4>Figyelem! Időpont felvétele nem lehetséges, mert átfedés van az alkalmak között!</h4>
     </div>
 
     <p></p>   

@@ -26,6 +26,7 @@ export class CalendarListComponent {
   }
 
   getUserCalendarData(){
+    this.calendars = [];
     this.calendarService.getUserCalendar().subscribe({
       next: (calendars) => {  
         this.calendars = calendars;        
@@ -41,6 +42,7 @@ export class CalendarListComponent {
   isAllCalendar = false;
 
   getAdminAllCalendar(){
+    this.calendars = [];
     this.isButtonPressed();
     this.calendarService.getAll().subscribe({
       next: (calendars) => {  
@@ -69,11 +71,26 @@ export class CalendarListComponent {
   deleteCalendar(calendar: CalendarDTO){
     this.calendarService.delete(calendar.id).subscribe({
       next: () => {        
+        this.toastrService.success('Időpont ID: ' + calendar.id + " törölve.", 'Siker');
+        this.refreshOnDelete()           
       },
       error: (err) => {        
         this.toastrService.error('Hiba a tétel törlésekor.', 'Hiba');
       }
     })
+  }
+
+  refreshOnDelete(){
+    if (this.isAllCalendar) {
+      this.calendars = [];
+      this.calendarService.getAll().subscribe({
+        next: (calendars) => {  
+          this.calendars = calendars;        
+        }
+      }); 
+    } else {
+      this.getUserCalendarData();
+    }   
   }
 
   navigateToCalendarForm(){

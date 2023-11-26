@@ -20,6 +20,6 @@ export class User implements UserDTO{
     @OneToMany(type => Calendar, (calendar) => calendar.teacher, { eager: true })
     lessons: CalendarDTO[] | null;
 
-    @OneToMany(type => Group, (group) => group.teacher, { eager: true })
+    @OneToMany(type => Group, (group) => group.teacher, { eager: true  })
     groups: GroupDTO[] | null;
 }

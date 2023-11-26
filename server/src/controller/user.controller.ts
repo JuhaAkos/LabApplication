@@ -70,4 +70,22 @@ export class UserController extends Controller {
             this.handleError(res, err);
         }
     }; 
+
+    findByName = async (req, res) => {
+        try {
+            const username = req.params.username;
+            const entity = await this.repository.findOneBy({ username : username });
+
+            if (!entity) {                
+                res.json(false)
+            } else (
+                res.json(true)
+            )
+
+            //res.json(entity);
+        } catch (err) {
+            this.handleError(res, err);
+        }
+    };
+
 }

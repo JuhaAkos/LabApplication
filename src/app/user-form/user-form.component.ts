@@ -65,6 +65,7 @@ export class UserFormComponent {
     
     this.userService.create(loginData).subscribe({
       next: (response) => {
+        this.toastrService.success('Felhasználó sikeresen felvéve!', 'Siker');  
       },
       error: (err) => {
         this.toastrService.error(err.error.error, 'Error');
@@ -72,12 +73,9 @@ export class UserFormComponent {
     });
   }   
 
-  //HIBA!!!!
-  //ask for password from req like other data!!!
+
   modifyUser() {
     var userData = this.userForm.value as UserDTO;    
-    //userData.role=this.currentUser!.role;
-    //userData.password=this.authenticationService.getToken
 
       this.userService.update(userData).subscribe({
       

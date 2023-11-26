@@ -26,14 +26,14 @@ export class Calendar implements CalendarDTO{
     @Column()
     classroom: "teljes labor" | "kémia labor" | "fizika labor";
 
-    @ManyToMany(() => Group,  (group) => group.classes, { eager: true })
+    @ManyToMany(() => Group,  (group) => group.classes, { eager: true})
     @JoinTable()
     groups: GroupDTO[]; 
 
     @Column()
     istimetableclass: 0 | 1;
 
-    @ManyToOne(type => User, (user) => user.lessons)
+    @ManyToOne(type => User, (user) => user.lessons, {} )
     @JoinColumn({ name: "teacherId" })
     teacher: UserDTO;
 

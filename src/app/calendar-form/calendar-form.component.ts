@@ -6,6 +6,7 @@ import { CalendarService} from '../services/calendar.service';
 import { FormBuilder } from '@angular/forms';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from '../services/user.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-calendar-form',
@@ -21,6 +22,7 @@ export class CalendarFormComponent {
     private formBuilder: FormBuilder,
     private groupService: GroupService,    
     private calendarService: CalendarService,
+    private toastrService: ToastrService,
     private userService: UserService,
     private authenticationService: AuthenticationService,  
   ) { }
@@ -39,12 +41,17 @@ export class CalendarFormComponent {
       }        
     });  
     
+    this.loadAllClassData();
+  } 
+
+  loadAllClassData(){
+    this.calendars = [];
     this.calendarService.getAll().subscribe({
       next: (calendars) => {
         this.calendars = calendars;
       }        
     });  
-  } 
+  }
 
   private currentUser?: UserDTO;
 
@@ -80,9 +87,10 @@ export class CalendarFormComponent {
   calendar?: CalendarDTO;
   
   setCalendar(calendar : CalendarDTO) {
-    calendar.week = this.getWeekNumber(Number(this.calendarForm.controls['week'].value!));    
+    console.log(this.calendarForm.controls['timeofclass'].value!)
+    calendar.week = this.getWeekNumber(Number(this.calendarForm.controls['week'].value!));   
     calendar.day = this.getDayNumber(Number(this.calendarForm.controls['day'].value!));
-    calendar.timeofclass = this.getTimeofclassNumber(Number(this.calendarForm.controls['timeofclass'].value!));
+    calendar.timeofclass = this.getTimeofclass(this.calendarForm.controls['timeofclass'].value!);
     calendar.activity = this.calendarForm.controls['activity'].value!;
     calendar.teachername = this.calendarForm.controls['teachername'].value!;
     calendar.classroom = this.getClassRoomData(this.calendarForm.controls['classroom'].value!);
@@ -96,9 +104,9 @@ export class CalendarFormComponent {
       case (1) : return 1;
       case (2) : return 2;
       case (3) : return 3;
-      default: {
-        //error
-        return 1;
+      default: {   
+        this.toastrService.error('Hét megadása kötelező!');   
+        throw new Error('Error while getting week data.');
       }
     }
   }
@@ -111,15 +119,26 @@ export class CalendarFormComponent {
       case (4) : return 4;
       case (5) : return 5;
       default: {
-        //error
-        return 1;
+        this.toastrService.error('Nap megadása kötelező!');  
+        throw new Error('Error while getting day data.');
       }
     }
   }
 
-  getTimeofclassNumber(timeofclass: number){
+  getTimeofclass(timeofclassstring: string){
+    if (timeofclassstring.length<1) {     
+      this.toastrService.error('Tanóra idejének megadása kötelező!');  
+      throw new Error('Error while getting lesson data.');
+    }
+
+    const timeofclass = Number(timeofclassstring)
+    
+    console.log(timeofclass)
     switch(timeofclass) {
-      case (0) : return 0;
+      case (0) : {
+        console.log("jajj");
+        return 0;
+      }
       case (1) : return 1;
       case (2) : return 2;
       case (3) : return 3;
@@ -129,8 +148,8 @@ export class CalendarFormComponent {
       case (7) : return 7;
       case (8) : return 8;
       default: {
-        //error
-        return 1;
+        this.toastrService.error('Tanóra idejének megadása kötelező!');  
+        throw new Error('Error while getting lesson data.');
       }
     }
   }
@@ -140,8 +159,7 @@ export class CalendarFormComponent {
       case (0) : return 0;
       case (1) : return 1;
       default: {
-        //error
-        return 1;
+        return 0;
       }
     }
   }
@@ -223,6 +241,17 @@ export class CalendarFormComponent {
     }
   }
 
+  checkCalendarValues(calendar : CalendarDTO) {
+    if (calendar.week>0 && calendar.week<4)
+    if (calendar.day>0 && calendar.day<6)
+    if (calendar.timeofclass>-1 && calendar.timeofclass<9)
+    if (calendar.classroom.length<1)
+    {
+      this.toastrService.error('Hiányzó időpont adatok!');  
+      throw new Error('CheckCalendarValues() - missing calendar values.');
+    }
+  }
+
   saveCalendar(){
     let calendar1 = {} as CalendarDTO;
     
@@ -236,11 +265,17 @@ export class CalendarFormComponent {
     if (this.currentUser!=undefined){
       calendar1.teacher=this.currentUser;
     }
-    
+
+    this.checkCalendarValues(calendar1);
     
     if (this.isOverlap == false) {
       this.calendarService.create(calendar1).subscribe({
-        next: (calendar) => {       
+        next: (calendar) => {             
+          this.toastrService.success('Időpont sikeresen felvéve!', 'Siker');   
+          this.loadAllClassData(); 
+        } ,
+        error: (err) => {
+          this.toastrService.error('Időpont felvétele sikertelen!');
         }
       });
     }    

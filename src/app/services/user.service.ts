@@ -17,6 +17,10 @@ export class UserService {
     return this.http.get<UserDTO>('api/user/' + id);
   }
 
+  findByName(username: string) {
+    return this.http.get<UserDTO>('api/username/' + username);
+  }
+
   create(item: UserDTO) {
     return this.http.post<UserDTO>('api/user', item);
   }
