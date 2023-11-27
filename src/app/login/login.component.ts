@@ -26,7 +26,7 @@ export class LoginComponent {
 
   ngOnInit(){ 
     if (this.authenticationService.isLoggedIn())  {
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/menu');
     }
   }  
 
