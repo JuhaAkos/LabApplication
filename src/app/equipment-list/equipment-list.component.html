@@ -64,9 +64,9 @@
                 <div class="col-md-2">{{ device.fieldofuse }}</div>
                 <div class="col-md-3">{{ device.description }}</div>
 
-                <div class="col-md-1">
-                    <button class="btn btn-primary btn-sm width80" (click)="deleteDevice(device)">Törlés</button>
-                    <button class="btn btn-primary btn-sm width80" (click)="navigateToEquipmentForm(device.id,'device')">Módosít</button>
+                <div class="col-md-1 px-0">                    
+                    <button class="btn btn-primary btn-sm" (click)="navigateToEquipmentForm(device.id,'device')">Módosít</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteDevice(device)">X</button>
                 </div>
             </div>
 
@@ -90,9 +90,9 @@
                 <div class="col-md-2">{{ glasscontainer.amount }}</div>
                 <div class="col-md-3">{{ glasscontainer.description }}</div>
 
-                <div class="col-md-1">
-                    <button class="btn btn-primary btn-sm width80" (click)="deleteGlassContainer(glasscontainer)">Törlés</button>
-                    <button class="btn btn-primary btn-sm width80" (click)="navigateToEquipmentForm(glasscontainer.id,'glasscontainer')">Módosít</button>
+                <div class="col-md-1 px-0">                    
+                    <button class="btn btn-primary btn-sm" (click)="navigateToEquipmentForm(glasscontainer.id,'glasscontainer')">Módosít</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteGlassContainer(glasscontainer)">X</button>
                 </div>
             </div>
 
@@ -114,9 +114,9 @@
                 <div class="col-md-2">{{ metaltool.amount }}</div>
                 <div class="col-md-3">{{ metaltool.description }}</div>
 
-                <div class="col-md-1">
-                    <button class="btn btn-primary btn-sm width80" (click)="deleteMetalTool(metaltool)">Törlés</button>
-                    <button class="btn btn-primary btn-sm width80" (click)="navigateToEquipmentForm(metaltool.id,'metaltool')">Módosít</button>
+                <div class="col-md-1 px-0">                    
+                    <button class="btn btn-primary btn-sm" (click)="navigateToEquipmentForm(metaltool.id,'metaltool')">Módosít</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteMetalTool(metaltool)">X</button>
                 </div>
             </div>
 
@@ -138,9 +138,9 @@
                 <div class="col-md-2">{{ otheritem.amount }}</div>
                 <div class="col-md-3">{{ otheritem.description }}</div>
 
-                <div class="col-md-1">
-                    <button class="btn btn-primary btn-sm width80" (click)="deleteOtherItem(otheritem)">Törlés</button>
-                    <button class="btn btn-primary btn-sm width80" (click)="navigateToEquipmentForm(otheritem.id,'otheritem')">Módosít</button>
+                <div class="col-md-1 px-0">                    
+                    <button class="btn btn-primary btn-sm" (click)="navigateToEquipmentForm(otheritem.id,'otheritem')">Módosít</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteOtherItem(otheritem)">X</button>
                 </div>
             </div>
 
@@ -162,9 +162,9 @@
                 <div class="col-md-2">{{ woodentool.amount }}</div>
                 <div class="col-md-3">{{ woodentool.description }}</div>
 
-                <div class="col-md-1">
-                    <button class="btn btn-primary btn-sm width80" (click)="deleteWoodenTool(woodentool)">Törlés</button>
-                    <button class="btn btn-primary btn-sm width80" (click)="navigateToEquipmentForm(woodentool.id,'woodentool')">Módosít</button>
+                <div class="col-md-1 px-0">                    
+                    <button class="btn btn-primary btn-sm" (click)="navigateToEquipmentForm(woodentool.id,'woodentool')">Módosít</button>
+                    <button class="btn btn-danger btn-sm" (click)="deleteWoodenTool(woodentool)">X</button>
                 </div>
             </div>
 

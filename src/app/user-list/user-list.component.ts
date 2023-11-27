@@ -63,7 +63,6 @@ export class UserListComponent {
 
   
   deleteUser(user: UserDTO){
-    console.log("end")
     
     this.userService.delete(user.id).subscribe({
       next: () => { 
@@ -85,7 +84,6 @@ export class UserListComponent {
   usergroups: GroupDTO[] = [];
   getUserGroups(userToDelete: UserDTO) {   
     this. usergroups =[];
-    console.log(1)
 
     this.groupService.getAll().subscribe({
       next: (groups1) => {
@@ -104,7 +102,6 @@ export class UserListComponent {
   }
 
   deleteUserGroups(userToDelete: UserDTO) { 
-    console.log(2)
     if (this.usergroups.length>0) {
     for (var counter in this.usergroups) {
       if ((Number(counter)+1)<this.usergroups.length){
@@ -124,7 +121,6 @@ export class UserListComponent {
   calendars: CalendarDTO[] = [];
   usercalendars: CalendarDTO[] = [];
   getUserCalendars(userToDelete: UserDTO) { 
-    console.log(3)  
     this. usercalendars =[];
 
     this.calendarService.getAll().subscribe({
@@ -144,7 +140,6 @@ export class UserListComponent {
   }
 
   deleteUserCalendars(userToDelete: UserDTO) { 
-    console.log(4)
     if (this.usercalendars.length>0) {
     for (var counter in this.usercalendars) {
       if ((Number(counter)+1)<this.usercalendars.length){
@@ -155,7 +150,6 @@ export class UserListComponent {
             this.deleteUser(userToDelete)}
         });
       }      
-      //this.groupService.delete(this.usergroups[counter].id).subscribe({});
     }   
     } else {
       this.deleteUser(userToDelete);

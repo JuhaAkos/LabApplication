@@ -150,7 +150,7 @@ export class CalendarComponent {
       return "KL";
     } else if (classroom == "fizika labor") {
       return "FL";
-    } else if (classroom == "fizika labor") {
+    } else if (classroom == "teljes labor") {
       return "TL";
     } else {
       return "-";

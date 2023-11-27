@@ -87,7 +87,6 @@ export class CalendarFormComponent {
   calendar?: CalendarDTO;
   
   setCalendar(calendar : CalendarDTO) {
-    console.log(this.calendarForm.controls['timeofclass'].value!)
     calendar.week = this.getWeekNumber(Number(this.calendarForm.controls['week'].value!));   
     calendar.day = this.getDayNumber(Number(this.calendarForm.controls['day'].value!));
     calendar.timeofclass = this.getTimeofclass(this.calendarForm.controls['timeofclass'].value!);
@@ -133,10 +132,8 @@ export class CalendarFormComponent {
 
     const timeofclass = Number(timeofclassstring)
     
-    console.log(timeofclass)
     switch(timeofclass) {
       case (0) : {
-        console.log("jajj");
         return 0;
       }
       case (1) : return 1;
