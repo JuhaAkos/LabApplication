@@ -129,7 +129,7 @@ export class CalendarComponent {
       return true;
     }
     return false;
-  }
+  }  
 
   groupsToString(groups: GroupDTO[] | undefined | null) : string{
     var groupString: string = "";
@@ -139,6 +139,22 @@ export class CalendarComponent {
       }
       groupString = groupString.substring(1);
     }
-    return groupString;
+
+    var groupString2 = "/" + groupString
+
+    return groupString2;
   }
+
+  classToText(classroom : String | undefined) {
+    if (classroom == "kémia labor") {
+      return "KL";
+    } else if (classroom == "fizika labor") {
+      return "FL";
+    } else if (classroom == "fizika labor") {
+      return "TL";
+    } else {
+      return "-";
+    }
+  }
+  
 }

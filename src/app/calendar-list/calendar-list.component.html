@@ -32,7 +32,7 @@
     <hr>
 
     <div *ngFor="let calendar of calendars">
-        <div class="row">
+        <div class="row forlinespace">
             <div class="col-md-1">{{calendar.id}}</div>
             <div class="col-md-2">{{calendar.teachername}}</div>         
             <div class="col-md-3">{{calendar.week}}. hét - {{dayToString(calendar.day)}} - {{calendar.timeofclass}}. óra</div>

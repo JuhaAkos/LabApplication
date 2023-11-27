@@ -65,12 +65,12 @@ export class GroupFormComponent {
   addGroup(){
     const groupData = this.groupForm.value as GroupDTO; 
 
-    console.log(this.currentUser);
     if (this.currentUser != undefined)   {
       groupData.teacher=this.currentUser;
       groupData.teacherId=this.currentUser.id;      
     }
-    
+
+    this.checkGroupValue(groupData);
     
     this.groupService.create(groupData).subscribe({
       next: (response) => {
@@ -94,6 +94,13 @@ export class GroupFormComponent {
         this.toastrService.error('Csoport módosítása sikertelen');
       }
     });
+  }
+
+  checkGroupValue(group: GroupDTO){
+    if (group.name.length<1) {
+      this.toastrService.error('A csoport nevének megadása kötelező');  
+      throw new Error('Incorrect groupname error.');
+    }    
   }
 
   

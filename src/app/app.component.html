@@ -1,16 +1,20 @@
 <html>
-<div class="container">
+<div class="container bg">
+  <div class="smallpad">
   <div class="row pt-2">    
-    <div class="col-md-12" style="text-align: center">
-      <h2>Labornyilvántartó rendszer</h2>            
-    </div>
+    <div class="col-md-12 timesfont" style="text-align: center">
+      <h1>Labornyilvántartó rendszer</h1>            
+    </div>    
   </div>
+</div>
 
   <div class="col-md-2 textsize80">
     <div *ngIf="checkRoles(['student','teacher','admin'])">Felh.: {{getCurrentUsername()}} ({{getCurrentRole()}})</div>
   </div>
 
-  <hr>
+
+</div>
+<div class="container p-0 bg ">
 
   <div class="navbar">
 
@@ -103,9 +107,14 @@
 
   </div>
 
-  <hr>
+</div>
+
+  <div class="container bg">
+  <br>
 
   <router-outlet></router-outlet>
+  
+  <br>
 
 </div>
 

@@ -1,3 +1,149 @@
+.bg {
+    background-color: #d2e3ec;
+}   
+
+.bgdark {
+    background-color: #4c748f;
+}
+
+.bgmid {
+    background-color: #96bad3;
+}
+
+html {
+    height: 100%;
+}
+
+.height100 {
+    min-height: 100pv;
+}
+
+body {
+    height: 100%;
+    background-attachment:fixed;
+    background-image: linear-gradient(#9fc2d8, #6c91aa);
+}
+
+.timesfont {
+    font-family: Georgia, serif;
+}
+
+.smallpad{
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.forlinespace{
+    padding-top:0.2%;
+}
+
+.greetmessage{
+    font-size: 80%;
+    font-style: italic;
+}
+
+
+.navbar {  
+    display: flex;
+    justify-content: space-around;
+    background-color: #5e8ead;  
+    padding: 0;    
+    display:flex;
+    align-items: stretch;
+    color: white;
+}
+
+.dropdown .dropbtn {
+    border: none;
+    outline: none;
+    background-color: #ffffff00;
+    padding: 14px 16px;    
+    height: 100%;
+  }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #96bad3;  
+    left: 0;
+    z-index: 1;
+    min-width: 100%;     
+  }
+
+.dropdown:hover .dropdown-content {
+    display: block;     
+}
+
+.navbar a {
+    float: none;    
+    text-decoration: none; 
+    color: rgb(0, 0, 0);  
+    width: 100%;  
+    display: block; 
+    white-space: pre;    
+}
+
+.dropdown-content a {
+    line-height: 250%;         
+}
+
+.navbar a:hover, .dropdown:hover .dropbtn{
+    background-color: #406f8f; 
+}
+
+.logoutc {
+    background-color: #c05252;
+}
+
+.logoutc:hover .dropbtn, .logoutc a:hover{
+    background-color: #b43939;
+}
+
+
+.btn-primary {
+    padding-left: 3%;
+    padding-right: 3%;
+    background-color: #5e8ead;
+    border-color: #5e8ead;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: #406f8f !important;
+    border-color: #406f8f !important;
+}
+
+
+.btn-danger {
+    background-color: #c05252;
+    border-color: #c05252;
+}
+
+.btn-danger:hover, .btn-danger:focus  {
+    background-color: #b43939 !important;
+    border-color: #b43939 !important;
+}
+
+.btn-light {
+    background-color: #96bad3;
+    border-color: #96bad3;
+}
+
+.btn-light:hover, .btn-light:focus  {
+    background-color: #5e8ead !important;
+    border-color: #5e8ead !important;
+}
+
+.btn-outline-primary{
+    color: #5e8ead;
+    border-color: #5e8ead;
+}
+
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+    color: white !important;
+    background-color: #5e8ead !important;
+    border-color: #5e8ead !important;
+}
+
 .top-margin20 { margin-top:20px; }
 
 .width80 {
@@ -34,12 +180,13 @@
 
 
 
+
 .calendarfilled {
-    background-color: rgb(139, 199, 218) !important;
+    background-color: #e4c973 !important;
 }
 
 .timetableclass {
-    background-color: rgb(223, 202, 132) !important;
+    background-color: #96bad3 !important;
 }
 
 .error {
@@ -65,7 +212,7 @@ table {
 
 .calendaractivitystyle {
     float: left;
-    font-size: 60%;
+    font-size: 70%;
 }
 
 .calendargroupstyle {    
@@ -76,13 +223,13 @@ table {
 
 .calendarclassstyle {
     float: right;
-    font-size: 60%;
+    font-size: 70%;
 }
 
 .calendardescstyle {
     padding-top: 6px;
     text-align: center;
-    font-size: 60%;
+    font-size: 70%;
 }
 
 .borderleft {
@@ -106,8 +253,9 @@ table {
 }
 
 .paddingBeforeAfter {
-    padding-top: 22px;
-    padding-bottom: 22px;
+    padding-left:0.5%;
+    padding-top: 24px;
+    padding-bottom: 24px;
 }
 
 .emptycell {
@@ -129,7 +277,8 @@ table {
 
 .experimentList {
     float: left;
-    width: 20%
+    width: 20%;
+    overflow: hidden;
 }
 
 .experimentInfo {
@@ -140,12 +289,12 @@ table {
 .experimentListButton {
     width: 100%;
     height: 200%;
-    text-align: left;
+    text-align: left;    
 }
 
 .experimentDescription {
     padding: 1%;
-    background-color: #bae2e7;
+    background-color: #96bad3;
     /*height: 100%;*/
     min-height: 100%;
     word-wrap: break-word; 
@@ -168,70 +317,6 @@ table {
 
 
 
-
-
-.dropdown .dropbtn {
-    border: none;
-    outline: none;
-    background-color: #ffffff00;
-    padding: 14px 16px;    
-    height: 100%;
-  }
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #aacad6; 
-    left: 0;
-    z-index: 1;
-    min-width: 100%;     
-  }
-
-.dropdown:hover .dropdown-content {
-    display: block;     
-}
-
-.navbar a {
-    float: none;    
-    text-decoration: none; 
-    color: black;  
-    width: 100%;  
-    display: block; 
-    white-space: pre;    
-}
-
-.dropdown-content a {
-    line-height: 250%;         
-}
-
-.navbar a:hover, .dropdown:hover .dropbtn{
-    background-color: #76a5b6;
-}
-
-.navbar {    
-    display: flex;
-    justify-content: space-around;
-    background-color: #aacad6;
-    padding: 0;
-    display:flex;
-    align-items: stretch;
-}
-
-.loginc {
-    background-color: #76a5b6;
-}
-
-.logoutc {
-    background-color: #c46a6a;
-}
-
-.loginc:hover .dropbtn, .loginc a:hover {
-    background-color: #527581;
-}
-
-.logoutc:hover .dropbtn, .logoutc a:hover{
-    background-color: #ca2c2c;
-}
 
 
 

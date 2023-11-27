@@ -1,4 +1,6 @@
+<div class="height100">
 <div class="container">
+    
     <h3>A laborban végrehajtható kísérletek:</h3>
     <p></p>
     <hr>
@@ -11,6 +13,7 @@
                     <h5>{{experiment.name}}</h5>
                 </button>               
             </div>
+            <br>
         </div>        
         <div *ngIf="selectedExperiment"  class="experimentInfo experimentDescription">
             <h4>{{selectedExperiment.name}}</h4>
@@ -35,8 +38,7 @@
                 </div>
             </div>
             </div>
-
+            <div style="clear: both;"></div>
     </div>
-
-    
+</div>
 </div>

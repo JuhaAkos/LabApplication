@@ -34,15 +34,20 @@ export class AppComponent {
     this.ngOnInit();
   }
 
-  ngOnInit() {    
+  ngOnInit() {     
+   
     this.currentUserRole = this.authenticationService.getRole();
 
     const currentUserID=this.authenticationService.getID();
     
-    this.userService.getOne(Number(currentUserID)).subscribe({
-      next: (currentUser) => {
-        this.currentUser=currentUser;
-    }})
+    if (currentUserID!=null){
+      this.userService.getOne(Number(currentUserID)).subscribe({
+        next: (currentUser) => {
+          this.currentUser=currentUser;
+      }})
+    } else {
+      this.navigateToMainmenu();
+    } 
     
     this.checkForDefaultUser();
   }
@@ -66,7 +71,7 @@ export class AppComponent {
   }
 
   navigateToMainmenu(){
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/menu');
   }
 
 

@@ -136,6 +136,8 @@ export class ExperimentFormComponent {
     saveData.description = saveData2.description;
     saveData.id = saveData2.id;
 
+    this.checkExperimentValue(saveData);
+
     if (this.isModify){
       this.experimentService.update(saveData).subscribe({
         next: (saveData) => {
@@ -156,6 +158,15 @@ export class ExperimentFormComponent {
       });
     }
   }
+
+  checkExperimentValue(experiment: ExperimentDTO){
+    if (experiment.name.length<1) {
+      this.toastrService.error('A kísérlet nevének megadása kötelező');  
+      throw new Error('Incorrect experimentname error.');
+    }    
+  }
+
+
 
   //chemical
   addChemical(chemical: ChemicalDTO){

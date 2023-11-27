@@ -14,6 +14,7 @@ import { ExperimentFormComponent } from './experiment-form/experiment-form.compo
 import { GroupFormComponent } from './group-form/group-form.component';
 import { GroupListComponent } from './group-list/group-list.component';
 import { CalendarNewweekComponent } from './calendar-newweek/calendar-newweek.component';
+import { MenuComponent } from './menu/menu.component';
 
 const routes: Routes = [
   {
@@ -70,6 +71,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'menu',
+    component: MenuComponent
   },
   {
     path: 'user/list',

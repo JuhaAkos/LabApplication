@@ -61,7 +61,9 @@ export class UserFormComponent {
   } 
 
   registerUser() {
-    const loginData = this.userForm.value as UserDTO;    
+    const loginData = this.userForm.value as UserDTO; 
+    
+    this.checkUserValue(loginData);
     
     this.userService.create(loginData).subscribe({
       next: (response) => {
@@ -75,7 +77,9 @@ export class UserFormComponent {
 
 
   modifyUser() {
-    var userData = this.userForm.value as UserDTO;    
+    var userData = this.userForm.value as UserDTO;   
+    
+    this.checkUserValue(userData);
 
       this.userService.update(userData).subscribe({
       
@@ -85,8 +89,18 @@ export class UserFormComponent {
         error: (err) => {
           this.toastrService.error('Fiók módosítása sikertelen');
         }
-      });
-   
+      }); 
+  }
+
+  checkUserValue(user: UserDTO){
+    if (user.username.length<1) {
+      this.toastrService.error('Felhasználónév megadása kötelező');  
+      throw new Error('Incorrect registration username error.');
+    }
+    if (user.password.length<1) {
+      this.toastrService.error('Jelszó megadása kötelező');  
+      throw new Error('Incorrect registration password error.');
+    }
     
   }
 }

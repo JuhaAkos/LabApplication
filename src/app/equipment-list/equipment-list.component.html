@@ -22,34 +22,34 @@
 
     <div *ngIf="isSelectedType('chemical')">
         <div class="row">
-            <div class="col-md-1">ID</div>        
-            <div class="col-md-3">Hivatalos név (Hétköznapi név)</div>
-            <div class="col-md-1">Mennyiség</div>
-            <div class="col-md-2">Mérgező hatások</div>
-            <div class="col-md-1">Tárolási hely</div>
+            <div class="col-auto">ID</div>        
+            <div class="col-md-3 px-0">Hivatalos név (Hétköznapi név)</div>
+            <div class="col-md-1 px-0">Mennyiség</div>
+            <div class="col-md-2 px-0">Mérgező hatások</div>
+            <div class="col-md-1 px-0">Tárolási hely</div>
             <div class="col-md-1">Lejárat (év/hónap/nap)</div>
-            <div class="col-md-2">Leírás</div>
+            <div class="col-md-2 px-0">Leírás</div>
         </div>        
         <hr>
         <div class="row top-margin20" *ngFor="let chemical of chemicals">
-            <div class="col-md-1">{{ chemical.id }}</div>     
-            <div class="col-md-3">{{ chemical.officialname}}  ({{chemical.name}}) </div>
-            <div class="col-md-1">{{ chemical.amount }} {{ chemical.unit }}</div>
-            <div class="col-md-2">{{ chemical.poisonouseffect }}</div>
-            <div class="col-md-1">{{ chemical.storage }}</div>
+            <div class="col-auto">{{ chemical.id }}</div>     
+            <div class="col-md-3 px-0">{{ chemical.officialname}}  ({{chemical.name}}) </div>
+            <div class="col-md-1 px-0">{{ chemical.amount }} {{ chemical.unit }}</div>
+            <div class="col-md-2 px-0">{{ chemical.poisonouseffect }}</div>
+            <div class="col-md-1 px-0">{{ chemical.storage }}</div>
             <div class="col-md-1">{{ chemical.expiration}}</div>
             <div class="col-md-2">{{ chemical.description }}</div>
 
-            <div class="col-md-1">
-                <button class="btn btn-primary btn-sm width80" (click)="deleteChemical(chemical)">Törlés</button>
-                <button class="btn btn-primary btn-sm width80" (click)="navigateToEquipmentForm(chemical.id,'chemical')">Módosít</button>
+            <div class="col-md-1 px-0">
+                <button class="btn btn-primary btn-sm" (click)="navigateToEquipmentForm(chemical.id,'chemical')">Módosít</button>
+                <button class="btn btn-danger btn-sm " (click)="deleteChemical(chemical)">X</button>
             </div>
         </div>
     </div>
 
     <div *ngIf="isSelectedType('device')">
         <div class="row">
-            <div class="col-md-1">ID</div> 
+            <div class="col-auto">ID</div> 
             <div class="col-md-3">Név</div>
             <div class="col-md-2">Mennyiség</div>
             <div class="col-md-2">Felhasználási terület</div>
@@ -58,7 +58,7 @@
         <hr>
         <div class="row top-margin20" *ngFor="let device of devices">
             <div class="row">
-                <div class="col-md-1">{{ device.id }}</div>
+                <div class="col-auto">{{ device.id }}</div>
                 <div class="col-md-3">{{ device.name }}</div>
                 <div class="col-md-2">{{ device.amount }}</div>
                 <div class="col-md-2">{{ device.fieldofuse }}</div>
@@ -75,7 +75,7 @@
 
     <div *ngIf="isSelectedType('glasscontainer')">
         <div class="row">
-            <div class="col-md-1">ID</div> 
+            <div class="col-auto">ID</div> 
             <div class="col-md-3">Név</div>
             <div class="col-md-2">Űrtartalom</div>            
             <div class="col-md-2">Mennyiség</div>
@@ -84,7 +84,7 @@
         <hr>
         <div class="row top-margin20" *ngFor="let glasscontainer of glasscontainers">
             <div class="row">
-                <div class="col-md-1">{{ glasscontainer.id }}</div>
+                <div class="col-auto">{{ glasscontainer.id }}</div>
                 <div class="col-md-3">{{ glasscontainer.name }}</div>
                 <div class="col-md-2">{{ glasscontainer.capacity }} {{ glasscontainer.unit }}</div>
                 <div class="col-md-2">{{ glasscontainer.amount }}</div>
@@ -101,7 +101,7 @@
 
     <div *ngIf="isSelectedType('metaltool')">
         <div class="row">
-            <div class="col-md-1">ID</div> 
+            <div class="col-auto">ID</div> 
             <div class="col-md-3">Név</div>
             <div class="col-md-2">Mennyiség</div>
             <div class="col-md-3">Leírás</div>
@@ -109,7 +109,7 @@
         <hr>
         <div class="row top-margin20" *ngFor="let metaltool of metaltools">
             <div class="row">
-                <div class="col-md-1">{{ metaltool.id }}</div>
+                <div class="col-auto">{{ metaltool.id }}</div>
                 <div class="col-md-3">{{ metaltool.name }}</div>
                 <div class="col-md-2">{{ metaltool.amount }}</div>
                 <div class="col-md-3">{{ metaltool.description }}</div>
@@ -125,7 +125,7 @@
 
     <div *ngIf="isSelectedType('otheritem')">
         <div class="row">
-            <div class="col-md-1">ID</div> 
+            <div class="col-auto">ID</div> 
             <div class="col-md-3">Név</div>
             <div class="col-md-2">Mennyiség</div>
             <div class="col-md-3">Leírás</div>
@@ -133,7 +133,7 @@
         <hr>
         <div class="row top-margin20" *ngFor="let otheritem of otheritems">
             <div class="row">
-                <div class="col-md-1">{{ otheritem.id }}</div>
+                <div class="col-auto">{{ otheritem.id }}</div>
                 <div class="col-md-3">{{ otheritem.name }}</div>
                 <div class="col-md-2">{{ otheritem.amount }}</div>
                 <div class="col-md-3">{{ otheritem.description }}</div>
@@ -149,7 +149,7 @@
 
     <div *ngIf="isSelectedType('woodentool')">
         <div class="row">
-            <div class="col-md-1">ID</div> 
+            <div class="col-auto">ID</div> 
             <div class="col-md-3">Név</div>
             <div class="col-md-2">Mennyiség</div>
             <div class="col-md-3">Leírás</div>
@@ -157,7 +157,7 @@
         <hr>
         <div class="row top-margin20" *ngFor="let woodentool of woodentools">
             <div class="row">
-                <div class="col-md-1">{{ woodentool.id }}</div>
+                <div class="col-auto">{{ woodentool.id }}</div>
                 <div class="col-md-3">{{ woodentool.name }}</div>
                 <div class="col-md-2">{{ woodentool.amount }}</div>
                 <div class="col-md-3">{{ woodentool.description }}</div>

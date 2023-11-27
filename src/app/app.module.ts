@@ -32,6 +32,7 @@ import { ExperimentFormComponent } from './experiment-form/experiment-form.compo
 import { GroupListComponent } from './group-list/group-list.component';
 import { GroupFormComponent } from './group-form/group-form.component';
 import { CalendarNewweekComponent } from './calendar-newweek/calendar-newweek.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { CalendarNewweekComponent } from './calendar-newweek/calendar-newweek.co
     ExperimentFormComponent,
     GroupListComponent,
     GroupFormComponent,
-    CalendarNewweekComponent
+    CalendarNewweekComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
