@@ -29,7 +29,7 @@ export class CalendarController extends Controller {
         res.json(entities);
       }
       
-      return this.handleError(res, null, 402, 'Unauthenticated user for this operation.');
+      return this.handleError(res, null, 401, 'Unauthenticated user for this operation.');
     } catch (err) {
       this.handleError(res, err);
     }
