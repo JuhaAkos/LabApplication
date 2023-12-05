@@ -81,8 +81,6 @@ export class UserController extends Controller {
             } else (
                 res.json(true)
             )
-
-            //res.json(entity);
         } catch (err) {
             this.handleError(res, err);
         }

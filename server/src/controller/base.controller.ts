@@ -65,8 +65,8 @@ export abstract class Controller {
                 return this.handleError(res, null, 404, 'Not found.');
             }
 
-            await this.repository.remove(entityToDelete);
-            res.status(200).send();
+            await this.repository.remove(entityToDelete);            
+            res.status(200).send(); //HTTP OK
         } catch (err) {
             this.handleError(res, err);
         }
